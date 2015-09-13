@@ -12,24 +12,17 @@
 
 @implementation MIProfileRouter
 
-- (NSString *)viewControllerIdentifier
-{
-    return @"ProfileViewController";
-}
+#pragma mark - MIBaseRouter
 
-- (UIViewController *)initializedViewController
+- (UIViewController *)viewControllerFromStoryboard
 {
-    UIViewController *viewControllerToPresent = [self viewController];
-    MIProfileViewController *viewController = (MIProfileViewController *)viewControllerToPresent;
-    
-    if ([viewControllerToPresent isKindOfClass:[UINavigationController class]])
-    {
-        viewController = ((UINavigationController *)viewControllerToPresent).viewControllers[0];
-    }
-    
+    UIViewController *viewControllerToPresent = [super viewControllerFromStoryboard];
+
+    MIProfileViewController *viewController = (MIProfileViewController *)self.viewController;
     MIProfilePresenter *presenter = (MIProfilePresenter *)self.presenter;
     
-    viewController.actionsHandler = presenter;
+    viewController.presenter = presenter;
+    presenter.controller = viewController;
     
     return viewControllerToPresent;
 }

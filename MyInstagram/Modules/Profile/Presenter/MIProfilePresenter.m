@@ -10,11 +10,28 @@
 
 @implementation MIProfilePresenter
 
-#pragma mark - MIProfileInterface
+#pragma mark - MIProfilePresenterInterface
 
 - (void)logoutAction
 {
-    
+    [_interactor logout];
+}
+
+- (void)getUser
+{
+    [_interactor getUser];
+}
+
+#pragma mark - MIProfileInteractorOutputInterface
+
+- (void)showUser:(MIInstagramUser *)user
+{
+    [_controller showUser:user];
+}
+
+- (void)showLoginInterface
+{
+    [_appRouter presentLoginViewController];
 }
 
 @end

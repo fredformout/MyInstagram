@@ -7,33 +7,31 @@
 //
 
 #import "MIPhotosRouter.h"
-#import "MIPhotosViewController.h"
+#import "MIPhotosCollectionViewController.h"
 #import "MIPhotosPresenter.h"
 
 @implementation MIPhotosRouter
 
 #pragma mark - MIBaseRouter
 
-- (NSString *)viewControllerIdentifier
+- (UIViewController *)viewControllerFromStoryboard
 {
-    return @"PhotosViewController";
-}
-
-- (UIViewController *)initializedViewController
-{
-    UIViewController *viewControllerToPresent = [self viewController];
-    MIPhotosViewController *viewController = (MIPhotosViewController *)viewControllerToPresent;
+    UIViewController *viewControllerToPresent = [super viewControllerFromStoryboard];
     
-    if ([viewControllerToPresent isKindOfClass:[UINavigationController class]])
-    {
-        viewController = ((UINavigationController *)viewControllerToPresent).viewControllers[0];
-    }
-    
+    MIPhotosCollectionViewController *viewController = (MIPhotosCollectionViewController *)self.viewController;
     MIPhotosPresenter *presenter = (MIPhotosPresenter *)self.presenter;
     
-    viewController.actionsHandler = presenter;
+    presenter.controller = viewController;
+    viewController.presenter = presenter;
     
     return viewControllerToPresent;
+}
+
+#pragma mark - Others
+
+- (void)presentPhotoDetails
+{
+    [_photoDetailsRouter presentViewControllerFromViewController:self.viewController];
 }
 
 @end

@@ -1,4 +1,6 @@
 pod 'MagicalRecord'
+pod 'AFNetworking'
 pod 'FastEasyMapping'
-pod 'InstagramKit', :git => 'https://github.com/fredformout/InstagramKit'
 pod 'UICKeyChainStore'
+pod 'SVPullToRefresh'
+pod 'NSDate+TimeAgo'

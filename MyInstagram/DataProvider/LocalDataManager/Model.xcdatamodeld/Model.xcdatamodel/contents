@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="InstagramComment" representedClassName="InstagramComment" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="fullname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhotoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="post" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstagramPost" inverseName="comments" inverseEntity="InstagramPost" syncable="YES"/>
+        <relationship name="postForWhichIsCaption" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstagramPost" inverseName="caption" inverseEntity="InstagramPost" syncable="YES"/>
+    </entity>
+    <entity name="InstagramList" representedClassName="InstagramList" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="posts" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="InstagramPost" inverseName="list" inverseEntity="InstagramPost" syncable="YES"/>
+    </entity>
+    <entity name="InstagramPost" representedClassName="InstagramPost" syncable="YES">
+        <attribute name="commentsCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="likedByMe" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="likesCount" optional="YES" attributeType="Integer 64" defaultValueString="0" syncable="YES"/>
+        <attribute name="lowResolutionPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="lowResolutionPhotoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="standardPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="standardPhotoURL" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="caption" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="InstagramComment" inverseName="postForWhichIsCaption" inverseEntity="InstagramComment" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="InstagramComment" inverseName="post" inverseEntity="InstagramComment" syncable="YES"/>
+        <relationship name="list" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="InstagramList" inverseName="posts" inverseEntity="InstagramList" syncable="YES"/>
+    </entity>
+    <entity name="InstagramUser" representedClassName="InstagramUser" syncable="YES">
+        <attribute name="fullname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="identifier" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="userPhotoURL" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="InstagramComment" positionX="-36" positionY="9" width="128" height="180"/>
+        <element name="InstagramList" positionX="-54" positionY="-9" width="128" height="75"/>
+        <element name="InstagramPost" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="InstagramUser" positionX="-18" positionY="117" width="128" height="120"/>
+    </elements>
+</model>

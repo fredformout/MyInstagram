@@ -8,8 +8,21 @@
 
 #import <Foundation/Foundation.h>
 #import "MIBasePresenter.h"
-#import "MILoginInterface.h"
+#import "MILoginPresenterInterface.h"
+#import "MILoginViewControllerInterface.h"
+#import "MILoginInteractorIOInterface.h"
+#import "MIAppRouter.h"
+#import "MIAppPresenter.h"
 
-@interface MILoginPresenter : MIBasePresenter <MILoginInterface>
+@interface MILoginPresenter : MIBasePresenter <MILoginPresenterInterface, MILoginInteractorOutputInterface>
+
+@property (nonatomic, weak) MIAppRouter *appRouter;
+@property (nonatomic, weak) MIAppPresenter *appPresenter;
+
+@property (nonatomic, weak) id<MILoginViewControllerInterface> controller;
+@property (nonatomic, strong) id<MILoginInteractorInputInterface> interactor;
+
+- (void)checkAPIRequestsAvailability;
+- (void)processResponseWithURL:(NSURL *)url;
 
 @end

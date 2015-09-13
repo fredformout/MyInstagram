@@ -8,7 +8,7 @@
 
 #import "MILoginRouter.h"
 #import "MILoginViewController.h"
-#import "MILoginInterface.h"
+#import "MILoginPresenter.h"
 
 @interface MILoginRouter ()
 
@@ -27,33 +27,35 @@
 
 #pragma mark - Others
 
-- (void)presentLoginInterfaceFromViewController:(UIViewController *)fromViewController
+- (void)presentViewControllerFromViewController:(UIViewController *)fromVC
 {
-    UIViewController *viewController = [self initializedViewController];
+    UIViewController *viewController = [self viewControllerFromStoryboard];
     
-//    [self.addPresenter configureUserInterfaceForPresentation:addViewController];
-    
-    [fromViewController presentViewController:viewController
-                                 animated:YES
-                               completion:nil];
-    
-    self.presentedViewController = fromViewController;
+    [fromVC presentViewController:viewController
+                         animated:YES
+                       completion:nil];
 }
 
-- (void)dismissLoginInterface
+- (void)dismissViewController
 {
-    [self.presentedViewController dismissViewControllerAnimated:YES
+    [self.viewControllerToPresent dismissViewControllerAnimated:YES
                                                      completion:nil];
 }
 
-- (UIViewController *)initializedViewController
+- (UIViewController *)viewControllerFromStoryboard
 {
-    UIViewController *viewController = [self viewController];
-    ((MILoginViewController *)viewController).actionsHandler = (id<MILoginInterface>)self.presenter;
-    viewController.modalPresentationStyle = UIModalPresentationOverFullScreen;
-    viewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    UIViewController *viewControllerToPresent = [super viewControllerFromStoryboard];
     
-    return viewController;
+    MILoginViewController *viewController = (MILoginViewController *)self.viewController;
+    MILoginPresenter *presenter = (MILoginPresenter *)self.presenter;
+
+    presenter.controller = viewController;
+    viewController.presenter = presenter;
+    
+    viewControllerToPresent.modalPresentationStyle = UIModalPresentationOverFullScreen;
+    viewControllerToPresent.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
+    return viewControllerToPresent;
 }
 
 @end

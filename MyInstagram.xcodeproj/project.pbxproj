@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		1EC2ADD01BA2C44F002DF65D /* Mogenerator */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 1EC2ADD11BA2C44F002DF65D /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildPhases = (
+				1EC2ADD61BA2C461002DF65D /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Mogenerator;
+			productName = Mogenerator;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		0149B1EEB0400E5E63B356BB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F5D8D622DE6320A65186D5 /* libPods.a */; };
 		1E4ADC211B9DBD520052C757 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADC201B9DBD520052C757 /* main.m */; };
@@ -14,35 +28,10 @@
 		1E4ADC3E1B9DBD520052C757 /* MyInstagramTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADC3D1B9DBD520052C757 /* MyInstagramTests.m */; };
 		1E4ADC501B9DCC710052C757 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E4ADC4E1B9DCC710052C757 /* LaunchScreen.xib */; };
 		1E4ADC511B9DCC710052C757 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1E4ADC4F1B9DCC710052C757 /* Main.storyboard */; };
-		1E4ADC791B9DCEA90052C757 /* MILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADC781B9DCEA90052C757 /* MILoginViewController.m */; };
-		1E4ADC7D1B9DD4FB0052C757 /* MILoginPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADC7C1B9DD4FB0052C757 /* MILoginPresenter.m */; };
-		1E4ADC831B9DD7460052C757 /* MILoginRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADC821B9DD7460052C757 /* MILoginRouter.m */; };
 		1E4ADC8C1B9DDA020052C757 /* MIAppDependencies.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADC891B9DDA020052C757 /* MIAppDependencies.m */; };
 		1E4ADCB41B9DFBCB0052C757 /* MIAppRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADCB01B9DFBCA0052C757 /* MIAppRouter.m */; };
-		1E4ADCB51B9DFBCB0052C757 /* MIAppTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADCB31B9DFBCB0052C757 /* MIAppTabBarController.m */; };
 		1E4ADCB81B9DFD2F0052C757 /* MIAppPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADCB71B9DFD2F0052C757 /* MIAppPresenter.m */; };
-		1E4ADCBC1B9DFEBE0052C757 /* MIBaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADCBB1B9DFEBE0052C757 /* MIBaseRouter.m */; };
-		1E4ADCBF1B9DFF020052C757 /* MIBasePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4ADCBE1B9DFF020052C757 /* MIBasePresenter.m */; };
-		1EC2ABAD1B9E85A6002DF65D /* MIAppDataStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABAC1B9E85A6002DF65D /* MIAppDataStore.m */; };
-		1EC2ABC21B9E85F9002DF65D /* MIPhotosPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABB31B9E85F9002DF65D /* MIPhotosPresenter.m */; };
-		1EC2ABC31B9E85F9002DF65D /* MIPhotosRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABB61B9E85F9002DF65D /* MIPhotosRouter.m */; };
-		1EC2ABC41B9E85F9002DF65D /* MIPhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABB91B9E85F9002DF65D /* MIPhotosCollectionViewCell.m */; };
-		1EC2ABC51B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABBB1B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.m */; };
-		1EC2ABC61B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABBD1B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.m */; };
-		1EC2ABC71B9E85F9002DF65D /* MIPhotosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABC01B9E85F9002DF65D /* MIPhotosViewController.m */; };
-		1EC2ABD01B9E90A4002DF65D /* MIPhotosInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABCF1B9E90A4002DF65D /* MIPhotosInteractor.m */; };
-		1EC2ABD31B9EC505002DF65D /* MIProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABD21B9EC505002DF65D /* MIProfilePresenter.m */; };
-		1EC2ABD61B9EC51B002DF65D /* MIProfileRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABD51B9EC51B002DF65D /* MIProfileRouter.m */; };
-		1EC2ABD91B9EC53D002DF65D /* MIProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABD81B9EC53D002DF65D /* MIProfileViewController.m */; };
-		1EC2ABF71B9F09D4002DF65D /* MIPhotoDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABF61B9F09D4002DF65D /* MIPhotoDetailsPresenter.m */; };
-		1EC2ABFA1B9F09EF002DF65D /* MIPhotoDetailsRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABF91B9F09EF002DF65D /* MIPhotoDetailsRouter.m */; };
-		1EC2ABFD1B9F0A16002DF65D /* MIPhotoDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABFC1B9F0A16002DF65D /* MIPhotoDetailsViewController.m */; };
-		1EC2AC001B9F0A40002DF65D /* MICommentsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ABFF1B9F0A40002DF65D /* MICommentsPresenter.m */; };
-		1EC2AC031B9F0A56002DF65D /* MICommentsRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AC021B9F0A56002DF65D /* MICommentsRouter.m */; };
-		1EC2AC061B9F0A85002DF65D /* MICommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AC051B9F0A85002DF65D /* MICommentsViewController.m */; };
 		1EC2AC081B9F155D002DF65D /* Resources.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC071B9F155D002DF65D /* Resources.xcassets */; };
-		1EC2AC0F1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AC0E1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.m */; };
-		1EC2AC121B9F3A35002DF65D /* MITabBarItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AC111B9F3A35002DF65D /* MITabBarItemInfo.m */; };
 		1EC2AC441B9F8414002DF65D /* Icon-60.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC331B9F8414002DF65D /* Icon-60.png */; };
 		1EC2AC451B9F8414002DF65D /* Icon-60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC341B9F8414002DF65D /* Icon-60@2x.png */; };
 		1EC2AC461B9F8414002DF65D /* Icon-60@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC351B9F8414002DF65D /* Icon-60@3x.png */; };
@@ -60,6 +49,76 @@
 		1EC2AC521B9F8414002DF65D /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC411B9F8414002DF65D /* Icon@2x.png */; };
 		1EC2AC531B9F8414002DF65D /* iTunesArtwork.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC421B9F8414002DF65D /* iTunesArtwork.png */; };
 		1EC2AC541B9F8414002DF65D /* iTunesArtwork@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2AC431B9F8414002DF65D /* iTunesArtwork@2x.png */; };
+		1EC2AC601BA033F1002DF65D /* MIAppDesigner.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AC5F1BA033F1002DF65D /* MIAppDesigner.m */; };
+		1EC2ACD91BA16215002DF65D /* MIBasePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ACD01BA16215002DF65D /* MIBasePresenter.m */; };
+		1EC2ACDA1BA16215002DF65D /* MIBaseRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ACD31BA16215002DF65D /* MIBaseRouter.m */; };
+		1EC2AD541BA165F2002DF65D /* MICommentsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ACF31BA165F2002DF65D /* MICommentsPresenter.m */; };
+		1EC2AD551BA165F2002DF65D /* MICommentsRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ACF61BA165F2002DF65D /* MICommentsRouter.m */; };
+		1EC2AD561BA165F2002DF65D /* MICommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ACF91BA165F2002DF65D /* MICommentsViewController.m */; };
+		1EC2AD581BA165F2002DF65D /* MILoginInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD031BA165F2002DF65D /* MILoginInteractor.m */; };
+		1EC2AD591BA165F2002DF65D /* MILoginPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD071BA165F2002DF65D /* MILoginPresenter.m */; };
+		1EC2AD5A1BA165F2002DF65D /* MILoginRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD0A1BA165F2002DF65D /* MILoginRouter.m */; };
+		1EC2AD5B1BA165F2002DF65D /* MILoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD0D1BA165F2002DF65D /* MILoginViewController.m */; };
+		1EC2AD5C1BA165F2002DF65D /* MIPhotoDetailsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD121BA165F2002DF65D /* MIPhotoDetailsInteractor.m */; };
+		1EC2AD5D1BA165F2002DF65D /* MIPhotoDetailsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD151BA165F2002DF65D /* MIPhotoDetailsPresenter.m */; };
+		1EC2AD5E1BA165F2002DF65D /* MIPhotoDetailsRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD181BA165F2002DF65D /* MIPhotoDetailsRouter.m */; };
+		1EC2AD5F1BA165F2002DF65D /* MICommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD1C1BA165F2002DF65D /* MICommentTableViewCell.m */; };
+		1EC2AD601BA165F2002DF65D /* MIMoreCommentsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD1E1BA165F2002DF65D /* MIMoreCommentsTableViewCell.m */; };
+		1EC2AD611BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD201BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.m */; };
+		1EC2AD621BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD221BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.m */; };
+		1EC2AD631BA165F2002DF65D /* MIPhotoDetailsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD241BA165F2002DF65D /* MIPhotoDetailsTableViewController.m */; };
+		1EC2AD641BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD281BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.m */; };
+		1EC2AD651BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD2A1BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.m */; };
+		1EC2AD691BA165F2002DF65D /* MIPhotosPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD391BA165F2002DF65D /* MIPhotosPresenter.m */; };
+		1EC2AD6A1BA165F2002DF65D /* MIPhotosRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD3C1BA165F2002DF65D /* MIPhotosRouter.m */; };
+		1EC2AD6B1BA165F2002DF65D /* MIPhotosCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD401BA165F2002DF65D /* MIPhotosCollectionViewCell.m */; };
+		1EC2AD6C1BA165F2002DF65D /* MIPhotosCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD421BA165F2002DF65D /* MIPhotosCollectionViewController.m */; };
+		1EC2AD6D1BA165F2002DF65D /* MIProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD4D1BA165F2002DF65D /* MIProfilePresenter.m */; };
+		1EC2AD6E1BA165F2002DF65D /* MIProfileRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD501BA165F2002DF65D /* MIProfileRouter.m */; };
+		1EC2AD6F1BA165F2002DF65D /* MIProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD531BA165F2002DF65D /* MIProfileViewController.m */; };
+		1EC2AD811BA17DD0002DF65D /* MIAPIBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD761BA17DD0002DF65D /* MIAPIBaseRequest.m */; };
+		1EC2AD821BA17DD0002DF65D /* MIAPIDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD781BA17DD0002DF65D /* MIAPIDataManager.m */; };
+		1EC2AD831BA17DD0002DF65D /* MILocalDataManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD7B1BA17DD0002DF65D /* MILocalDataManager.m */; };
+		1EC2AD841BA17DD0002DF65D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD7C1BA17DD0002DF65D /* Model.xcdatamodeld */; };
+		1EC2AD851BA17DD0002DF65D /* MIBaseDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2AD7F1BA17DD0002DF65D /* MIBaseDataProvider.m */; };
+		1EC2ADB31BA20F0D002DF65D /* MIMappingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADB21BA20F0D002DF65D /* MIMappingManager.m */; };
+		1EC2ADB91BA2119E002DF65D /* MIProfileInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADB81BA2119E002DF65D /* MIProfileInteractor.m */; };
+		1EC2ADC91BA22C02002DF65D /* MIPopularPhotosInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADC51BA22C02002DF65D /* MIPopularPhotosInteractor.m */; };
+		1EC2ADEA1BA2C600002DF65D /* InstagramComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADDA1BA2C600002DF65D /* InstagramComment.m */; };
+		1EC2ADEB1BA2C600002DF65D /* InstagramList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADDC1BA2C600002DF65D /* InstagramList.m */; };
+		1EC2ADEC1BA2C600002DF65D /* InstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADDE1BA2C600002DF65D /* InstagramPost.m */; };
+		1EC2ADED1BA2C600002DF65D /* InstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADE01BA2C600002DF65D /* InstagramUser.m */; };
+		1EC2ADEE1BA2C600002DF65D /* _InstagramComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADE31BA2C600002DF65D /* _InstagramComment.m */; };
+		1EC2ADEF1BA2C600002DF65D /* _InstagramList.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADE51BA2C600002DF65D /* _InstagramList.m */; };
+		1EC2ADF01BA2C600002DF65D /* _InstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADE71BA2C600002DF65D /* _InstagramPost.m */; };
+		1EC2ADF11BA2C600002DF65D /* _InstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EC2ADE91BA2C600002DF65D /* _InstagramUser.m */; };
+		1EC2ADF41BA2C607002DF65D /* mosetup.sh in Resources */ = {isa = PBXBuildFile; fileRef = 1EC2ADF31BA2C607002DF65D /* mosetup.sh */; };
+		1EF494801BA2D5A000762039 /* MICommentsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF4947F1BA2D5A000762039 /* MICommentsTableViewController.m */; };
+		1EF4948A1BA2EB7200762039 /* MICommentsInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494891BA2EB7200762039 /* MICommentsInteractor.m */; };
+		1EF494911BA30C8F00762039 /* MILikedByMeInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494901BA30C8F00762039 /* MILikedByMeInteractor.m */; };
+		1EF494B91BA36E2500762039 /* NSData+SaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A31BA36E2500762039 /* NSData+SaveData.m */; };
+		1EF494BA1BA36E2500762039 /* NSString+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A51BA36E2500762039 /* NSString+MD5.m */; };
+		1EF494BB1BA36E2500762039 /* UICKeyChainStore+SharedInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A71BA36E2500762039 /* UICKeyChainStore+SharedInstance.m */; };
+		1EF494BC1BA36E2500762039 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A91BA36E2500762039 /* UIImage+ImageEffects.m */; };
+		1EF494BD1BA36E2500762039 /* UIImageView+DownloadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494AB1BA36E2500762039 /* UIImageView+DownloadImage.m */; };
+		1EF494BE1BA36E2500762039 /* UIViewController+EmptyBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494AD1BA36E2500762039 /* UIViewController+EmptyBackButton.m */; };
+		1EF494BF1BA36E2500762039 /* UIViewController+InitialState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494AF1BA36E2500762039 /* UIViewController+InitialState.m */; };
+		1EF494C01BA36E2500762039 /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B21BA36E2500762039 /* FTWCache.m */; };
+		1EF494C11BA36E2500762039 /* MIBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B41BA36E2500762039 /* MIBorderedView.m */; };
+		1EF494C21BA36E2500762039 /* MIFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B61BA36E2500762039 /* MIFileUtility.m */; };
+		1EF494C31BA36E2500762039 /* MIImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B81BA36E2500762039 /* MIImageUtility.m */; };
+		1EF494C91BA3704600762039 /* MISlaveByTabBarControllerRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494C61BA3704600762039 /* MISlaveByTabBarControllerRouter.m */; };
+		1EF494CA1BA3704600762039 /* MITabBarItemInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494C81BA3704600762039 /* MITabBarItemInfo.m */; };
+		1EF494CD1BA4244600762039 /* MIPhotoDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494CC1BA4244600762039 /* MIPhotoDetailsViewController.m */; };
+		1EF494D61BA433C900762039 /* MIInstagramComment.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494D11BA433C900762039 /* MIInstagramComment.m */; };
+		1EF494D71BA433C900762039 /* MIInstagramPost.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494D31BA433C900762039 /* MIInstagramPost.m */; };
+		1EF494D81BA433C900762039 /* MIInstagramUser.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494D51BA433C900762039 /* MIInstagramUser.m */; };
+		1EF494E41BA434C100762039 /* MICommentsDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494DB1BA434C100762039 /* MICommentsDataProvider.m */; };
+		1EF494E51BA434C100762039 /* MIUsersDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494DD1BA434C100762039 /* MIUsersDataProvider.m */; };
+		1EF494E61BA434C100762039 /* MIAuthenticationDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494DF1BA434C100762039 /* MIAuthenticationDataProvider.m */; };
+		1EF494E71BA434C100762039 /* MIMediaDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494E11BA434C100762039 /* MIMediaDataProvider.m */; };
+		1EF494EB1BA4364900762039 /* MILikesDataProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494EA1BA4364900762039 /* MILikesDataProvider.m */; };
+		1EF494EF1BA439AD00762039 /* MIWithAddCommentPanelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494EE1BA439AD00762039 /* MIWithAddCommentPanelViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +128,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 1E4ADC1A1B9DBD520052C757;
 			remoteInfo = MyInstagram;
+		};
+		1EC2ADD41BA2C45A002DF65D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E4ADC131B9DBD520052C757 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EC2ADD01BA2C44F002DF65D;
+			remoteInfo = Mogenerator;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -85,69 +151,13 @@
 		1E4ADC3D1B9DBD520052C757 /* MyInstagramTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyInstagramTests.m; sourceTree = "<group>"; };
 		1E4ADC4E1B9DCC710052C757 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		1E4ADC4F1B9DCC710052C757 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		1E4ADC771B9DCEA90052C757 /* MILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginViewController.h; sourceTree = "<group>"; };
-		1E4ADC781B9DCEA90052C757 /* MILoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginViewController.m; sourceTree = "<group>"; };
-		1E4ADC7A1B9DD3DE0052C757 /* MILoginInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MILoginInterface.h; sourceTree = "<group>"; };
-		1E4ADC7B1B9DD4FB0052C757 /* MILoginPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginPresenter.h; sourceTree = "<group>"; };
-		1E4ADC7C1B9DD4FB0052C757 /* MILoginPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginPresenter.m; sourceTree = "<group>"; };
-		1E4ADC811B9DD7460052C757 /* MILoginRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginRouter.h; sourceTree = "<group>"; };
-		1E4ADC821B9DD7460052C757 /* MILoginRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginRouter.m; sourceTree = "<group>"; };
 		1E4ADC881B9DDA020052C757 /* MIAppDependencies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAppDependencies.h; sourceTree = "<group>"; };
 		1E4ADC891B9DDA020052C757 /* MIAppDependencies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAppDependencies.m; sourceTree = "<group>"; };
 		1E4ADCAF1B9DFBCA0052C757 /* MIAppRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAppRouter.h; sourceTree = "<group>"; };
 		1E4ADCB01B9DFBCA0052C757 /* MIAppRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAppRouter.m; sourceTree = "<group>"; };
-		1E4ADCB21B9DFBCB0052C757 /* MIAppTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAppTabBarController.h; sourceTree = "<group>"; };
-		1E4ADCB31B9DFBCB0052C757 /* MIAppTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAppTabBarController.m; sourceTree = "<group>"; };
 		1E4ADCB61B9DFD2F0052C757 /* MIAppPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAppPresenter.h; sourceTree = "<group>"; };
 		1E4ADCB71B9DFD2F0052C757 /* MIAppPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAppPresenter.m; sourceTree = "<group>"; };
-		1E4ADCBA1B9DFEBE0052C757 /* MIBaseRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBaseRouter.h; sourceTree = "<group>"; };
-		1E4ADCBB1B9DFEBE0052C757 /* MIBaseRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBaseRouter.m; sourceTree = "<group>"; };
-		1E4ADCBD1B9DFF020052C757 /* MIBasePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBasePresenter.h; sourceTree = "<group>"; };
-		1E4ADCBE1B9DFF020052C757 /* MIBasePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBasePresenter.m; sourceTree = "<group>"; };
-		1EC2ABAB1B9E85A6002DF65D /* MIAppDataStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAppDataStore.h; sourceTree = "<group>"; };
-		1EC2ABAC1B9E85A6002DF65D /* MIAppDataStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAppDataStore.m; sourceTree = "<group>"; };
-		1EC2ABB21B9E85F9002DF65D /* MIPhotosPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosPresenter.h; sourceTree = "<group>"; };
-		1EC2ABB31B9E85F9002DF65D /* MIPhotosPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosPresenter.m; sourceTree = "<group>"; };
-		1EC2ABB51B9E85F9002DF65D /* MIPhotosRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosRouter.h; sourceTree = "<group>"; };
-		1EC2ABB61B9E85F9002DF65D /* MIPhotosRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosRouter.m; sourceTree = "<group>"; };
-		1EC2ABB81B9E85F9002DF65D /* MIPhotosCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosCollectionViewCell.h; sourceTree = "<group>"; };
-		1EC2ABB91B9E85F9002DF65D /* MIPhotosCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosCollectionViewCell.m; sourceTree = "<group>"; };
-		1EC2ABBA1B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosCollectionViewDataSource.h; sourceTree = "<group>"; };
-		1EC2ABBB1B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosCollectionViewDataSource.m; sourceTree = "<group>"; };
-		1EC2ABBC1B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosCollectionViewDelegate.h; sourceTree = "<group>"; };
-		1EC2ABBD1B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosCollectionViewDelegate.m; sourceTree = "<group>"; };
-		1EC2ABBF1B9E85F9002DF65D /* MIPhotosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosViewController.h; sourceTree = "<group>"; };
-		1EC2ABC01B9E85F9002DF65D /* MIPhotosViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosViewController.m; sourceTree = "<group>"; };
-		1EC2ABC11B9E85F9002DF65D /* MIPhotosViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosViewControllerInterface.h; sourceTree = "<group>"; };
-		1EC2ABCB1B9E8770002DF65D /* MIPhotosInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosInterface.h; sourceTree = "<group>"; };
-		1EC2ABCC1B9E8F9D002DF65D /* MIPhotosInteractorInputInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosInteractorInputInterface.h; sourceTree = "<group>"; };
-		1EC2ABCD1B9E8FB5002DF65D /* MIPhotosInteractorOutputInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosInteractorOutputInterface.h; sourceTree = "<group>"; };
-		1EC2ABCE1B9E90A4002DF65D /* MIPhotosInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosInteractor.h; sourceTree = "<group>"; };
-		1EC2ABCF1B9E90A4002DF65D /* MIPhotosInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosInteractor.m; sourceTree = "<group>"; };
-		1EC2ABD11B9EC505002DF65D /* MIProfilePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfilePresenter.h; sourceTree = "<group>"; };
-		1EC2ABD21B9EC505002DF65D /* MIProfilePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfilePresenter.m; sourceTree = "<group>"; };
-		1EC2ABD41B9EC51B002DF65D /* MIProfileRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileRouter.h; sourceTree = "<group>"; };
-		1EC2ABD51B9EC51B002DF65D /* MIProfileRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfileRouter.m; sourceTree = "<group>"; };
-		1EC2ABD71B9EC53D002DF65D /* MIProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileViewController.h; sourceTree = "<group>"; };
-		1EC2ABD81B9EC53D002DF65D /* MIProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfileViewController.m; sourceTree = "<group>"; };
-		1EC2ABDA1B9EC646002DF65D /* MIProfileInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileInterface.h; sourceTree = "<group>"; };
-		1EC2ABF51B9F09D4002DF65D /* MIPhotoDetailsPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsPresenter.h; sourceTree = "<group>"; };
-		1EC2ABF61B9F09D4002DF65D /* MIPhotoDetailsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsPresenter.m; sourceTree = "<group>"; };
-		1EC2ABF81B9F09EF002DF65D /* MIPhotoDetailsRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsRouter.h; sourceTree = "<group>"; };
-		1EC2ABF91B9F09EF002DF65D /* MIPhotoDetailsRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsRouter.m; sourceTree = "<group>"; };
-		1EC2ABFB1B9F0A16002DF65D /* MIPhotoDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsViewController.h; sourceTree = "<group>"; };
-		1EC2ABFC1B9F0A16002DF65D /* MIPhotoDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsViewController.m; sourceTree = "<group>"; };
-		1EC2ABFE1B9F0A40002DF65D /* MICommentsPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsPresenter.h; sourceTree = "<group>"; };
-		1EC2ABFF1B9F0A40002DF65D /* MICommentsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsPresenter.m; sourceTree = "<group>"; };
-		1EC2AC011B9F0A56002DF65D /* MICommentsRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsRouter.h; sourceTree = "<group>"; };
-		1EC2AC021B9F0A56002DF65D /* MICommentsRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsRouter.m; sourceTree = "<group>"; };
-		1EC2AC041B9F0A85002DF65D /* MICommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsViewController.h; sourceTree = "<group>"; };
-		1EC2AC051B9F0A85002DF65D /* MICommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsViewController.m; sourceTree = "<group>"; };
 		1EC2AC071B9F155D002DF65D /* Resources.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Resources.xcassets; sourceTree = "<group>"; };
-		1EC2AC0D1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MISlaveByTabBarControllerRouter.h; sourceTree = "<group>"; };
-		1EC2AC0E1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MISlaveByTabBarControllerRouter.m; sourceTree = "<group>"; };
-		1EC2AC101B9F3A35002DF65D /* MITabBarItemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MITabBarItemInfo.h; sourceTree = "<group>"; };
-		1EC2AC111B9F3A35002DF65D /* MITabBarItemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MITabBarItemInfo.m; sourceTree = "<group>"; };
 		1EC2AC161B9F43F0002DF65D /* Macro.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Macro.h; sourceTree = "<group>"; };
 		1EC2AC331B9F8414002DF65D /* Icon-60.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60.png"; sourceTree = "<group>"; };
 		1EC2AC341B9F8414002DF65D /* Icon-60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-60@2x.png"; sourceTree = "<group>"; };
@@ -166,6 +176,164 @@
 		1EC2AC411B9F8414002DF65D /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		1EC2AC421B9F8414002DF65D /* iTunesArtwork.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iTunesArtwork.png; sourceTree = "<group>"; };
 		1EC2AC431B9F8414002DF65D /* iTunesArtwork@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iTunesArtwork@2x.png"; sourceTree = "<group>"; };
+		1EC2AC5E1BA033F1002DF65D /* MIAppDesigner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAppDesigner.h; sourceTree = "<group>"; };
+		1EC2AC5F1BA033F1002DF65D /* MIAppDesigner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAppDesigner.m; sourceTree = "<group>"; };
+		1EC2ACCF1BA16215002DF65D /* MIBasePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBasePresenter.h; sourceTree = "<group>"; };
+		1EC2ACD01BA16215002DF65D /* MIBasePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBasePresenter.m; sourceTree = "<group>"; };
+		1EC2ACD21BA16215002DF65D /* MIBaseRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBaseRouter.h; sourceTree = "<group>"; };
+		1EC2ACD31BA16215002DF65D /* MIBaseRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBaseRouter.m; sourceTree = "<group>"; };
+		1EC2ACF21BA165F2002DF65D /* MICommentsPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsPresenter.h; sourceTree = "<group>"; };
+		1EC2ACF31BA165F2002DF65D /* MICommentsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsPresenter.m; sourceTree = "<group>"; };
+		1EC2ACF51BA165F2002DF65D /* MICommentsRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsRouter.h; sourceTree = "<group>"; };
+		1EC2ACF61BA165F2002DF65D /* MICommentsRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsRouter.m; sourceTree = "<group>"; };
+		1EC2ACF81BA165F2002DF65D /* MICommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsViewController.h; sourceTree = "<group>"; };
+		1EC2ACF91BA165F2002DF65D /* MICommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsViewController.m; sourceTree = "<group>"; };
+		1EC2AD021BA165F2002DF65D /* MILoginInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginInteractor.h; sourceTree = "<group>"; };
+		1EC2AD031BA165F2002DF65D /* MILoginInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginInteractor.m; sourceTree = "<group>"; };
+		1EC2AD061BA165F2002DF65D /* MILoginPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginPresenter.h; sourceTree = "<group>"; };
+		1EC2AD071BA165F2002DF65D /* MILoginPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginPresenter.m; sourceTree = "<group>"; };
+		1EC2AD091BA165F2002DF65D /* MILoginRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginRouter.h; sourceTree = "<group>"; };
+		1EC2AD0A1BA165F2002DF65D /* MILoginRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginRouter.m; sourceTree = "<group>"; };
+		1EC2AD0C1BA165F2002DF65D /* MILoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginViewController.h; sourceTree = "<group>"; };
+		1EC2AD0D1BA165F2002DF65D /* MILoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILoginViewController.m; sourceTree = "<group>"; };
+		1EC2AD111BA165F2002DF65D /* MIPhotoDetailsInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsInteractor.h; sourceTree = "<group>"; };
+		1EC2AD121BA165F2002DF65D /* MIPhotoDetailsInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsInteractor.m; sourceTree = "<group>"; };
+		1EC2AD141BA165F2002DF65D /* MIPhotoDetailsPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsPresenter.h; sourceTree = "<group>"; };
+		1EC2AD151BA165F2002DF65D /* MIPhotoDetailsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsPresenter.m; sourceTree = "<group>"; };
+		1EC2AD171BA165F2002DF65D /* MIPhotoDetailsRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsRouter.h; sourceTree = "<group>"; };
+		1EC2AD181BA165F2002DF65D /* MIPhotoDetailsRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsRouter.m; sourceTree = "<group>"; };
+		1EC2AD1B1BA165F2002DF65D /* MICommentTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentTableViewCell.h; sourceTree = "<group>"; };
+		1EC2AD1C1BA165F2002DF65D /* MICommentTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentTableViewCell.m; sourceTree = "<group>"; };
+		1EC2AD1D1BA165F2002DF65D /* MIMoreCommentsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMoreCommentsTableViewCell.h; sourceTree = "<group>"; };
+		1EC2AD1E1BA165F2002DF65D /* MIMoreCommentsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMoreCommentsTableViewCell.m; sourceTree = "<group>"; };
+		1EC2AD1F1BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsInfoTableViewCell.h; sourceTree = "<group>"; };
+		1EC2AD201BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsInfoTableViewCell.m; sourceTree = "<group>"; };
+		1EC2AD211BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsPhotoTableViewCell.h; sourceTree = "<group>"; };
+		1EC2AD221BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsPhotoTableViewCell.m; sourceTree = "<group>"; };
+		1EC2AD231BA165F2002DF65D /* MIPhotoDetailsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsTableViewController.h; sourceTree = "<group>"; };
+		1EC2AD241BA165F2002DF65D /* MIPhotoDetailsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsTableViewController.m; sourceTree = "<group>"; };
+		1EC2AD251BA165F2002DF65D /* MIPhotoDetailsViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsViewControllerInterface.h; sourceTree = "<group>"; };
+		1EC2AD271BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MITransitionFromPhotoDetailsToPhotos.h; sourceTree = "<group>"; };
+		1EC2AD281BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MITransitionFromPhotoDetailsToPhotos.m; sourceTree = "<group>"; };
+		1EC2AD291BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MITransitionFromPhotosToPhotoDetails.h; sourceTree = "<group>"; };
+		1EC2AD2A1BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MITransitionFromPhotosToPhotoDetails.m; sourceTree = "<group>"; };
+		1EC2AD381BA165F2002DF65D /* MIPhotosPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosPresenter.h; sourceTree = "<group>"; };
+		1EC2AD391BA165F2002DF65D /* MIPhotosPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosPresenter.m; sourceTree = "<group>"; };
+		1EC2AD3B1BA165F2002DF65D /* MIPhotosRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosRouter.h; sourceTree = "<group>"; };
+		1EC2AD3C1BA165F2002DF65D /* MIPhotosRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosRouter.m; sourceTree = "<group>"; };
+		1EC2AD3F1BA165F2002DF65D /* MIPhotosCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosCollectionViewCell.h; sourceTree = "<group>"; };
+		1EC2AD401BA165F2002DF65D /* MIPhotosCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosCollectionViewCell.m; sourceTree = "<group>"; };
+		1EC2AD411BA165F2002DF65D /* MIPhotosCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosCollectionViewController.h; sourceTree = "<group>"; };
+		1EC2AD421BA165F2002DF65D /* MIPhotosCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosCollectionViewController.m; sourceTree = "<group>"; };
+		1EC2AD431BA165F2002DF65D /* MIPhotosViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosViewControllerInterface.h; sourceTree = "<group>"; };
+		1EC2AD4C1BA165F2002DF65D /* MIProfilePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfilePresenter.h; sourceTree = "<group>"; };
+		1EC2AD4D1BA165F2002DF65D /* MIProfilePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfilePresenter.m; sourceTree = "<group>"; };
+		1EC2AD4F1BA165F2002DF65D /* MIProfileRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileRouter.h; sourceTree = "<group>"; };
+		1EC2AD501BA165F2002DF65D /* MIProfileRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfileRouter.m; sourceTree = "<group>"; };
+		1EC2AD521BA165F2002DF65D /* MIProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileViewController.h; sourceTree = "<group>"; };
+		1EC2AD531BA165F2002DF65D /* MIProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfileViewController.m; sourceTree = "<group>"; };
+		1EC2AD751BA17DD0002DF65D /* MIAPIBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPIBaseRequest.h; sourceTree = "<group>"; };
+		1EC2AD761BA17DD0002DF65D /* MIAPIBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPIBaseRequest.m; sourceTree = "<group>"; };
+		1EC2AD771BA17DD0002DF65D /* MIAPIDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAPIDataManager.h; sourceTree = "<group>"; };
+		1EC2AD781BA17DD0002DF65D /* MIAPIDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAPIDataManager.m; sourceTree = "<group>"; };
+		1EC2AD7A1BA17DD0002DF65D /* MILocalDataManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILocalDataManager.h; sourceTree = "<group>"; };
+		1EC2AD7B1BA17DD0002DF65D /* MILocalDataManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILocalDataManager.m; sourceTree = "<group>"; };
+		1EC2AD7D1BA17DD0002DF65D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		1EC2AD7E1BA17DD0002DF65D /* MIBaseDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBaseDataProvider.h; sourceTree = "<group>"; };
+		1EC2AD7F1BA17DD0002DF65D /* MIBaseDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBaseDataProvider.m; sourceTree = "<group>"; };
+		1EC2AD8A1BA17F22002DF65D /* MIInstagramConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIInstagramConstants.h; sourceTree = "<group>"; };
+		1EC2ADB11BA20F0D002DF65D /* MIMappingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMappingManager.h; sourceTree = "<group>"; };
+		1EC2ADB21BA20F0D002DF65D /* MIMappingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMappingManager.m; sourceTree = "<group>"; };
+		1EC2ADB71BA2119E002DF65D /* MIProfileInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileInteractor.h; sourceTree = "<group>"; };
+		1EC2ADB81BA2119E002DF65D /* MIProfileInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfileInteractor.m; sourceTree = "<group>"; };
+		1EC2ADBA1BA213FE002DF65D /* MIProfilePresenterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIProfilePresenterInterface.h; sourceTree = "<group>"; };
+		1EC2ADBB1BA21425002DF65D /* MIProfileViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIProfileViewControllerInterface.h; path = ../../../../../MyInstagram2/MyInstagram/Modules/Profile/View/MIProfileViewControllerInterface.h; sourceTree = "<group>"; };
+		1EC2ADBD1BA215D7002DF65D /* MIProfileInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileInteractorIOInterface.h; sourceTree = "<group>"; };
+		1EC2ADC41BA22C02002DF65D /* MIPopularPhotosInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPopularPhotosInteractor.h; sourceTree = "<group>"; };
+		1EC2ADC51BA22C02002DF65D /* MIPopularPhotosInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPopularPhotosInteractor.m; sourceTree = "<group>"; };
+		1EC2ADD91BA2C600002DF65D /* InstagramComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramComment.h; sourceTree = "<group>"; };
+		1EC2ADDA1BA2C600002DF65D /* InstagramComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramComment.m; sourceTree = "<group>"; };
+		1EC2ADDB1BA2C600002DF65D /* InstagramList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramList.h; sourceTree = "<group>"; };
+		1EC2ADDC1BA2C600002DF65D /* InstagramList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramList.m; sourceTree = "<group>"; };
+		1EC2ADDD1BA2C600002DF65D /* InstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramPost.h; sourceTree = "<group>"; };
+		1EC2ADDE1BA2C600002DF65D /* InstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramPost.m; sourceTree = "<group>"; };
+		1EC2ADDF1BA2C600002DF65D /* InstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InstagramUser.h; sourceTree = "<group>"; };
+		1EC2ADE01BA2C600002DF65D /* InstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InstagramUser.m; sourceTree = "<group>"; };
+		1EC2ADE21BA2C600002DF65D /* _InstagramComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _InstagramComment.h; sourceTree = "<group>"; };
+		1EC2ADE31BA2C600002DF65D /* _InstagramComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _InstagramComment.m; sourceTree = "<group>"; };
+		1EC2ADE41BA2C600002DF65D /* _InstagramList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _InstagramList.h; sourceTree = "<group>"; };
+		1EC2ADE51BA2C600002DF65D /* _InstagramList.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _InstagramList.m; sourceTree = "<group>"; };
+		1EC2ADE61BA2C600002DF65D /* _InstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _InstagramPost.h; sourceTree = "<group>"; };
+		1EC2ADE71BA2C600002DF65D /* _InstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _InstagramPost.m; sourceTree = "<group>"; };
+		1EC2ADE81BA2C600002DF65D /* _InstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _InstagramUser.h; sourceTree = "<group>"; };
+		1EC2ADE91BA2C600002DF65D /* _InstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _InstagramUser.m; sourceTree = "<group>"; };
+		1EC2ADF31BA2C607002DF65D /* mosetup.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = mosetup.sh; sourceTree = "<group>"; };
+		1EF4947E1BA2D5A000762039 /* MICommentsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsTableViewController.h; sourceTree = "<group>"; };
+		1EF4947F1BA2D5A000762039 /* MICommentsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsTableViewController.m; sourceTree = "<group>"; };
+		1EF494811BA2E15900762039 /* MIPhotosPresenterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIPhotosPresenterInterface.h; sourceTree = "<group>"; };
+		1EF494831BA2E25400762039 /* MITransitionPhotoDetailsViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MITransitionPhotoDetailsViewControllerInterface.h; sourceTree = "<group>"; };
+		1EF494841BA2E27300762039 /* MITransitionPhotosViewControllerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MITransitionPhotosViewControllerInterface.h; sourceTree = "<group>"; };
+		1EF494851BA2E72600762039 /* MIPhotoDetailsPresenterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsPresenterInterface.h; sourceTree = "<group>"; };
+		1EF494861BA2E78200762039 /* MICommentsPresenterInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsPresenterInterface.h; sourceTree = "<group>"; };
+		1EF494871BA2EA7200762039 /* MICommentsViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsViewControllerInterface.h; sourceTree = "<group>"; };
+		1EF494881BA2EB7200762039 /* MICommentsInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsInteractor.h; sourceTree = "<group>"; };
+		1EF494891BA2EB7200762039 /* MICommentsInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsInteractor.m; sourceTree = "<group>"; };
+		1EF4948B1BA2EB9D00762039 /* MICommentsInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsInteractorIOInterface.h; sourceTree = "<group>"; };
+		1EF4948F1BA30C8F00762039 /* MILikedByMeInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILikedByMeInteractor.h; sourceTree = "<group>"; };
+		1EF494901BA30C8F00762039 /* MILikedByMeInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILikedByMeInteractor.m; sourceTree = "<group>"; };
+		1EF494971BA30D8900762039 /* MIPhotosInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosInteractorIOInterface.h; sourceTree = "<group>"; };
+		1EF494981BA340DA00762039 /* MILoginViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginViewControllerInterface.h; sourceTree = "<group>"; };
+		1EF494991BA3413A00762039 /* MILoginPresenterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MILoginPresenterInterface.h; sourceTree = "<group>"; };
+		1EF4949A1BA342CB00762039 /* MILoginInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILoginInteractorIOInterface.h; sourceTree = "<group>"; };
+		1EF494A21BA36E2500762039 /* NSData+SaveData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+SaveData.h"; sourceTree = "<group>"; };
+		1EF494A31BA36E2500762039 /* NSData+SaveData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+SaveData.m"; sourceTree = "<group>"; };
+		1EF494A41BA36E2500762039 /* NSString+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+MD5.h"; sourceTree = "<group>"; };
+		1EF494A51BA36E2500762039 /* NSString+MD5.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+MD5.m"; sourceTree = "<group>"; };
+		1EF494A61BA36E2500762039 /* UICKeyChainStore+SharedInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICKeyChainStore+SharedInstance.h"; sourceTree = "<group>"; };
+		1EF494A71BA36E2500762039 /* UICKeyChainStore+SharedInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore+SharedInstance.m"; sourceTree = "<group>"; };
+		1EF494A81BA36E2500762039 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		1EF494A91BA36E2500762039 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		1EF494AA1BA36E2500762039 /* UIImageView+DownloadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+DownloadImage.h"; sourceTree = "<group>"; };
+		1EF494AB1BA36E2500762039 /* UIImageView+DownloadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+DownloadImage.m"; sourceTree = "<group>"; };
+		1EF494AC1BA36E2500762039 /* UIViewController+EmptyBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+EmptyBackButton.h"; sourceTree = "<group>"; };
+		1EF494AD1BA36E2500762039 /* UIViewController+EmptyBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+EmptyBackButton.m"; sourceTree = "<group>"; };
+		1EF494AE1BA36E2500762039 /* UIViewController+InitialState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+InitialState.h"; sourceTree = "<group>"; };
+		1EF494AF1BA36E2500762039 /* UIViewController+InitialState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+InitialState.m"; sourceTree = "<group>"; };
+		1EF494B11BA36E2500762039 /* FTWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWCache.h; sourceTree = "<group>"; };
+		1EF494B21BA36E2500762039 /* FTWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWCache.m; sourceTree = "<group>"; };
+		1EF494B31BA36E2500762039 /* MIBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBorderedView.h; sourceTree = "<group>"; };
+		1EF494B41BA36E2500762039 /* MIBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBorderedView.m; sourceTree = "<group>"; };
+		1EF494B51BA36E2500762039 /* MIFileUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIFileUtility.h; sourceTree = "<group>"; };
+		1EF494B61BA36E2500762039 /* MIFileUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIFileUtility.m; sourceTree = "<group>"; };
+		1EF494B71BA36E2500762039 /* MIImageUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIImageUtility.h; sourceTree = "<group>"; };
+		1EF494B81BA36E2500762039 /* MIImageUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIImageUtility.m; sourceTree = "<group>"; };
+		1EF494C51BA3704600762039 /* MISlaveByTabBarControllerRouter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MISlaveByTabBarControllerRouter.h; sourceTree = "<group>"; };
+		1EF494C61BA3704600762039 /* MISlaveByTabBarControllerRouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MISlaveByTabBarControllerRouter.m; sourceTree = "<group>"; };
+		1EF494C71BA3704600762039 /* MITabBarItemInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MITabBarItemInfo.h; sourceTree = "<group>"; };
+		1EF494C81BA3704600762039 /* MITabBarItemInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MITabBarItemInfo.m; sourceTree = "<group>"; };
+		1EF494CB1BA4244600762039 /* MIPhotoDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsViewController.h; sourceTree = "<group>"; };
+		1EF494CC1BA4244600762039 /* MIPhotoDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotoDetailsViewController.m; sourceTree = "<group>"; };
+		1EF494D01BA433C900762039 /* MIInstagramComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIInstagramComment.h; sourceTree = "<group>"; };
+		1EF494D11BA433C900762039 /* MIInstagramComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIInstagramComment.m; sourceTree = "<group>"; };
+		1EF494D21BA433C900762039 /* MIInstagramPost.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIInstagramPost.h; sourceTree = "<group>"; };
+		1EF494D31BA433C900762039 /* MIInstagramPost.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIInstagramPost.m; sourceTree = "<group>"; };
+		1EF494D41BA433C900762039 /* MIInstagramUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIInstagramUser.h; sourceTree = "<group>"; };
+		1EF494D51BA433C900762039 /* MIInstagramUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIInstagramUser.m; sourceTree = "<group>"; };
+		1EF494DA1BA434C100762039 /* MICommentsDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MICommentsDataProvider.h; sourceTree = "<group>"; };
+		1EF494DB1BA434C100762039 /* MICommentsDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MICommentsDataProvider.m; sourceTree = "<group>"; };
+		1EF494DC1BA434C100762039 /* MIUsersDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIUsersDataProvider.h; sourceTree = "<group>"; };
+		1EF494DD1BA434C100762039 /* MIUsersDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIUsersDataProvider.m; sourceTree = "<group>"; };
+		1EF494DE1BA434C100762039 /* MIAuthenticationDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAuthenticationDataProvider.h; sourceTree = "<group>"; };
+		1EF494DF1BA434C100762039 /* MIAuthenticationDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIAuthenticationDataProvider.m; sourceTree = "<group>"; };
+		1EF494E01BA434C100762039 /* MIMediaDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIMediaDataProvider.h; sourceTree = "<group>"; };
+		1EF494E11BA434C100762039 /* MIMediaDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIMediaDataProvider.m; sourceTree = "<group>"; };
+		1EF494E91BA4364900762039 /* MILikesDataProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MILikesDataProvider.h; sourceTree = "<group>"; };
+		1EF494EA1BA4364900762039 /* MILikesDataProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MILikesDataProvider.m; sourceTree = "<group>"; };
+		1EF494ED1BA439AD00762039 /* MIWithAddCommentPanelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIWithAddCommentPanelViewController.h; sourceTree = "<group>"; };
+		1EF494EE1BA439AD00762039 /* MIWithAddCommentPanelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIWithAddCommentPanelViewController.m; sourceTree = "<group>"; };
+		1EF494F21BA463C600762039 /* MIAddCommentInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAddCommentInteractorIOInterface.h; sourceTree = "<group>"; };
+		1EF494F31BA4ABF600762039 /* MIAddCommentPresenterInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAddCommentPresenterInterface.h; sourceTree = "<group>"; };
+		1EF494F41BA4B4F600762039 /* MIPhotoDetailsInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotoDetailsInteractorIOInterface.h; sourceTree = "<group>"; };
 		27F5D8D622DE6320A65186D5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9228CE065A23C3749EAC407E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,16 +389,19 @@
 		1E4ADC1D1B9DBD520052C757 /* MyInstagram */ = {
 			isa = PBXGroup;
 			children = (
-				1E4ADCB91B9DFE9F0052C757 /* Base */,
+				1EF494A01BA36E2500762039 /* Others */,
+				1EC2AD731BA17DD0002DF65D /* DataProvider */,
+				1EC2ACCC1BA16215002DF65D /* Base */,
 				1E4ADC871B9DDA020052C757 /* App */,
 				1E4ADC521B9DCE180052C757 /* Modules */,
 				1E4ADC4D1B9DCC440052C757 /* Resources */,
-				1E4ADC2E1B9DBD520052C757 /* Images.xcassets */,
 				1E4ADC1E1B9DBD520052C757 /* Supporting Files */,
+				1E4ADC2E1B9DBD520052C757 /* Images.xcassets */,
+				1EC2AC071B9F155D002DF65D /* Resources.xcassets */,
 				1E4ADC221B9DBD520052C757 /* MIAppDelegate.h */,
 				1E4ADC231B9DBD520052C757 /* MIAppDelegate.m */,
-				1EC2AC071B9F155D002DF65D /* Resources.xcassets */,
 				1EC2AC161B9F43F0002DF65D /* Macro.h */,
+				1EC2AD8A1BA17F22002DF65D /* MIInstagramConstants.h */,
 			);
 			path = MyInstagram;
 			sourceTree = "<group>";
@@ -274,155 +445,28 @@
 		1E4ADC521B9DCE180052C757 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				1E4ADC5F1B9DCE180052C757 /* LikedPhotos */,
-				1EC2ABC81B9E8651002DF65D /* PopularPhotos */,
-				1EC2ABAE1B9E85F9002DF65D /* Photos */,
-				1E4ADC651B9DCE180052C757 /* Login */,
-				1E4ADC711B9DCE180052C757 /* Profile */,
+				1EC2ACEE1BA165F2002DF65D /* Comments */,
+				1EC2ACFA1BA165F2002DF65D /* LikedPhotos */,
+				1EC2ACFD1BA165F2002DF65D /* Login */,
+				1EC2AD0E1BA165F2002DF65D /* PhotoDetails */,
+				1EC2AD2B1BA165F2002DF65D /* Photos */,
+				1EC2AD441BA165F2002DF65D /* PopularPhotos */,
+				1EC2AD471BA165F2002DF65D /* Profile */,
 			);
 			path = Modules;
-			sourceTree = "<group>";
-		};
-		1E4ADC5F1B9DCE180052C757 /* LikedPhotos */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADC601B9DCE180052C757 /* Entity */,
-				1E4ADC611B9DCE180052C757 /* Interactor */,
-			);
-			path = LikedPhotos;
-			sourceTree = "<group>";
-		};
-		1E4ADC601B9DCE180052C757 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1E4ADC611B9DCE180052C757 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1E4ADC651B9DCE180052C757 /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADC661B9DCE180052C757 /* Entity */,
-				1E4ADC671B9DCE180052C757 /* Interactor */,
-				1E4ADC681B9DCE180052C757 /* Presenter */,
-				1E4ADC691B9DCE180052C757 /* Router */,
-				1E4ADC6A1B9DCE180052C757 /* View */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		1E4ADC661B9DCE180052C757 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1E4ADC671B9DCE180052C757 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1E4ADC681B9DCE180052C757 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADC7A1B9DD3DE0052C757 /* MILoginInterface.h */,
-				1E4ADC7B1B9DD4FB0052C757 /* MILoginPresenter.h */,
-				1E4ADC7C1B9DD4FB0052C757 /* MILoginPresenter.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		1E4ADC691B9DCE180052C757 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADC811B9DD7460052C757 /* MILoginRouter.h */,
-				1E4ADC821B9DD7460052C757 /* MILoginRouter.m */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		1E4ADC6A1B9DCE180052C757 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADC771B9DCEA90052C757 /* MILoginViewController.h */,
-				1E4ADC781B9DCEA90052C757 /* MILoginViewController.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1E4ADC711B9DCE180052C757 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADC721B9DCE180052C757 /* Entity */,
-				1E4ADC731B9DCE180052C757 /* Interactor */,
-				1E4ADC741B9DCE180052C757 /* Presenter */,
-				1E4ADC751B9DCE180052C757 /* Router */,
-				1E4ADC761B9DCE180052C757 /* View */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
-		1E4ADC721B9DCE180052C757 /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1E4ADC731B9DCE180052C757 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1E4ADC741B9DCE180052C757 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABDA1B9EC646002DF65D /* MIProfileInterface.h */,
-				1EC2ABD11B9EC505002DF65D /* MIProfilePresenter.h */,
-				1EC2ABD21B9EC505002DF65D /* MIProfilePresenter.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		1E4ADC751B9DCE180052C757 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABD41B9EC51B002DF65D /* MIProfileRouter.h */,
-				1EC2ABD51B9EC51B002DF65D /* MIProfileRouter.m */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		1E4ADC761B9DCE180052C757 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABD71B9EC53D002DF65D /* MIProfileViewController.h */,
-				1EC2ABD81B9EC53D002DF65D /* MIProfileViewController.m */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		1E4ADC871B9DDA020052C757 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				1EC2ABA81B9E85A6002DF65D /* DataProvider */,
+				1EF494CE1BA433C900762039 /* Entity */,
 				1E4ADCAD1B9DFBCA0052C757 /* Presenter */,
 				1E4ADCAE1B9DFBCA0052C757 /* Router */,
-				1E4ADCB11B9DFBCB0052C757 /* View */,
+				1EF494EC1BA4397D00762039 /* View */,
 				1E4ADC881B9DDA020052C757 /* MIAppDependencies.h */,
 				1E4ADC891B9DDA020052C757 /* MIAppDependencies.m */,
+				1EC2AC5E1BA033F1002DF65D /* MIAppDesigner.h */,
+				1EC2AC5F1BA033F1002DF65D /* MIAppDesigner.m */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -439,264 +483,11 @@
 		1E4ADCAE1B9DFBCA0052C757 /* Router */ = {
 			isa = PBXGroup;
 			children = (
+				1EF494C41BA3704600762039 /* SlaveByTabBar */,
 				1E4ADCAF1B9DFBCA0052C757 /* MIAppRouter.h */,
 				1E4ADCB01B9DFBCA0052C757 /* MIAppRouter.m */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		1E4ADCB11B9DFBCB0052C757 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1E4ADCB21B9DFBCB0052C757 /* MIAppTabBarController.h */,
-				1E4ADCB31B9DFBCB0052C757 /* MIAppTabBarController.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1E4ADCB91B9DFE9F0052C757 /* Base */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2AC0C1B9F3A06002DF65D /* SlaveByTabBar */,
-				1E4ADCBA1B9DFEBE0052C757 /* MIBaseRouter.h */,
-				1E4ADCBB1B9DFEBE0052C757 /* MIBaseRouter.m */,
-				1E4ADCBD1B9DFF020052C757 /* MIBasePresenter.h */,
-				1E4ADCBE1B9DFF020052C757 /* MIBasePresenter.m */,
-			);
-			path = Base;
-			sourceTree = "<group>";
-		};
-		1EC2ABA81B9E85A6002DF65D /* DataProvider */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABA91B9E85A6002DF65D /* APIDataManager */,
-				1EC2ABAA1B9E85A6002DF65D /* LocalDataManager */,
-			);
-			path = DataProvider;
-			sourceTree = "<group>";
-		};
-		1EC2ABA91B9E85A6002DF65D /* APIDataManager */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = APIDataManager;
-			sourceTree = "<group>";
-		};
-		1EC2ABAA1B9E85A6002DF65D /* LocalDataManager */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABAB1B9E85A6002DF65D /* MIAppDataStore.h */,
-				1EC2ABAC1B9E85A6002DF65D /* MIAppDataStore.m */,
-			);
-			path = LocalDataManager;
-			sourceTree = "<group>";
-		};
-		1EC2ABAE1B9E85F9002DF65D /* Photos */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABE91B9F09B2002DF65D /* PhotoDetails */,
-				1EC2ABAF1B9E85F9002DF65D /* Entity */,
-				1EC2ABB01B9E85F9002DF65D /* Interactor */,
-				1EC2ABB11B9E85F9002DF65D /* Presenter */,
-				1EC2ABB41B9E85F9002DF65D /* Router */,
-				1EC2ABB71B9E85F9002DF65D /* View */,
-			);
-			path = Photos;
-			sourceTree = "<group>";
-		};
-		1EC2ABAF1B9E85F9002DF65D /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1EC2ABB01B9E85F9002DF65D /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABCC1B9E8F9D002DF65D /* MIPhotosInteractorInputInterface.h */,
-				1EC2ABCD1B9E8FB5002DF65D /* MIPhotosInteractorOutputInterface.h */,
-				1EC2ABCE1B9E90A4002DF65D /* MIPhotosInteractor.h */,
-				1EC2ABCF1B9E90A4002DF65D /* MIPhotosInteractor.m */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1EC2ABB11B9E85F9002DF65D /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABB21B9E85F9002DF65D /* MIPhotosPresenter.h */,
-				1EC2ABB31B9E85F9002DF65D /* MIPhotosPresenter.m */,
-				1EC2ABCB1B9E8770002DF65D /* MIPhotosInterface.h */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		1EC2ABB41B9E85F9002DF65D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABB51B9E85F9002DF65D /* MIPhotosRouter.h */,
-				1EC2ABB61B9E85F9002DF65D /* MIPhotosRouter.m */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		1EC2ABB71B9E85F9002DF65D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABB81B9E85F9002DF65D /* MIPhotosCollectionViewCell.h */,
-				1EC2ABB91B9E85F9002DF65D /* MIPhotosCollectionViewCell.m */,
-				1EC2ABBF1B9E85F9002DF65D /* MIPhotosViewController.h */,
-				1EC2ABC01B9E85F9002DF65D /* MIPhotosViewController.m */,
-				1EC2ABC11B9E85F9002DF65D /* MIPhotosViewControllerInterface.h */,
-				1EC2ABBA1B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.h */,
-				1EC2ABBB1B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.m */,
-				1EC2ABBC1B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.h */,
-				1EC2ABBD1B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1EC2ABC81B9E8651002DF65D /* PopularPhotos */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABC91B9E8651002DF65D /* Entity */,
-				1EC2ABCA1B9E8651002DF65D /* Interactor */,
-			);
-			path = PopularPhotos;
-			sourceTree = "<group>";
-		};
-		1EC2ABC91B9E8651002DF65D /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1EC2ABCA1B9E8651002DF65D /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1EC2ABE91B9F09B2002DF65D /* PhotoDetails */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABEA1B9F09B2002DF65D /* Comments */,
-				1EC2ABF01B9F09B2002DF65D /* Entity */,
-				1EC2ABF11B9F09B2002DF65D /* Interactor */,
-				1EC2ABF21B9F09B2002DF65D /* Presenter */,
-				1EC2ABF31B9F09B2002DF65D /* Router */,
-				1EC2ABF41B9F09B2002DF65D /* View */,
-			);
-			name = PhotoDetails;
-			path = MyInstagram/Modules/PhotoDetails;
-			sourceTree = SOURCE_ROOT;
-		};
-		1EC2ABEA1B9F09B2002DF65D /* Comments */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABEB1B9F09B2002DF65D /* Entity */,
-				1EC2ABEC1B9F09B2002DF65D /* Interactor */,
-				1EC2ABED1B9F09B2002DF65D /* Presenter */,
-				1EC2ABEE1B9F09B2002DF65D /* Router */,
-				1EC2ABEF1B9F09B2002DF65D /* View */,
-			);
-			path = Comments;
-			sourceTree = "<group>";
-		};
-		1EC2ABEB1B9F09B2002DF65D /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1EC2ABEC1B9F09B2002DF65D /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1EC2ABED1B9F09B2002DF65D /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABFE1B9F0A40002DF65D /* MICommentsPresenter.h */,
-				1EC2ABFF1B9F0A40002DF65D /* MICommentsPresenter.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		1EC2ABEE1B9F09B2002DF65D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2AC011B9F0A56002DF65D /* MICommentsRouter.h */,
-				1EC2AC021B9F0A56002DF65D /* MICommentsRouter.m */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		1EC2ABEF1B9F09B2002DF65D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2AC041B9F0A85002DF65D /* MICommentsViewController.h */,
-				1EC2AC051B9F0A85002DF65D /* MICommentsViewController.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1EC2ABF01B9F09B2002DF65D /* Entity */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Entity;
-			sourceTree = "<group>";
-		};
-		1EC2ABF11B9F09B2002DF65D /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		1EC2ABF21B9F09B2002DF65D /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABF51B9F09D4002DF65D /* MIPhotoDetailsPresenter.h */,
-				1EC2ABF61B9F09D4002DF65D /* MIPhotoDetailsPresenter.m */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		1EC2ABF31B9F09B2002DF65D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABF81B9F09EF002DF65D /* MIPhotoDetailsRouter.h */,
-				1EC2ABF91B9F09EF002DF65D /* MIPhotoDetailsRouter.m */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
-		1EC2ABF41B9F09B2002DF65D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2ABFB1B9F0A16002DF65D /* MIPhotoDetailsViewController.h */,
-				1EC2ABFC1B9F0A16002DF65D /* MIPhotoDetailsViewController.m */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		1EC2AC0C1B9F3A06002DF65D /* SlaveByTabBar */ = {
-			isa = PBXGroup;
-			children = (
-				1EC2AC0D1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.h */,
-				1EC2AC0E1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.m */,
-				1EC2AC101B9F3A35002DF65D /* MITabBarItemInfo.h */,
-				1EC2AC111B9F3A35002DF65D /* MITabBarItemInfo.m */,
-			);
-			path = SlaveByTabBar;
 			sourceTree = "<group>";
 		};
 		1EC2AC321B9F8414002DF65D /* Icons */ = {
@@ -723,6 +514,556 @@
 			path = Icons;
 			sourceTree = "<group>";
 		};
+		1EC2ACCC1BA16215002DF65D /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ACCE1BA16215002DF65D /* Presenter */,
+				1EC2ACD11BA16215002DF65D /* Router */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		1EC2ACCE1BA16215002DF65D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ACCF1BA16215002DF65D /* MIBasePresenter.h */,
+				1EC2ACD01BA16215002DF65D /* MIBasePresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EC2ACD11BA16215002DF65D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ACD21BA16215002DF65D /* MIBaseRouter.h */,
+				1EC2ACD31BA16215002DF65D /* MIBaseRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EC2ACEE1BA165F2002DF65D /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ACF01BA165F2002DF65D /* Interactor */,
+				1EC2ACF11BA165F2002DF65D /* Presenter */,
+				1EC2ACF41BA165F2002DF65D /* Router */,
+				1EC2ACF71BA165F2002DF65D /* View */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		1EC2ACF01BA165F2002DF65D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EF4948B1BA2EB9D00762039 /* MICommentsInteractorIOInterface.h */,
+				1EF494F21BA463C600762039 /* MIAddCommentInteractorIOInterface.h */,
+				1EF494881BA2EB7200762039 /* MICommentsInteractor.h */,
+				1EF494891BA2EB7200762039 /* MICommentsInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EC2ACF11BA165F2002DF65D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494861BA2E78200762039 /* MICommentsPresenterInterface.h */,
+				1EF494F31BA4ABF600762039 /* MIAddCommentPresenterInterface.h */,
+				1EC2ACF21BA165F2002DF65D /* MICommentsPresenter.h */,
+				1EC2ACF31BA165F2002DF65D /* MICommentsPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EC2ACF41BA165F2002DF65D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ACF51BA165F2002DF65D /* MICommentsRouter.h */,
+				1EC2ACF61BA165F2002DF65D /* MICommentsRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EC2ACF71BA165F2002DF65D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494871BA2EA7200762039 /* MICommentsViewControllerInterface.h */,
+				1EC2ACF81BA165F2002DF65D /* MICommentsViewController.h */,
+				1EC2ACF91BA165F2002DF65D /* MICommentsViewController.m */,
+				1EF4947E1BA2D5A000762039 /* MICommentsTableViewController.h */,
+				1EF4947F1BA2D5A000762039 /* MICommentsTableViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EC2ACFA1BA165F2002DF65D /* LikedPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ACFC1BA165F2002DF65D /* Interactor */,
+			);
+			path = LikedPhotos;
+			sourceTree = "<group>";
+		};
+		1EC2ACFC1BA165F2002DF65D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EF4948F1BA30C8F00762039 /* MILikedByMeInteractor.h */,
+				1EF494901BA30C8F00762039 /* MILikedByMeInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EC2ACFD1BA165F2002DF65D /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD011BA165F2002DF65D /* Interactor */,
+				1EC2AD041BA165F2002DF65D /* Presenter */,
+				1EC2AD081BA165F2002DF65D /* Router */,
+				1EC2AD0B1BA165F2002DF65D /* View */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		1EC2AD011BA165F2002DF65D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD021BA165F2002DF65D /* MILoginInteractor.h */,
+				1EC2AD031BA165F2002DF65D /* MILoginInteractor.m */,
+				1EF4949A1BA342CB00762039 /* MILoginInteractorIOInterface.h */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EC2AD041BA165F2002DF65D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494991BA3413A00762039 /* MILoginPresenterInterface.h */,
+				1EC2AD061BA165F2002DF65D /* MILoginPresenter.h */,
+				1EC2AD071BA165F2002DF65D /* MILoginPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EC2AD081BA165F2002DF65D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD091BA165F2002DF65D /* MILoginRouter.h */,
+				1EC2AD0A1BA165F2002DF65D /* MILoginRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EC2AD0B1BA165F2002DF65D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494981BA340DA00762039 /* MILoginViewControllerInterface.h */,
+				1EC2AD0C1BA165F2002DF65D /* MILoginViewController.h */,
+				1EC2AD0D1BA165F2002DF65D /* MILoginViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EC2AD0E1BA165F2002DF65D /* PhotoDetails */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD0F1BA165F2002DF65D /* Entity */,
+				1EC2AD101BA165F2002DF65D /* Interactor */,
+				1EC2AD131BA165F2002DF65D /* Presenter */,
+				1EC2AD161BA165F2002DF65D /* Router */,
+				1EC2AD191BA165F2002DF65D /* View */,
+			);
+			path = PhotoDetails;
+			sourceTree = "<group>";
+		};
+		1EC2AD0F1BA165F2002DF65D /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1EC2AD101BA165F2002DF65D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494F41BA4B4F600762039 /* MIPhotoDetailsInteractorIOInterface.h */,
+				1EC2AD111BA165F2002DF65D /* MIPhotoDetailsInteractor.h */,
+				1EC2AD121BA165F2002DF65D /* MIPhotoDetailsInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EC2AD131BA165F2002DF65D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494851BA2E72600762039 /* MIPhotoDetailsPresenterInterface.h */,
+				1EC2AD141BA165F2002DF65D /* MIPhotoDetailsPresenter.h */,
+				1EC2AD151BA165F2002DF65D /* MIPhotoDetailsPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EC2AD161BA165F2002DF65D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD171BA165F2002DF65D /* MIPhotoDetailsRouter.h */,
+				1EC2AD181BA165F2002DF65D /* MIPhotoDetailsRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EC2AD191BA165F2002DF65D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD1A1BA165F2002DF65D /* Cells */,
+				1EC2AD251BA165F2002DF65D /* MIPhotoDetailsViewControllerInterface.h */,
+				1EF494CB1BA4244600762039 /* MIPhotoDetailsViewController.h */,
+				1EF494CC1BA4244600762039 /* MIPhotoDetailsViewController.m */,
+				1EC2AD231BA165F2002DF65D /* MIPhotoDetailsTableViewController.h */,
+				1EC2AD241BA165F2002DF65D /* MIPhotoDetailsTableViewController.m */,
+				1EC2AD261BA165F2002DF65D /* Transitions */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EC2AD1A1BA165F2002DF65D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD1B1BA165F2002DF65D /* MICommentTableViewCell.h */,
+				1EC2AD1C1BA165F2002DF65D /* MICommentTableViewCell.m */,
+				1EC2AD1D1BA165F2002DF65D /* MIMoreCommentsTableViewCell.h */,
+				1EC2AD1E1BA165F2002DF65D /* MIMoreCommentsTableViewCell.m */,
+				1EC2AD1F1BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.h */,
+				1EC2AD201BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.m */,
+				1EC2AD211BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.h */,
+				1EC2AD221BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1EC2AD261BA165F2002DF65D /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD271BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.h */,
+				1EC2AD281BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.m */,
+				1EC2AD291BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.h */,
+				1EC2AD2A1BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.m */,
+				1EF494841BA2E27300762039 /* MITransitionPhotosViewControllerInterface.h */,
+				1EF494831BA2E25400762039 /* MITransitionPhotoDetailsViewControllerInterface.h */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
+		1EC2AD2B1BA165F2002DF65D /* Photos */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494961BA30D8900762039 /* Interactor */,
+				1EC2AD361BA165F2002DF65D /* Presenter */,
+				1EC2AD3A1BA165F2002DF65D /* Router */,
+				1EC2AD3D1BA165F2002DF65D /* View */,
+			);
+			path = Photos;
+			sourceTree = "<group>";
+		};
+		1EC2AD361BA165F2002DF65D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494811BA2E15900762039 /* MIPhotosPresenterInterface.h */,
+				1EC2AD381BA165F2002DF65D /* MIPhotosPresenter.h */,
+				1EC2AD391BA165F2002DF65D /* MIPhotosPresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EC2AD3A1BA165F2002DF65D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD3B1BA165F2002DF65D /* MIPhotosRouter.h */,
+				1EC2AD3C1BA165F2002DF65D /* MIPhotosRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EC2AD3D1BA165F2002DF65D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD3E1BA165F2002DF65D /* Cells */,
+				1EC2AD411BA165F2002DF65D /* MIPhotosCollectionViewController.h */,
+				1EC2AD421BA165F2002DF65D /* MIPhotosCollectionViewController.m */,
+				1EC2AD431BA165F2002DF65D /* MIPhotosViewControllerInterface.h */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EC2AD3E1BA165F2002DF65D /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD3F1BA165F2002DF65D /* MIPhotosCollectionViewCell.h */,
+				1EC2AD401BA165F2002DF65D /* MIPhotosCollectionViewCell.m */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		1EC2AD441BA165F2002DF65D /* PopularPhotos */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADC31BA22C02002DF65D /* Interactor */,
+			);
+			path = PopularPhotos;
+			sourceTree = "<group>";
+		};
+		1EC2AD471BA165F2002DF65D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD491BA165F2002DF65D /* Interactor */,
+				1EC2AD4A1BA165F2002DF65D /* Presenter */,
+				1EC2AD4E1BA165F2002DF65D /* Router */,
+				1EC2AD511BA165F2002DF65D /* View */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		1EC2AD491BA165F2002DF65D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADBD1BA215D7002DF65D /* MIProfileInteractorIOInterface.h */,
+				1EC2ADB71BA2119E002DF65D /* MIProfileInteractor.h */,
+				1EC2ADB81BA2119E002DF65D /* MIProfileInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EC2AD4A1BA165F2002DF65D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADBA1BA213FE002DF65D /* MIProfilePresenterInterface.h */,
+				1EC2AD4C1BA165F2002DF65D /* MIProfilePresenter.h */,
+				1EC2AD4D1BA165F2002DF65D /* MIProfilePresenter.m */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		1EC2AD4E1BA165F2002DF65D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD4F1BA165F2002DF65D /* MIProfileRouter.h */,
+				1EC2AD501BA165F2002DF65D /* MIProfileRouter.m */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		1EC2AD511BA165F2002DF65D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADBB1BA21425002DF65D /* MIProfileViewControllerInterface.h */,
+				1EC2AD521BA165F2002DF65D /* MIProfileViewController.h */,
+				1EC2AD531BA165F2002DF65D /* MIProfileViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		1EC2AD731BA17DD0002DF65D /* DataProvider */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADB01BA20F0D002DF65D /* MappingManager */,
+				1EC2AD741BA17DD0002DF65D /* APIDataManager */,
+				1EC2AD791BA17DD0002DF65D /* LocalDataManager */,
+				1EC2AD7E1BA17DD0002DF65D /* MIBaseDataProvider.h */,
+				1EC2AD7F1BA17DD0002DF65D /* MIBaseDataProvider.m */,
+			);
+			path = DataProvider;
+			sourceTree = "<group>";
+		};
+		1EC2AD741BA17DD0002DF65D /* APIDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2AD751BA17DD0002DF65D /* MIAPIBaseRequest.h */,
+				1EC2AD761BA17DD0002DF65D /* MIAPIBaseRequest.m */,
+				1EC2AD771BA17DD0002DF65D /* MIAPIDataManager.h */,
+				1EC2AD781BA17DD0002DF65D /* MIAPIDataManager.m */,
+			);
+			path = APIDataManager;
+			sourceTree = "<group>";
+		};
+		1EC2AD791BA17DD0002DF65D /* LocalDataManager */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADF21BA2C607002DF65D /* Mogenerator */,
+				1EC2ADD71BA2C600002DF65D /* Model */,
+				1EC2AD7A1BA17DD0002DF65D /* MILocalDataManager.h */,
+				1EC2AD7B1BA17DD0002DF65D /* MILocalDataManager.m */,
+				1EC2AD7C1BA17DD0002DF65D /* Model.xcdatamodeld */,
+			);
+			path = LocalDataManager;
+			sourceTree = "<group>";
+		};
+		1EC2ADB01BA20F0D002DF65D /* MappingManager */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADB11BA20F0D002DF65D /* MIMappingManager.h */,
+				1EC2ADB21BA20F0D002DF65D /* MIMappingManager.m */,
+			);
+			path = MappingManager;
+			sourceTree = "<group>";
+		};
+		1EC2ADC31BA22C02002DF65D /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADC41BA22C02002DF65D /* MIPopularPhotosInteractor.h */,
+				1EC2ADC51BA22C02002DF65D /* MIPopularPhotosInteractor.m */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EC2ADD71BA2C600002DF65D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADD81BA2C600002DF65D /* Human */,
+				1EC2ADE11BA2C600002DF65D /* Machine */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		1EC2ADD81BA2C600002DF65D /* Human */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADD91BA2C600002DF65D /* InstagramComment.h */,
+				1EC2ADDA1BA2C600002DF65D /* InstagramComment.m */,
+				1EC2ADDB1BA2C600002DF65D /* InstagramList.h */,
+				1EC2ADDC1BA2C600002DF65D /* InstagramList.m */,
+				1EC2ADDD1BA2C600002DF65D /* InstagramPost.h */,
+				1EC2ADDE1BA2C600002DF65D /* InstagramPost.m */,
+				1EC2ADDF1BA2C600002DF65D /* InstagramUser.h */,
+				1EC2ADE01BA2C600002DF65D /* InstagramUser.m */,
+			);
+			path = Human;
+			sourceTree = "<group>";
+		};
+		1EC2ADE11BA2C600002DF65D /* Machine */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADE21BA2C600002DF65D /* _InstagramComment.h */,
+				1EC2ADE31BA2C600002DF65D /* _InstagramComment.m */,
+				1EC2ADE41BA2C600002DF65D /* _InstagramList.h */,
+				1EC2ADE51BA2C600002DF65D /* _InstagramList.m */,
+				1EC2ADE61BA2C600002DF65D /* _InstagramPost.h */,
+				1EC2ADE71BA2C600002DF65D /* _InstagramPost.m */,
+				1EC2ADE81BA2C600002DF65D /* _InstagramUser.h */,
+				1EC2ADE91BA2C600002DF65D /* _InstagramUser.m */,
+			);
+			path = Machine;
+			sourceTree = "<group>";
+		};
+		1EC2ADF21BA2C607002DF65D /* Mogenerator */ = {
+			isa = PBXGroup;
+			children = (
+				1EC2ADF31BA2C607002DF65D /* mosetup.sh */,
+			);
+			path = Mogenerator;
+			sourceTree = "<group>";
+		};
+		1EF494961BA30D8900762039 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494971BA30D8900762039 /* MIPhotosInteractorIOInterface.h */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		1EF494A01BA36E2500762039 /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494A11BA36E2500762039 /* Categories */,
+				1EF494B01BA36E2500762039 /* Utilities */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		1EF494A11BA36E2500762039 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494A21BA36E2500762039 /* NSData+SaveData.h */,
+				1EF494A31BA36E2500762039 /* NSData+SaveData.m */,
+				1EF494A41BA36E2500762039 /* NSString+MD5.h */,
+				1EF494A51BA36E2500762039 /* NSString+MD5.m */,
+				1EF494A61BA36E2500762039 /* UICKeyChainStore+SharedInstance.h */,
+				1EF494A71BA36E2500762039 /* UICKeyChainStore+SharedInstance.m */,
+				1EF494A81BA36E2500762039 /* UIImage+ImageEffects.h */,
+				1EF494A91BA36E2500762039 /* UIImage+ImageEffects.m */,
+				1EF494AA1BA36E2500762039 /* UIImageView+DownloadImage.h */,
+				1EF494AB1BA36E2500762039 /* UIImageView+DownloadImage.m */,
+				1EF494AC1BA36E2500762039 /* UIViewController+EmptyBackButton.h */,
+				1EF494AD1BA36E2500762039 /* UIViewController+EmptyBackButton.m */,
+				1EF494AE1BA36E2500762039 /* UIViewController+InitialState.h */,
+				1EF494AF1BA36E2500762039 /* UIViewController+InitialState.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
+		1EF494B01BA36E2500762039 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494B11BA36E2500762039 /* FTWCache.h */,
+				1EF494B21BA36E2500762039 /* FTWCache.m */,
+				1EF494B31BA36E2500762039 /* MIBorderedView.h */,
+				1EF494B41BA36E2500762039 /* MIBorderedView.m */,
+				1EF494B51BA36E2500762039 /* MIFileUtility.h */,
+				1EF494B61BA36E2500762039 /* MIFileUtility.m */,
+				1EF494B71BA36E2500762039 /* MIImageUtility.h */,
+				1EF494B81BA36E2500762039 /* MIImageUtility.m */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1EF494C41BA3704600762039 /* SlaveByTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494C51BA3704600762039 /* MISlaveByTabBarControllerRouter.h */,
+				1EF494C61BA3704600762039 /* MISlaveByTabBarControllerRouter.m */,
+				1EF494C71BA3704600762039 /* MITabBarItemInfo.h */,
+				1EF494C81BA3704600762039 /* MITabBarItemInfo.m */,
+			);
+			path = SlaveByTabBar;
+			sourceTree = "<group>";
+		};
+		1EF494CE1BA433C900762039 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494D91BA434C100762039 /* DataProviders */,
+				1EF494D01BA433C900762039 /* MIInstagramComment.h */,
+				1EF494D11BA433C900762039 /* MIInstagramComment.m */,
+				1EF494D21BA433C900762039 /* MIInstagramPost.h */,
+				1EF494D31BA433C900762039 /* MIInstagramPost.m */,
+				1EF494D41BA433C900762039 /* MIInstagramUser.h */,
+				1EF494D51BA433C900762039 /* MIInstagramUser.m */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		1EF494D91BA434C100762039 /* DataProviders */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494DA1BA434C100762039 /* MICommentsDataProvider.h */,
+				1EF494DB1BA434C100762039 /* MICommentsDataProvider.m */,
+				1EF494DC1BA434C100762039 /* MIUsersDataProvider.h */,
+				1EF494DD1BA434C100762039 /* MIUsersDataProvider.m */,
+				1EF494DE1BA434C100762039 /* MIAuthenticationDataProvider.h */,
+				1EF494DF1BA434C100762039 /* MIAuthenticationDataProvider.m */,
+				1EF494E01BA434C100762039 /* MIMediaDataProvider.h */,
+				1EF494E11BA434C100762039 /* MIMediaDataProvider.m */,
+				1EF494E91BA4364900762039 /* MILikesDataProvider.h */,
+				1EF494EA1BA4364900762039 /* MILikesDataProvider.m */,
+			);
+			path = DataProviders;
+			sourceTree = "<group>";
+		};
+		1EF494EC1BA4397D00762039 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				1EF494ED1BA439AD00762039 /* MIWithAddCommentPanelViewController.h */,
+				1EF494EE1BA439AD00762039 /* MIWithAddCommentPanelViewController.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		EBC5FCE118FDCC5D6F5F131B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -747,6 +1088,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				1EC2ADD51BA2C45A002DF65D /* PBXTargetDependency */,
 			);
 			name = MyInstagram;
 			productName = MyInstagram;
@@ -787,6 +1129,9 @@
 						CreatedOnToolsVersion = 6.4;
 						TestTargetID = 1E4ADC1A1B9DBD520052C757;
 					};
+					1EC2ADD01BA2C44F002DF65D = {
+						CreatedOnToolsVersion = 6.4;
+					};
 				};
 			};
 			buildConfigurationList = 1E4ADC161B9DBD520052C757 /* Build configuration list for PBXProject "MyInstagram" */;
@@ -804,6 +1149,7 @@
 			targets = (
 				1E4ADC1A1B9DBD520052C757 /* MyInstagram */,
 				1E4ADC361B9DBD520052C757 /* MyInstagramTests */,
+				1EC2ADD01BA2C44F002DF65D /* Mogenerator */,
 			);
 		};
 /* End PBXProject section */
@@ -827,6 +1173,7 @@
 				1EC2AC461B9F8414002DF65D /* Icon-60@3x.png in Resources */,
 				1EC2AC471B9F8414002DF65D /* Icon-72.png in Resources */,
 				1EC2AC491B9F8414002DF65D /* Icon-76.png in Resources */,
+				1EC2ADF41BA2C607002DF65D /* mosetup.sh in Resources */,
 				1EC2AC4C1B9F8414002DF65D /* Icon-Small-40@2x.png in Resources */,
 				1EC2AC521B9F8414002DF65D /* Icon@2x.png in Resources */,
 				1EC2AC541B9F8414002DF65D /* iTunesArtwork@2x.png in Resources */,
@@ -847,6 +1194,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1EC2ADD61BA2C461002DF65D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sh \"${PROJECT_DIR}/MyInstagram/DataProvider/LocalDataManager/Mogenerator/mosetup.sh\"";
+		};
 		4D1AF41955A59A4BD75C01B5 /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -884,36 +1244,80 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1EC2AC061B9F0A85002DF65D /* MICommentsViewController.m in Sources */,
-				1E4ADC831B9DD7460052C757 /* MILoginRouter.m in Sources */,
+				1EC2ADF11BA2C600002DF65D /* _InstagramUser.m in Sources */,
 				1E4ADC241B9DBD520052C757 /* MIAppDelegate.m in Sources */,
+				1EF494D61BA433C900762039 /* MIInstagramComment.m in Sources */,
+				1EC2AD821BA17DD0002DF65D /* MIAPIDataManager.m in Sources */,
+				1EF494C91BA3704600762039 /* MISlaveByTabBarControllerRouter.m in Sources */,
+				1EF494EB1BA4364900762039 /* MILikesDataProvider.m in Sources */,
+				1EF494E51BA434C100762039 /* MIUsersDataProvider.m in Sources */,
+				1EF494C21BA36E2500762039 /* MIFileUtility.m in Sources */,
+				1EC2ADED1BA2C600002DF65D /* InstagramUser.m in Sources */,
+				1EC2AD6F1BA165F2002DF65D /* MIProfileViewController.m in Sources */,
 				1E4ADCB41B9DFBCB0052C757 /* MIAppRouter.m in Sources */,
-				1EC2ABFD1B9F0A16002DF65D /* MIPhotoDetailsViewController.m in Sources */,
-				1EC2ABD61B9EC51B002DF65D /* MIProfileRouter.m in Sources */,
-				1E4ADC7D1B9DD4FB0052C757 /* MILoginPresenter.m in Sources */,
+				1EC2AD641BA165F2002DF65D /* MITransitionFromPhotoDetailsToPhotos.m in Sources */,
+				1EF494E71BA434C100762039 /* MIMediaDataProvider.m in Sources */,
+				1EC2AD5E1BA165F2002DF65D /* MIPhotoDetailsRouter.m in Sources */,
+				1EC2AD611BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.m in Sources */,
+				1EC2AD5D1BA165F2002DF65D /* MIPhotoDetailsPresenter.m in Sources */,
+				1EC2ADEF1BA2C600002DF65D /* _InstagramList.m in Sources */,
+				1EC2ADEB1BA2C600002DF65D /* InstagramList.m in Sources */,
 				1E4ADCB81B9DFD2F0052C757 /* MIAppPresenter.m in Sources */,
-				1E4ADCBF1B9DFF020052C757 /* MIBasePresenter.m in Sources */,
-				1EC2ABC41B9E85F9002DF65D /* MIPhotosCollectionViewCell.m in Sources */,
-				1EC2ABFA1B9F09EF002DF65D /* MIPhotoDetailsRouter.m in Sources */,
-				1EC2ABD91B9EC53D002DF65D /* MIProfileViewController.m in Sources */,
+				1EC2ADEE1BA2C600002DF65D /* _InstagramComment.m in Sources */,
+				1EF494E61BA434C100762039 /* MIAuthenticationDataProvider.m in Sources */,
+				1EF494C01BA36E2500762039 /* FTWCache.m in Sources */,
+				1EC2AD851BA17DD0002DF65D /* MIBaseDataProvider.m in Sources */,
+				1EC2ADEA1BA2C600002DF65D /* InstagramComment.m in Sources */,
 				1E4ADC8C1B9DDA020052C757 /* MIAppDependencies.m in Sources */,
-				1E4ADCB51B9DFBCB0052C757 /* MIAppTabBarController.m in Sources */,
-				1EC2ABD01B9E90A4002DF65D /* MIPhotosInteractor.m in Sources */,
-				1EC2ABF71B9F09D4002DF65D /* MIPhotoDetailsPresenter.m in Sources */,
-				1EC2ABD31B9EC505002DF65D /* MIProfilePresenter.m in Sources */,
-				1EC2ABC61B9E85F9002DF65D /* MIPhotosCollectionViewDelegate.m in Sources */,
-				1EC2AC0F1B9F3A06002DF65D /* MISlaveByTabBarControllerRouter.m in Sources */,
-				1E4ADCBC1B9DFEBE0052C757 /* MIBaseRouter.m in Sources */,
-				1EC2AC001B9F0A40002DF65D /* MICommentsPresenter.m in Sources */,
-				1EC2ABC51B9E85F9002DF65D /* MIPhotosCollectionViewDataSource.m in Sources */,
-				1EC2AC031B9F0A56002DF65D /* MICommentsRouter.m in Sources */,
-				1EC2ABC21B9E85F9002DF65D /* MIPhotosPresenter.m in Sources */,
-				1EC2AC121B9F3A35002DF65D /* MITabBarItemInfo.m in Sources */,
+				1EF494E41BA434C100762039 /* MICommentsDataProvider.m in Sources */,
+				1EC2AD591BA165F2002DF65D /* MILoginPresenter.m in Sources */,
+				1EC2AD6D1BA165F2002DF65D /* MIProfilePresenter.m in Sources */,
+				1EC2AD561BA165F2002DF65D /* MICommentsViewController.m in Sources */,
+				1EF494BC1BA36E2500762039 /* UIImage+ImageEffects.m in Sources */,
+				1EC2AD811BA17DD0002DF65D /* MIAPIBaseRequest.m in Sources */,
+				1EC2AD581BA165F2002DF65D /* MILoginInteractor.m in Sources */,
+				1EF494D71BA433C900762039 /* MIInstagramPost.m in Sources */,
+				1EC2AD691BA165F2002DF65D /* MIPhotosPresenter.m in Sources */,
+				1EC2AC601BA033F1002DF65D /* MIAppDesigner.m in Sources */,
+				1EC2AD621BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.m in Sources */,
+				1EF494D81BA433C900762039 /* MIInstagramUser.m in Sources */,
+				1EF494CD1BA4244600762039 /* MIPhotoDetailsViewController.m in Sources */,
+				1EF494BE1BA36E2500762039 /* UIViewController+EmptyBackButton.m in Sources */,
 				1E4ADC211B9DBD520052C757 /* main.m in Sources */,
-				1E4ADC791B9DCEA90052C757 /* MILoginViewController.m in Sources */,
-				1EC2ABAD1B9E85A6002DF65D /* MIAppDataStore.m in Sources */,
-				1EC2ABC31B9E85F9002DF65D /* MIPhotosRouter.m in Sources */,
-				1EC2ABC71B9E85F9002DF65D /* MIPhotosViewController.m in Sources */,
+				1EF494C11BA36E2500762039 /* MIBorderedView.m in Sources */,
+				1EF4948A1BA2EB7200762039 /* MICommentsInteractor.m in Sources */,
+				1EC2AD5C1BA165F2002DF65D /* MIPhotoDetailsInteractor.m in Sources */,
+				1EC2AD651BA165F2002DF65D /* MITransitionFromPhotosToPhotoDetails.m in Sources */,
+				1EC2AD6A1BA165F2002DF65D /* MIPhotosRouter.m in Sources */,
+				1EC2AD631BA165F2002DF65D /* MIPhotoDetailsTableViewController.m in Sources */,
+				1EC2AD6E1BA165F2002DF65D /* MIProfileRouter.m in Sources */,
+				1EC2AD5F1BA165F2002DF65D /* MICommentTableViewCell.m in Sources */,
+				1EC2AD5A1BA165F2002DF65D /* MILoginRouter.m in Sources */,
+				1EC2AD541BA165F2002DF65D /* MICommentsPresenter.m in Sources */,
+				1EC2AD831BA17DD0002DF65D /* MILocalDataManager.m in Sources */,
+				1EC2ACD91BA16215002DF65D /* MIBasePresenter.m in Sources */,
+				1EF494BB1BA36E2500762039 /* UICKeyChainStore+SharedInstance.m in Sources */,
+				1EC2AD6C1BA165F2002DF65D /* MIPhotosCollectionViewController.m in Sources */,
+				1EC2ADC91BA22C02002DF65D /* MIPopularPhotosInteractor.m in Sources */,
+				1EC2ADEC1BA2C600002DF65D /* InstagramPost.m in Sources */,
+				1EF494BA1BA36E2500762039 /* NSString+MD5.m in Sources */,
+				1EC2ADB91BA2119E002DF65D /* MIProfileInteractor.m in Sources */,
+				1EF494C31BA36E2500762039 /* MIImageUtility.m in Sources */,
+				1EF494B91BA36E2500762039 /* NSData+SaveData.m in Sources */,
+				1EF494BD1BA36E2500762039 /* UIImageView+DownloadImage.m in Sources */,
+				1EF494BF1BA36E2500762039 /* UIViewController+InitialState.m in Sources */,
+				1EC2ACDA1BA16215002DF65D /* MIBaseRouter.m in Sources */,
+				1EF494801BA2D5A000762039 /* MICommentsTableViewController.m in Sources */,
+				1EC2AD5B1BA165F2002DF65D /* MILoginViewController.m in Sources */,
+				1EF494EF1BA439AD00762039 /* MIWithAddCommentPanelViewController.m in Sources */,
+				1EC2ADB31BA20F0D002DF65D /* MIMappingManager.m in Sources */,
+				1EF494911BA30C8F00762039 /* MILikedByMeInteractor.m in Sources */,
+				1EF494CA1BA3704600762039 /* MITabBarItemInfo.m in Sources */,
+				1EC2AD601BA165F2002DF65D /* MIMoreCommentsTableViewCell.m in Sources */,
+				1EC2AD841BA17DD0002DF65D /* Model.xcdatamodeld in Sources */,
+				1EC2AD551BA165F2002DF65D /* MICommentsRouter.m in Sources */,
+				1EC2ADF01BA2C600002DF65D /* _InstagramPost.m in Sources */,
+				1EC2AD6B1BA165F2002DF65D /* MIPhotosCollectionViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -932,6 +1336,11 @@
 			isa = PBXTargetDependency;
 			target = 1E4ADC1A1B9DBD520052C757 /* MyInstagram */;
 			targetProxy = 1E4ADC381B9DBD520052C757 /* PBXContainerItemProxy */;
+		};
+		1EC2ADD51BA2C45A002DF65D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EC2ADD01BA2C44F002DF65D /* Mogenerator */;
+			targetProxy = 1EC2ADD41BA2C45A002DF65D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1021,10 +1430,12 @@
 			baseConfigurationReference = 9228CE065A23C3749EAC407E /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Flexis ZAO";
 				INFOPLIST_FILE = MyInstagram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "777aadc6-687b-4931-a528-e82817402c27";
 			};
 			name = Debug;
 		};
@@ -1033,10 +1444,12 @@
 			baseConfigurationReference = 1B73BAB81AAEA478C11B37FD /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Flexis ZAO";
 				INFOPLIST_FILE = MyInstagram/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "777aadc6-687b-4931-a528-e82817402c27";
 			};
 			name = Release;
 		};
@@ -1074,6 +1487,20 @@
 			};
 			name = Release;
 		};
+		1EC2ADD21BA2C44F002DF65D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		1EC2ADD31BA2C44F002DF65D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1104,7 +1531,29 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		1EC2ADD11BA2C44F002DF65D /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EC2ADD21BA2C44F002DF65D /* Debug */,
+				1EC2ADD31BA2C44F002DF65D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		1EC2AD7C1BA17DD0002DF65D /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				1EC2AD7D1BA17DD0002DF65D /* Model.xcdatamodel */,
+			);
+			currentVersion = 1EC2AD7D1BA17DD0002DF65D /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 1E4ADC131B9DBD520052C757 /* Project object */;
 }

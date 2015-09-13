@@ -9,22 +9,34 @@
 #import <UIKit/UIKit.h>
 #import "MIAppDependencies.h"
 
-#import "MIAppDataStore.h"
-
-#import "MIAppPresenter.h"
 #import "MIAppRouter.h"
+#import "MIAppPresenter.h"
 
-#import "MIPhotosPresenter.h"
 #import "MIPhotosRouter.h"
+#import "MIPhotosPresenter.h"
+#import "MIPopularPhotosInteractor.h"
+#import "MILikedByMeInteractor.h"
 
-#import "MIProfilePresenter.h"
 #import "MIProfileRouter.h"
+#import "MIProfilePresenter.h"
+#import "MIProfileInteractor.h"
 
-#import "MILoginPresenter.h"
+#import "MIPhotoDetailsRouter.h"
+#import "MIPhotoDetailsPresenter.h"
+#import "MIPhotoDetailsInteractor.h"
+
+#import "MICommentsRouter.h"
+#import "MICommentsPresenter.h"
+#import "MICommentsInteractor.h"
+
 #import "MILoginRouter.h"
+#import "MILoginPresenter.h"
+#import "MILoginInteractor.h"
 
-static NSString *kPhotosViewControllerIdentifier = @"PhotosViewController";
+static NSString *kPhotosViewControllerIdentifier = @"PhotosCollectionViewController";
 static NSString *kProfileViewControllerIdentifier = @"ProfileViewController";
+
+static NSString *kCommentsViewControllerIdentifier = @"CommentsViewController";
 
 static NSString *kPopularTitle = @"Popular photos";
 static NSString *kLikedByMeTitle = @"Photos liked by Me";
@@ -41,19 +53,7 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
 @interface MIAppDependencies ()
 
 @property (nonatomic, strong) MIAppPresenter *appPresenter;
-@property (nonatomic, strong) MIAppRouter *appRouter;
-
-@property (nonatomic, strong) MIPhotosPresenter *popularPhotosPresenter;
-@property (nonatomic, strong) MIPhotosRouter *popularPhotosRouter;
-
-@property (nonatomic, strong) MIPhotosPresenter *likedPhotosPresenter;
-@property (nonatomic, strong) MIPhotosRouter *likedPhotosRouter;
-
-@property (nonatomic, strong) MIProfilePresenter *profilePresenter;
-@property (nonatomic, strong) MIProfileRouter *profileRouter;
-
 @property (nonatomic, strong) MILoginPresenter *loginPresenter;
-@property (nonatomic, strong) MILoginRouter *loginRouter;
 
 @end
 
@@ -77,83 +77,108 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
 
 - (void)configureDependencies
 {
-    [[MIAppDataStore sharedInstance] setup];
-    
     //App
-    _appRouter = [MIAppRouter new];
+    MIAppRouter *appRouter = [MIAppRouter new];
     _appPresenter = [MIAppPresenter new];
     
     //Popular
     MITabBarItemInfo *popularTbiInfo = [[MITabBarItemInfo alloc] initWithTitle:kPopularTabBarItemTitle
                                                                      imageName:kPopularTabBarItemImageName];
-    _popularPhotosRouter = [[MIPhotosRouter alloc] initWithViewControllerIdentifier:kPhotosViewControllerIdentifier
+    MIPhotosRouter *popularPhotosRouter = [[MIPhotosRouter alloc] initWithViewControllerIdentifier:kPhotosViewControllerIdentifier
                                                                               title:kPopularTitle
                                                                       tabBarItemInfo:popularTbiInfo];
-    _popularPhotosPresenter = [MIPhotosPresenter new];
+    MIPhotosPresenter *popularPhotosPresenter = [MIPhotosPresenter new];
+    MIPopularPhotosInteractor *popularPhotosInteractor = [MIPopularPhotosInteractor new];
     
     //Liked by Me
     MITabBarItemInfo *likedTbiInfo = [[MITabBarItemInfo alloc] initWithTitle:kLikedByMeTabBarItemTitle
                                                                    imageName:kLikedByMeTabBarItemImageName];
-    _likedPhotosRouter = [[MIPhotosRouter new] initWithViewControllerIdentifier:kPhotosViewControllerIdentifier
+    MIPhotosRouter *likedByMeRouter = [[MIPhotosRouter new] initWithViewControllerIdentifier:kPhotosViewControllerIdentifier
                                                                           title:kLikedByMeTitle
                                                                  tabBarItemInfo:likedTbiInfo];
-    _likedPhotosPresenter = [MIPhotosPresenter new];
+    MIPhotosPresenter *likedByMePresenter = [MIPhotosPresenter new];
+    MILikedByMeInteractor *likedByMeInteractor = [MILikedByMeInteractor new];
     
     //Profile
     MITabBarItemInfo *profileTbiInfo = [[MITabBarItemInfo alloc] initWithTitle:kProfileTabBarItemTitle
                                                                    imageName:kProfileTabBarItemImageName];
-    _profileRouter = [[MIProfileRouter new] initWithViewControllerIdentifier:kProfileViewControllerIdentifier
+    MIProfileRouter *profileRouter = [[MIProfileRouter new] initWithViewControllerIdentifier:kProfileViewControllerIdentifier
                                                                        title:kProfileTitle
                                                               tabBarItemInfo:profileTbiInfo];
-    _profilePresenter = [MIProfilePresenter new];
+    MIProfilePresenter *profilePresenter = [MIProfilePresenter new];
+    MIProfileInteractor *profileInteractor = [MIProfileInteractor new];
     
-    //-------------------------//
+    //Photo Details
+    MIPhotoDetailsRouter *photoDetailsRouter = [MIPhotoDetailsRouter new];
+    MIPhotoDetailsPresenter *photoDetailsPresenter = [MIPhotoDetailsPresenter new];
+    MIPhotoDetailsInteractor *photoDetailsInteractor = [MIPhotoDetailsInteractor new];
     
-    _appRouter.presenter = _appPresenter;
-    _appRouter.innerRouters = @[_popularPhotosRouter, _likedPhotosRouter, _profileRouter];
-    _appPresenter.router = _appRouter;
+    //Comments
+    MICommentsRouter *commentsRouter = [[MICommentsRouter alloc] initWithViewControllerIdentifier:kCommentsViewControllerIdentifier];
+    MICommentsPresenter *commentsPresenter = [MICommentsPresenter new];
+    MICommentsInteractor *commentsiInteractor = [MICommentsInteractor new];
     
-    _popularPhotosRouter.presenter = _popularPhotosPresenter;
-    _popularPhotosPresenter.router = _popularPhotosRouter;
-    
-    _likedPhotosRouter.presenter = _likedPhotosPresenter;
-    _likedPhotosPresenter.router = _likedPhotosRouter;
-    
-    _profileRouter.presenter = _profilePresenter;
-    _profilePresenter.router = _profileRouter;
-    
-    _loginRouter = [MILoginRouter new];
+    //Login
+    MILoginRouter *loginRouter = [MILoginRouter new];
     _loginPresenter = [MILoginPresenter new];
-    _loginRouter.presenter = _loginPresenter;
-    _loginPresenter.router = _loginRouter;
+    MILoginInteractor *loginInteractor = [MILoginInteractor new];
+    
+    //Relationships
+    appRouter.presenter = _appPresenter;
+    appRouter.loginRouter = loginRouter;
+    appRouter.innerRouters = @[popularPhotosRouter, likedByMeRouter, profileRouter];
+    _appPresenter.router = appRouter;
+    _appPresenter.innerPresenters = @[popularPhotosPresenter, likedByMePresenter, profilePresenter];
+    
+    popularPhotosRouter.presenter = popularPhotosPresenter;
+    popularPhotosRouter.photoDetailsRouter = photoDetailsRouter;
+    popularPhotosPresenter.router = popularPhotosRouter;
+    popularPhotosPresenter.photoDetailsPresenter = photoDetailsPresenter;
+    popularPhotosPresenter.interactor = popularPhotosInteractor;
+    popularPhotosInteractor.presenter = popularPhotosPresenter;
+    
+    likedByMeRouter.presenter = likedByMePresenter;
+    likedByMeRouter.photoDetailsRouter = photoDetailsRouter;
+    likedByMePresenter.router = likedByMeRouter;
+    likedByMePresenter.photoDetailsPresenter = photoDetailsPresenter;
+    likedByMePresenter.interactor = likedByMeInteractor;
+    likedByMeInteractor.presenter = likedByMePresenter;
+    
+    profileRouter.presenter = profilePresenter;
+    profilePresenter.router = profileRouter;
+    profilePresenter.appRouter = appRouter;
+    profilePresenter.interactor = profileInteractor;
+    profileInteractor.presenter = profilePresenter;
+    
+    photoDetailsRouter.presenter = photoDetailsPresenter;
+    photoDetailsRouter.commentsRouter = commentsRouter;
+    photoDetailsPresenter.router = photoDetailsRouter;
+    photoDetailsPresenter.commentsPresenter = commentsPresenter;
+    photoDetailsPresenter.interactor = photoDetailsInteractor;
+    photoDetailsInteractor.presenter = photoDetailsPresenter;
+    
+    commentsRouter.presenter = commentsPresenter;
+    commentsPresenter.router = commentsRouter;
+    commentsPresenter.interactor = commentsiInteractor;
+    commentsiInteractor.presenter = commentsPresenter;
+    
+    loginRouter.presenter = _loginPresenter;
+    _loginPresenter.router = loginRouter;
+    _loginPresenter.appRouter = appRouter;
+    _loginPresenter.interactor = loginInteractor;
+    loginInteractor.presenter = _loginPresenter;
 }
 
-- (void)installAppViewControllerIntoWindow:(UIWindow *)window
+- (void)processResponseURL:(NSURL *)url
 {
-    [_appRouter presentViewControllerFromWindow:window];
+    [_appPresenter returnAppInitialState];
+    [_loginPresenter processResponseWithURL:url];
 }
 
-- (void)setupColorScheme
+- (void)installAppViewControllerToWindow:(UIWindow *)window
 {
-    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-    [[UINavigationBar appearance] setBarTintColor:[UIColor colorWithRed:50.0/255.0
-                                                                  green:106.0/255.0
-                                                                   blue:161.0/255.0
-                                                                  alpha:1.0]];
-    [[UINavigationBar appearance] setTitleTextAttributes:@{ NSForegroundColorAttributeName : [UIColor whiteColor],
-                                                            NSFontAttributeName : [UIFont fontWithName:@"MarkerFelt-Thin"
-                                                                                                  size:20.0] }];
-    [[UIBarButtonItem appearance] setTitleTextAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"MarkerFelt-Thin"
-                                                                                                  size:20.0] }
-                                                forState:UIControlStateNormal];
-    [[UITabBar appearance] setBarTintColor:[UIColor colorWithRed:37.0/255.0
-                                                           green:41.0/255.0
-                                                            blue:44.0/255.0
-                                                           alpha:1.0]];
-    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{ NSFontAttributeName : [UIFont fontWithName:@"MarkerFelt-Thin"
-                                                                                               size:12.0] }
-                                             forState:UIControlStateNormal];
+    [_appPresenter showAppViewControllerFromWindow:window];
+    [_loginPresenter checkAPIRequestsAvailability];
 }
 
 @end

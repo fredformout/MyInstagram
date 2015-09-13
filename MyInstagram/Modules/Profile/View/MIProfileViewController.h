@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MIProfileInterface.h"
+#import "MIProfilePresenterInterface.h"
+#import "MIProfileViewControllerInterface.h"
 
-@interface MIProfileViewController : UIViewController
+@interface MIProfileViewController : UIViewController <MIProfileViewControllerInterface>
 
-@property (nonatomic, strong) id<MIProfileInterface> actionsHandler;
+@property (nonatomic, weak) id<MIProfilePresenterInterface> presenter;
 
 @end

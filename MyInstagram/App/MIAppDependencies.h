@@ -10,7 +10,7 @@
 
 @interface MIAppDependencies : NSObject
 
-- (void)installAppViewControllerIntoWindow:(UIWindow *)window;
-- (void)setupColorScheme;
+- (void)processResponseURL:(NSURL *)url;
+- (void)installAppViewControllerToWindow:(UIWindow *)window;
 
 @end

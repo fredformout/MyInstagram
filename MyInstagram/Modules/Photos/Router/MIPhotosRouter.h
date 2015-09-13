@@ -7,7 +7,12 @@
 //
 
 #import "MISlaveByTabBarControllerRouter.h"
+#import "MIPhotoDetailsRouter.h"
 
 @interface MIPhotosRouter : MISlaveByTabBarControllerRouter
+
+@property (nonatomic, strong) MIPhotoDetailsRouter *photoDetailsRouter;
+
+- (void)presentPhotoDetails;
 
 @end

@@ -7,7 +7,7 @@
 //
 
 #import "MIAppRouter.h"
-#import "MIAppTabBarController.h"
+#import "UIViewController+EmptyBackButton.h"
 
 @implementation MIAppRouter
 
@@ -20,21 +20,26 @@
 
 #pragma mark - Others
 
-- (void)presentViewControllerFromWindow:(UIWindow *)window
+- (void)presentAppViewControllerFromWindow:(UIWindow *)window
 {
-    MIAppTabBarController *tabBarController = (MIAppTabBarController *)[self viewController];
+    UITabBarController *tabBarController = (UITabBarController *)[self viewControllerFromStoryboard];
     
     NSMutableArray *viewControllers = [NSMutableArray array];
     
     for (MIBaseRouter *router in _innerRouters)
     {
-        [viewControllers addObject:[router viewController]];
+        [viewControllers addObject:[router viewControllerFromStoryboard]];
     }
     
     tabBarController.viewControllers = viewControllers;
     
     window.rootViewController = tabBarController;
     [window makeKeyAndVisible];
+}
+
+- (void)presentLoginViewController
+{
+    [_loginRouter presentViewControllerFromViewController:self.viewController];
 }
 
 @end

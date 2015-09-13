@@ -8,11 +8,14 @@
 
 #import <Foundation/Foundation.h>
 #import "MIBaseRouter.h"
+#import "MILoginRouter.h"
 
 @interface MIAppRouter : MIBaseRouter
 
+@property (nonatomic, weak) MILoginRouter *loginRouter;
 @property (nonatomic, strong) NSArray *innerRouters;
 
-- (void)presentViewControllerFromWindow:(UIWindow *)window;
+- (void)presentAppViewControllerFromWindow:(UIWindow *)window;
+- (void)presentLoginViewController;
 
 @end

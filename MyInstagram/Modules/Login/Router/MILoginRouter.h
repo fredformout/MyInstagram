@@ -12,7 +12,7 @@
 
 @interface MILoginRouter : MIBaseRouter
 
-- (void)presentLoginInterfaceFromViewController:(UIViewController *)viewController;
-- (void)dismissLoginInterface;
+- (void)presentViewControllerFromViewController:(UIViewController *)fromVC;
+- (void)dismissViewController;
 
 @end

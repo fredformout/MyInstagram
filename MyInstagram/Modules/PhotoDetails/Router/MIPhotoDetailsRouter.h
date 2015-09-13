@@ -7,7 +7,16 @@
 //
 
 #import "MIBaseRouter.h"
+#import "MICommentsRouter.h"
 
-@interface MIPhotoDetailsRouter : MIBaseRouter
+@interface MIPhotoDetailsRouter : MIBaseRouter <UINavigationControllerDelegate>
+
+@property (nonatomic, strong) MICommentsRouter *commentsRouter;
+
+- (void)setTransitioningDelegate;
+- (void)unsetTransitioningDelegate;
+
+- (void)presentViewControllerFromViewController:(UIViewController *)fromVC;
+- (void)presentComments;
 
 @end

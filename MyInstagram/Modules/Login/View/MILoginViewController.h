@@ -7,10 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MILoginInterface.h"
+#import "MILoginViewControllerInterface.h"
+#import "MILoginPresenterInterface.h"
 
-@interface MILoginViewController : UIViewController
+@interface MILoginViewController : UIViewController <MILoginViewControllerInterface>
 
-@property (nonatomic, strong) id<MILoginInterface> actionsHandler;
+@property (nonatomic, weak) id<MILoginPresenterInterface> presenter;
 
 @end

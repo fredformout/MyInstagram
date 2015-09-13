@@ -7,8 +7,15 @@
 //
 
 #import "MIBasePresenter.h"
-#import "MIProfileInterface.h"
+#import "MIProfilePresenterInterface.h"
+#import "MIProfileViewControllerInterface.h"
+#import "MIProfileInteractorIOInterface.h"
+#import "MIAppRouter.h"
 
-@interface MIProfilePresenter : MIBasePresenter <MIProfileInterface>
+@interface MIProfilePresenter : MIBasePresenter <MIProfilePresenterInterface, MIProfileInteractorOutputInterface>
+
+@property (nonatomic, weak) MIAppRouter *appRouter;
+@property (nonatomic, weak) id<MIProfileViewControllerInterface> controller;
+@property (nonatomic, strong) id<MIProfileInteractorInputInterface> interactor;
 
 @end

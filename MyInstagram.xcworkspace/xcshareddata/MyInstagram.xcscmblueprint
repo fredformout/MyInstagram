@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "CADDA611C9705DAF1BAAEE090FBA7B821A0AB5CE",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "CADDA611C9705DAF1BAAEE090FBA7B821A0AB5CE" : 0,
+    "0F3241459BEF42F9B0A6F019E898A4835BD69B48" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C464E856-BE5C-464F-A50F-398B2720D014",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "CADDA611C9705DAF1BAAEE090FBA7B821A0AB5CE" : "MyInstagram",
+    "0F3241459BEF42F9B0A6F019E898A4835BD69B48" : "MyInstagram2"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "MyInstagram",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "MyInstagram.xcworkspace",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:fredformout\/MyInstagram.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "0F3241459BEF42F9B0A6F019E898A4835BD69B48"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:fredformout\/MyInstagram.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "CADDA611C9705DAF1BAAEE090FBA7B821A0AB5CE"
+    }
+  ]
+}

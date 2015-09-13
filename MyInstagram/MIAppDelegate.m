@@ -8,6 +8,8 @@
 
 #import "MIAppDelegate.h"
 #import "MIAppDependencies.h"
+#import "MIAppDesigner.h"
+#import "MIFileUtility.h"
 
 @interface MIAppDelegate ()
 
@@ -20,11 +22,24 @@
 - (BOOL)application:(UIApplication *)application
 didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    NSLog(@"Documents directory path: %@", [MIFileUtility pathForDocumentsDirectory]);
+    
     _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     _dependencies = [MIAppDependencies new];
     
-    [_dependencies installAppViewControllerIntoWindow:_window];
-    [_dependencies setupColorScheme];
+    [_dependencies installAppViewControllerToWindow:_window];
+    
+    [MIAppDesigner setupInterface];
+    
+    return YES;
+}
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation
+{
+    [_dependencies processResponseURL:url];
     
     return YES;
 }

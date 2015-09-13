@@ -7,31 +7,49 @@
 //
 
 #import "MILoginPresenter.h"
-#import "InstagramKit.h"
+#import "MILoginRouter.h"
 
 @implementation MILoginPresenter
 
-#pragma mark - MILoginInterface
+#pragma mark - MILoginPresenterInterface
 
 - (void)loginAction
 {
-//    [[InstagramEngine sharedEngine] logout];
-    
-    InstagramKitLoginScope scope = InstagramKitLoginScopeBasic | InstagramKitLoginScopeComments | InstagramKitLoginScopeLikes;
-    
-    NSURL *authURL = [[InstagramEngine sharedEngine] authorizarionURLForScope:scope];
-    [[UIApplication sharedApplication] openURL:authURL];
-    
-//    [[] loadRequest:[NSURLRequest requestWithURL:authURL]];
-    
-    
-//    InstagramEngine *engine = [InstagramEngine sharedEngine];
-//    [engine getPopularMediaWithSuccess:^(NSArray *media, InstagramPaginationInfo *paginationInfo) {
-//        // media is an array of InstagramMedia objects
-//        NSLog(@"media %@", media);
-//    } failure:^(NSError *error, NSInteger statusCode) {
-//        
-//    }];
+    [_interactor getLoginURLRequest];
+}
+
+#pragma mark - MILoginInteractorOutputInterface
+
+- (void)loginInstagram
+{
+    [_appRouter presentLoginViewController];
+}
+
+- (void)processLoginURLRequest:(NSURLRequest *)urlRequest
+{
+    [_controller openURL:urlRequest];
+}
+
+- (void)finishLoginWithSuccess:(BOOL)success
+{
+    if (success)
+    {
+        MILoginRouter *router = (MILoginRouter *)self.router;
+        
+        [router dismissViewController];
+    }
+}
+
+#pragma mark - Others
+
+- (void)checkAPIRequestsAvailability
+{
+    [_interactor checkAPIRequestsAvailability];
+}
+
+- (void)processResponseWithURL:(NSURL *)url
+{
+    [_interactor processResponseWithURL:url];
 }
 
 @end

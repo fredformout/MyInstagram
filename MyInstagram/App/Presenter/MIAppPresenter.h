@@ -11,4 +11,9 @@
 
 @interface MIAppPresenter : MIBasePresenter
 
+@property (nonatomic, strong) NSArray *innerPresenters;
+
+- (void)showAppViewControllerFromWindow:(UIWindow *)window;
+- (void)returnAppInitialState;
+
 @end

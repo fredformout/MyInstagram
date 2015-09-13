@@ -8,9 +8,22 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, ActivityIndicatorType)
+{
+    ActivityIndicatorTypeTop,
+    ActivityIndicatorTypeBottom,
+    ActivityIndicatorTypeAll
+};
+
 @protocol MIPhotosViewControllerInterface <NSObject>
 
-- (void)appendData:(NSArray *)data;
+- (void)showPosts:(NSArray *)posts;
 - (void)reload;
+- (void)stopActivityIndicatorsByType:(ActivityIndicatorType)activityIndicatorType;
+
+- (void)blockTopRefresh;
+- (void)blockBottomRefresh;
+- (void)unblockTopRefresh;
+- (void)unblockBottomRefresh;
 
 @end

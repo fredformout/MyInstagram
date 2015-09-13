@@ -8,14 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import "MIBasePresenter.h"
-#import "MIPhotosInterface.h"
+#import "MIPhotosPresenterInterface.h"
 #import "MIPhotosViewControllerInterface.h"
-#import "MIPhotosInteractorInputInterface.h"
-#import "MIPhotosInteractorOutputInterface.h"
+#import "MIPhotosInteractorIOInterface.h"
+#import "MIPhotoDetailsPresenterInterface.h"
 
-@interface MIPhotosPresenter : MIBasePresenter <MIPhotosInterface, MIPhotosInteractorOutputInterface>
+@interface MIPhotosPresenter : MIBasePresenter <MIPhotosPresenterInterface, MIPhotosInteractorOutputInterface>
 
-@property (nonatomic, strong) id<MIPhotosViewControllerInterface> viewController;
+@property (nonatomic, weak) id<MIPhotosViewControllerInterface> controller;
 @property (nonatomic, strong) id<MIPhotosInteractorInputInterface> interactor;
+
+@property (nonatomic, strong) id<MIPhotoDetailsPresenterInterface> photoDetailsPresenter;
 
 @end
