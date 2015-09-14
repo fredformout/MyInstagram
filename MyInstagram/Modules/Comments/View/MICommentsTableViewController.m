@@ -11,13 +11,26 @@
 #import "MIMoreCommentsTableViewCell.h"
 #import "MICommentsViewController.h"
 
-static CGFloat kEstimatedRowHeight = 100.0;
-
 static NSString *kCaptionTableViewCellReuseIdentifier = @"CaptionTableViewCellReuseIdentifier";
 static NSString *kCommentTableViewCellReuseIdentifier = @"CommentTableViewCellReuseIdentifier";
 static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTableViewCellReuseIdentifier";
 
+@interface MICommentsTableViewController ()
+
+@property (nonatomic, strong) NSMutableDictionary *offscreenCells;
+
+@end
+
 @implementation MICommentsTableViewController
+
+#pragma mark - NSObject
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.offscreenCells = [NSMutableDictionary dictionary];
+}
 
 #pragma mark - UIViewController
 
@@ -26,7 +39,7 @@ static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTable
     [super viewDidLoad];
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.tableView.estimatedRowHeight = kEstimatedRowHeight;
+    self.tableView.estimatedRowHeight = UITableViewAutomaticDimension;
 }
 
 #pragma mark - UITableViewControllerDataSource

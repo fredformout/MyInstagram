@@ -28,4 +28,12 @@
     }
 }
 
+- (void)performAppFirstActions
+{
+    for (MIBasePresenter *presenter in _innerPresenters)
+    {
+        [presenter performFirstActions];
+    }
+}
+
 @end

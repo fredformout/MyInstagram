@@ -68,6 +68,11 @@ static NSString *kSegueToPhotoDetailsTableViewControllerIdentifier = @"SegueToPh
     [self.tableViewController reload];
 }
 
+- (void)stopActivityIndicator
+{
+    [self.tableViewController stopActivityIndicator];
+}
+
 - (void)undoCommentWithText:(NSString *)text
 {
     self.commentTextField.text = text;

@@ -8,10 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import "MIInstagramPost.h"
+#import "MIPhotosPresenterInterface.h"
 
 @protocol MIPhotoDetailsPresenterInterface <NSObject>
 
-- (void)openPost:(MIInstagramPost *)post;
+- (void)openPost:(MIInstagramPost *)post
+       presenter:(id<MIPhotosPresenterInterface>)presenter;
 
 - (void)updateView;
 - (void)reloadView;

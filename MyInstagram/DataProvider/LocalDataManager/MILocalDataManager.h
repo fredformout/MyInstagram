@@ -14,9 +14,10 @@
 + (instancetype)sharedInstance;
 
 - (void)setup;
-- (void)saveData:(NSDictionary *)data
-     mapperClass:(NSString *)mapperClass
-      completion:(dispatch_block_t)completion;
-- (NSArray *)getAllEntitiesByClass:(NSString *)className;
+- (void)clearData;
+
+
+
+
 
 @end

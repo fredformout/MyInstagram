@@ -9,8 +9,6 @@
 #import "MIPhotosCollectionViewController.h"
 #import "Macro.h"
 #import "MITransitionFromPhotosToPhotoDetails.h"
-#import "UIScrollView+SVPullToRefresh.h"
-#import "UIScrollView+SVInfiniteScrolling.h"
 #import "MIPhotosCollectionViewCell.h"
 #import "UIViewController+InitialState.h"
 
@@ -20,11 +18,16 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
 
 @property (nonatomic, strong) NSArray *posts;
 
+@property (nonatomic, strong) UIRefreshControl *refreshControl;
+
 @end
 
 @implementation MIPhotosCollectionViewController
 {
     BOOL viewDidAppearAtFirstTime;
+    CGFloat arbitraryNumber;
+    BOOL infiniteScroll;
+    BOOL infiniteScrollBlocked;
 }
 
 #pragma mark - UIViewController
@@ -36,22 +39,10 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     [_presenter initView];
     
     viewDidAppearAtFirstTime = NO;
+    arbitraryNumber = [UIScreen mainScreen].bounds.size.height;
     
-    __weak typeof(self) weakSelf = self;
-    
-    [self.collectionView addPullToRefreshWithActionHandler:^
-    {
-        __strong typeof(self) strongSelf = weakSelf;
-        
-        [strongSelf.presenter reloadView];
-    }];
-    
-    [self.collectionView addInfiniteScrollingWithActionHandler:^
-    {
-        __strong typeof(self) strongSelf = weakSelf;
-        
-        [strongSelf.presenter updateView];
-    }];
+    [self setupRefreshControl];
+    infiniteScroll = NO;
 }
 
 - (void)viewDidLayoutSubviews
@@ -74,12 +65,7 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     {
         viewDidAppearAtFirstTime = YES;
         
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-        {
-            [self.collectionView.pullToRefreshView startAnimating];
-            
-            [_presenter reloadView];
-        });
+        [self firstActions];
     }
 }
 
@@ -88,7 +74,11 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
 - (NSInteger)collectionView:(UICollectionView *)collectionView
      numberOfItemsInSection:(NSInteger)section
 {
-    return [_posts count];
+    NSInteger count = [_posts count];
+    
+    infiniteScroll = (count > 0);
+    
+    return count;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView
@@ -112,6 +102,25 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     [_presenter openPost:_posts[indexPath.row]];
 }
 
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    CGFloat actualPosition = scrollView.contentOffset.y;
+    CGFloat contentHeight = scrollView.contentSize.height - arbitraryNumber;
+
+    if (actualPosition >= contentHeight)
+    {
+        if (!infiniteScrollBlocked
+            && infiniteScroll)
+        {
+            [_presenter updateView];
+            
+            infiniteScroll = NO;
+        }
+    }
+}
+
 #pragma mark - MIPhotosViewControllerInterface
 
 - (void)showPosts:(NSArray *)posts
@@ -121,68 +130,24 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)reload
 {
+    infiniteScroll = YES;
+    
     [self.collectionView reloadData];
 }
 
-- (void)stopActivityIndicatorsByType:(ActivityIndicatorType)activityIndicatorType
+- (void)stopActivityIndicator
 {
-    [self.collectionView performBatchUpdates:^{}
-                                  completion:^(BOOL finished)
-    {
-        switch (activityIndicatorType)
-        {
-            case ActivityIndicatorTypeTop:
-                [self.collectionView.pullToRefreshView stopAnimating];
-                break;
-            case ActivityIndicatorTypeBottom:
-                [self.collectionView.infiniteScrollingView stopAnimating];
-                break;
-            case ActivityIndicatorTypeAll:
-            {
-                [self.collectionView.pullToRefreshView stopAnimating];
-                [self.collectionView.infiniteScrollingView stopAnimating];
-            }
-                break;
-            default:
-                break;
-        }
-    }];
-}
-
-- (void)blockTopRefresh
-{
-    [self.collectionView performBatchUpdates:^{}
-                                  completion:^(BOOL finished)
-    {
-        self.collectionView.showsPullToRefresh = NO;
-    }];
+    [_refreshControl endRefreshing];
 }
 
 - (void)blockBottomRefresh
 {
-    [self.collectionView performBatchUpdates:^{}
-                                  completion:^(BOOL finished)
-    {
-        self.collectionView.showsInfiniteScrolling = NO;
-    }];
-}
-
-- (void)unblockTopRefresh
-{
-    [self.collectionView performBatchUpdates:^{}
-                                  completion:^(BOOL finished)
-    {
-        self.collectionView.showsPullToRefresh = YES;
-    }];
+    infiniteScrollBlocked = YES;
 }
 
 - (void)unblockBottomRefresh
 {
-    [self.collectionView performBatchUpdates:^{}
-                                  completion:^(BOOL finished)
-    {
-        self.collectionView.showsInfiniteScrolling = YES;
-    }];
+    infiniteScrollBlocked = NO;
 }
 
 #pragma mark - MITransitionPhotosViewControllerInterface
@@ -206,10 +171,34 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     [self.navigationController popToRootViewControllerAnimated:NO];
     
-    [self.collectionView.pullToRefreshView stopAnimating];
-    [self.collectionView.infiniteScrollingView stopAnimating];
-    
-    viewDidAppearAtFirstTime = NO;
+    [_refreshControl endRefreshing];
+    infiniteScroll = NO;
+}
+
+- (void)firstActions
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        [_refreshControl beginRefreshing];
+        
+        [_presenter reloadView];
+    });
+}
+
+#pragma mark - Others
+
+- (void)setupRefreshControl
+{
+    _refreshControl = [UIRefreshControl new];
+    [_refreshControl addTarget:self
+                        action:@selector(reloadView)
+              forControlEvents:UIControlEventValueChanged];
+    [self.collectionView addSubview:_refreshControl];
+}
+
+- (void)reloadView
+{
+    [_presenter reloadView];
 }
 
 @end

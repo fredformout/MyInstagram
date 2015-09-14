@@ -12,12 +12,11 @@
 #import "MIPhotoDetailsInfoTableViewCell.h"
 #import "MICommentTableViewCell.h"
 #import "MIMoreCommentsTableViewCell.h"
-#import "UIScrollView+SVPullToRefresh.h"
 
 static NSInteger kCommentsThreshold = 8;
 static NSInteger kCountOfBaseCells = 2;
 static NSInteger kCountOfLatestComments = 3;
-static CGFloat kBaseEstimatedRowHeight = 100.0;
+static CGFloat kBaseEstimatedRowHeight = 160.0;
 static CGFloat kPhotoEstimatedRowHeight = 320.0;
 
 static NSString *kPhotoDetailsPhotoTableViewCellReuseIdentifier = @"PhotoDetailsPhotoTableViewCellReuseIdentifier";
@@ -40,14 +39,7 @@ static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTable
     
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     
-    __weak typeof(self) weakSelf = self;
-    
-    [self.tableView addPullToRefreshWithActionHandler:^
-    {
-        __strong typeof(self) strongSelf = weakSelf;
-     
-        [strongSelf.viewController.presenter reloadView];
-    }];
+    [self setupRefreshControl];
 }
 
 #pragma mark - UITableViewControllerDataSource
@@ -55,7 +47,7 @@ static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTable
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return kCountOfBaseCells + (_post.caption ? 1 : 0) + (_post.commentsCount <= kCommentsThreshold ? _post.commentsCount : kCountOfLatestComments + 1);
+    return kCountOfBaseCells + (_post.caption ? 1 : 0) + (_post.commentsCount <= kCommentsThreshold ? [_post.comments count] : (kCountOfLatestComments + 1));
 }
 
 - (CGFloat)tableView:(UITableView *)tableView
@@ -170,7 +162,28 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (void)reload
 {
     [self.tableView reloadData];
-    [self.tableView.pullToRefreshView stopAnimating];
+    
+    [self stopActivityIndicator];
+}
+
+- (void)stopActivityIndicator
+{
+    [self.refreshControl endRefreshing];
+}
+
+#pragma mark - Others
+
+- (void)setupRefreshControl
+{
+    self.refreshControl = [UIRefreshControl new];
+    [self.refreshControl addTarget:self
+                            action:@selector(reloadView)
+                  forControlEvents:UIControlEventValueChanged];
+}
+
+- (void)reloadView
+{
+    [_viewController.presenter reloadView];
 }
 
 @end

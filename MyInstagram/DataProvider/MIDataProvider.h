@@ -7,16 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIAPIBaseRequest.h"
+#import "MIAPIRequest.h"
 #import "MIAPIDataManager.h"
 #import "MILocalDataManager.h"
 #import "MIMappingManager.h"
 #import "UICKeyChainStore+SharedInstance.h"
 #import "MIInstagramConstants.h"
 
-@interface MIBaseDataProvider : NSObject
+@interface MIDataProvider : NSObject
 
-+ (BOOL)canMakeRequest;
+- (BOOL)canMakeRequest;
 - (NSString *)mapperClass;
 
 @end

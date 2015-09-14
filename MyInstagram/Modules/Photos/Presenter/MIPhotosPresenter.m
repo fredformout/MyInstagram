@@ -32,11 +32,23 @@
     return self;
 }
 
+#pragma mark - MIBasePresenter
+
+- (void)returnViewControllerToInitialState
+{
+    [super returnViewControllerToInitialState];
+    
+    [_posts removeAllObjects];
+    
+    [_controller reload];
+}
+
 #pragma mark - MIPhotosPresenterInterface
 
 - (void)openPost:(MIInstagramPost *)post
 {
-    [_photoDetailsPresenter openPost:post];
+    [_photoDetailsPresenter openPost:post
+                           presenter:self];
     
     MIPhotosRouter *router = (MIPhotosRouter *)self.router;
     [router presentPhotoDetails];
@@ -45,6 +57,7 @@
 - (void)initView
 {
     [_controller showPosts:_posts];
+    [_interactor getLocalPosts];
 }
 
 - (void)updateView
@@ -57,6 +70,21 @@
     [_interactor getNewPosts];
 }
 
+- (void)refreshPost:(MIInstagramPost *)oldPost
+            newPost:(MIInstagramPost *)newPost
+{
+    if ([_posts containsObject:oldPost])
+    {
+        NSInteger index = [_posts indexOfObject:oldPost];
+        
+        if (index != NSNotFound)
+        {
+            [_posts replaceObjectAtIndex:index
+                              withObject:newPost];
+        }
+    }
+}
+
 #pragma mark - MIPhotosInteractorOutputInterface
 
 - (void)addPosts:(NSArray *)posts
@@ -65,7 +93,7 @@
     [_posts addObjectsFromArray:posts];
     
     [_controller reload];
-    [_controller stopActivityIndicatorsByType:ActivityIndicatorTypeBottom];
+    [_controller stopActivityIndicator];
     
     if (lastPart)
     {
@@ -75,7 +103,7 @@
 
 - (void)failAddPosts
 {
-    [_controller stopActivityIndicatorsByType:ActivityIndicatorTypeBottom];
+    [_controller stopActivityIndicator];
 }
 
 - (void)addNewPosts:(NSArray *)posts
@@ -86,12 +114,12 @@
     [_posts addObjectsFromArray:array];
     
     [_controller reload];
-    [_controller stopActivityIndicatorsByType:ActivityIndicatorTypeTop];
+    [_controller stopActivityIndicator];
 }
 
 - (void)failAddNewPosts
 {
-    [_controller stopActivityIndicatorsByType:ActivityIndicatorTypeTop];
+    [_controller stopActivityIndicator];
 }
 
 - (void)replaceAllPostsByPosts:(NSArray *)posts
@@ -101,14 +129,14 @@
     [_posts addObjectsFromArray:posts];
     
     [_controller reload];
-    [_controller stopActivityIndicatorsByType:ActivityIndicatorTypeAll];
+    [_controller stopActivityIndicator];
     
     lastPart ? [_controller blockBottomRefresh] : [_controller unblockBottomRefresh];
 }
 
 - (void)failReplaceAllPosts
 {
-    [_controller stopActivityIndicatorsByType:ActivityIndicatorTypeAll];
+    [_controller stopActivityIndicator];
 }
 
 @end

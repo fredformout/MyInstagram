@@ -9,7 +9,7 @@
 #import "MIAPIDataManager.h"
 #import <UIKit/UIKit.h>
 #import "AFNetworking.h"
-#import "MIAPIBaseRequest.h"
+#import "MIAPIRequest.h"
 #import "MIInstagramConstants.h"
 
 NSString * const kNetworkAvailableNotificationName = @"NetworkAvailableNotification";
@@ -79,17 +79,7 @@ NSString * const kNetworkUnavailableNotificationName = @"NetworkUnavailableNotif
 
 #pragma mark - Others
 
-- (NSMutableURLRequest *)URLRequestWithRequest:(MIAPIBaseRequest *)request
-{
-    NSString *fullURLString = request.isAbsoluteURL ? request.url : [NSString stringWithFormat:@"%@%@", kInstagramBaseURL, request.url];
-    
-    return  [_operationManager.requestSerializer requestWithMethod:[MIAPIDataManager methodNameForMethodType:request.requestMethod]
-                                                         URLString:fullURLString
-                                                        parameters:request.parameters
-                                                             error:nil];
-}
-
-- (void)startRequest:(MIAPIBaseRequest *)request
+- (void)startOperationWithRequest:(MIAPIRequest *)request
 {
     NSMutableURLRequest *URLRequest = [self URLRequestWithRequest:request];
     
@@ -115,7 +105,7 @@ NSString * const kNetworkUnavailableNotificationName = @"NetworkUnavailableNotif
          {
              if (request.successBlock)
              {
-                 request.successBlock(responseObject);
+                 request.successBlock(responseObject, nil);
              }
          }
      }
@@ -139,14 +129,29 @@ NSString * const kNetworkUnavailableNotificationName = @"NetworkUnavailableNotif
          }
      }];
     
-    [operation start];
+    [_operationManager.operationQueue addOperation:operation];
     
     [UIApplication sharedApplication ].networkActivityIndicatorVisible = YES;
+}
+
+- (void)cancelAllOperations
+{
+    [_operationManager.operationQueue cancelAllOperations];
 }
 
 - (BOOL)isReachable
 {
     return _operationManager.reachabilityManager.reachable;
+}
+
+- (NSMutableURLRequest *)URLRequestWithRequest:(MIAPIRequest *)request
+{
+    NSString *fullURLString = request.isAbsoluteURL ? request.url : [NSString stringWithFormat:@"%@%@", kInstagramBaseURL, request.url];
+    
+    return  [_operationManager.requestSerializer requestWithMethod:[MIAPIDataManager methodNameForMethodType:request.requestMethod]
+                                                         URLString:fullURLString
+                                                        parameters:request.parameters
+                                                             error:nil];
 }
 
 + (NSString *)urlencodeString:(NSString *)string

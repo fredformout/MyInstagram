@@ -6,7 +6,6 @@
 extern const struct InstagramUserAttributes {
 	__unsafe_unretained NSString *fullname;
 	__unsafe_unretained NSString *identifier;
-	__unsafe_unretained NSString *userPhotoPath;
 	__unsafe_unretained NSString *userPhotoURL;
 	__unsafe_unretained NSString *username;
 } InstagramUserAttributes;
@@ -28,10 +27,6 @@ extern const struct InstagramUserAttributes {
 
 //- (BOOL)validateIdentifier:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSString* userPhotoPath;
-
-//- (BOOL)validateUserPhotoPath:(id*)value_ error:(NSError**)error_;
-
 @property (nonatomic, strong) NSString* userPhotoURL;
 
 //- (BOOL)validateUserPhotoURL:(id*)value_ error:(NSError**)error_;
@@ -49,9 +44,6 @@ extern const struct InstagramUserAttributes {
 
 - (NSString*)primitiveIdentifier;
 - (void)setPrimitiveIdentifier:(NSString*)value;
-
-- (NSString*)primitiveUserPhotoPath;
-- (void)setPrimitiveUserPhotoPath:(NSString*)value;
 
 - (NSString*)primitiveUserPhotoURL;
 - (void)setPrimitiveUserPhotoURL:(NSString*)value;

@@ -15,5 +15,6 @@
 
 - (void)showAppViewControllerFromWindow:(UIWindow *)window;
 - (void)returnAppInitialState;
+- (void)performAppFirstActions;
 
 @end

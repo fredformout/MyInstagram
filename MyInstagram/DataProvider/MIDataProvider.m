@@ -6,15 +6,21 @@
 //  Copyright (c) 2015 Vladimir Vasilev. All rights reserved.
 //
 
-#import "MIBaseDataProvider.h"
+#import "MIDataProvider.h"
 #import "UICKeyChainStore+SharedInstance.h"
 #import "MIAPIDataManager.h"
 #import "MIInstagramConstants.h"
-#import "MIAPIBaseRequest.h"
+#import "MIAPIRequest.h"
 
-@implementation MIBaseDataProvider
+@interface MIDataProvider ()
 
-+ (BOOL)canMakeRequest
+@end
+
+@implementation MIDataProvider
+
+#pragma mark - Others
+
+- (BOOL)canMakeRequest
 {
     return [UICKeyChainStore sharedInstance][kAccessTokenKey]
     && [[MIAPIDataManager sharedInstance] isReachable];
@@ -25,7 +31,7 @@
     return nil;
 }
 
-- (void)APIActionWithRequest:(MIAPIBaseRequest *)request
+- (void)APIActionWithRequest:(MIAPIRequest *)request
                   completion:(void (^)(NSDictionary *data))completion
 {
     //

@@ -14,8 +14,6 @@
 @property (nonatomic, copy) NSString *identifier;
 @property (nonatomic, copy) NSString *username;
 @property (nonatomic, copy) NSString *fullname;
-@property (nonatomic, strong) UIImage *userPhoto;
 @property (nonatomic, copy) NSString *userPhotoURL;
-@property (nonatomic, copy) NSString *userPhotoPath;
 
 @end

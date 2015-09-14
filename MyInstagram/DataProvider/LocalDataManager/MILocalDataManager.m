@@ -8,6 +8,15 @@
 
 #import "MILocalDataManager.h"
 #import "MagicalRecord.h"
+#import "FEMDeserializer.h"
+#import "FEMSerializer.h"
+#import "InstagramUser.h"
+#import "InstagramList.h"
+#import "InstagramPost.h"
+#import "InstagramComment.h"
+#import "MIMappingManager.h"
+
+#import "MIConstants.h"
 
 @implementation MILocalDataManager
 
@@ -47,34 +56,15 @@
     [MagicalRecord setupCoreDataStack];
 }
 
-- (void)saveData:(NSDictionary *)data
-     mapperClass:(NSString *)mapperClass
-      completion:(dispatch_block_t)completion
+- (void)clearData
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext)
     {
-//        Class class = NSClassFromString(mapperClass);
-//        [class mapData:data
-//               context:localContext];
-    }
-                      completion:^(BOOL contextDidSave, NSError *error)
-    {
-        if (contextDidSave
-            && completion)
-        {
-            completion();
-        }
+        [InstagramUser MR_truncateAllInContext:localContext];
+        [InstagramList MR_truncateAllInContext:localContext];
+        [InstagramPost MR_truncateAllInContext:localContext];
+        [InstagramComment MR_truncateAllInContext:localContext];
     }];
-}
-
-- (NSArray *)getAllEntitiesByClass:(NSString *)className
-{
-    if ([className isEqualToString:@"Post"])
-    {
-//        return [Post MR_findAll];
-    }
-    
-    return nil;
 }
 
 @end

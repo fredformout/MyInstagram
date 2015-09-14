@@ -11,9 +11,16 @@
 
 @implementation MIBasePresenter
 
+#pragma mark - Others
+
 - (void)returnViewControllerToInitialState
 {
     [_viewController returnToInitialState];
+}
+
+- (void)performFirstActions
+{
+    [_viewController firstActions];
 }
 
 @end

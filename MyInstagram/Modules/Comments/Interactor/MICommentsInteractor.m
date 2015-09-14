@@ -7,7 +7,10 @@
 //
 
 #import "MICommentsInteractor.h"
-#import "MICommentsDataProvider.h"
+#import "MIDataProvider+Comments.h"
+#import "MIDataProvider+Images.h"
+#import "MIDataProvider+User.h"
+#import "MIInstagramUser.h"
 
 @implementation MICommentsInteractor
 
@@ -16,14 +19,20 @@
 - (void)getCommentsForPost:(MIInstagramPost *)post
          lastViewedComment:(MIInstagramComment *)lastViewedComment
 {
-    [MICommentsDataProvider getCommentsByPostId:post.identifier
-                            lastViewedCommentId:lastViewedComment.identifier
-                                   successBlock:^(NSArray *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getCommentsByPostId:post.identifier
+                       lastViewedCommentId:lastViewedComment.identifier
+                              successBlock:^(NSArray *data)
     {
-        [_presenter showComments:data
-                            post:post];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter showComments:data
+                                      post:post];
+        
+        [strongSelf downloadPhotosForComments:data];
     }
-                                   failureBlock:^(NSString *error){}];
+                              failureBlock:^(NSString *error){}];
 }
 
 #pragma mark - MIAddCommentInteractorInputInterface
@@ -35,6 +44,12 @@
     
     comment.text = text;
     
+    MIInstagramUser *user = (MIInstagramUser *)[self.dataProvider localUser];
+    
+    comment.username = user.username;
+    comment.fullname = user.fullname;
+    comment.userPhotoURL = user.userPhotoURL;
+    
     return comment;
 }
 
@@ -43,19 +58,25 @@
 {
     return;
     
-    [MICommentsDataProvider addCommentByPostId:post.identifier
-                                          text:comment.text
-                                  successBlock:^(NSObject *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider addCommentByPostId:post.identifier
+                                     text:comment.text
+                             successBlock:^(NSObject *data)
     {
-        [_presenter finishAddComment:comment
-                                post:post
-                             success:YES];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishAddComment:comment
+                                          post:post
+                                       success:YES];
     }
-                                  failureBlock:^(NSString *error)
+                             failureBlock:^(NSString *error)
     {
-        [_presenter finishAddComment:comment
-                                post:post
-                             success:NO];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishAddComment:comment
+                                          post:post
+                                       success:NO];
     }];
 }
 

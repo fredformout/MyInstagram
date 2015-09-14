@@ -8,7 +8,6 @@ extern const struct InstagramCommentAttributes {
 	__unsafe_unretained NSString *fullname;
 	__unsafe_unretained NSString *identifier;
 	__unsafe_unretained NSString *text;
-	__unsafe_unretained NSString *userPhotoPath;
 	__unsafe_unretained NSString *userPhotoURL;
 	__unsafe_unretained NSString *username;
 } InstagramCommentAttributes;
@@ -46,10 +45,6 @@ extern const struct InstagramCommentRelationships {
 
 //- (BOOL)validateText:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSString* userPhotoPath;
-
-//- (BOOL)validateUserPhotoPath:(id*)value_ error:(NSError**)error_;
-
 @property (nonatomic, strong) NSString* userPhotoURL;
 
 //- (BOOL)validateUserPhotoURL:(id*)value_ error:(NSError**)error_;
@@ -81,9 +76,6 @@ extern const struct InstagramCommentRelationships {
 
 - (NSString*)primitiveText;
 - (void)setPrimitiveText:(NSString*)value;
-
-- (NSString*)primitiveUserPhotoPath;
-- (void)setPrimitiveUserPhotoPath:(NSString*)value;
 
 - (NSString*)primitiveUserPhotoURL;
 - (void)setPrimitiveUserPhotoURL:(NSString*)value;

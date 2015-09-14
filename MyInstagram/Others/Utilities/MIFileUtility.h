@@ -9,6 +9,8 @@
 
 + (void)deleteFile:(NSString *)fileName;
 
++ (void)deleteAllFiles;
+
 + (BOOL)fileExistsAtAbsolutePath:(NSString*)filename;
 
 + (BOOL)directoryExistsAtAbsolutePath:(NSString*)filename;

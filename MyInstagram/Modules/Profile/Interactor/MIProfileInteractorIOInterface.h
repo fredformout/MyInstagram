@@ -11,6 +11,7 @@
 
 @protocol MIProfileInteractorInputInterface <NSObject>
 
+- (void)getLocalUser;
 - (void)getUser;
 - (void)logout;
 

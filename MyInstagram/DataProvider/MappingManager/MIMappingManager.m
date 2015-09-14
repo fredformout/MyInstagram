@@ -10,6 +10,16 @@
 #import "MIInstagramUser.h"
 #import "MIInstagramPost.h"
 #import "MIInstagramComment.h"
+#import "InstagramUser.h"
+#import "InstagramPost.h"
+#import "InstagramComment.h"
+#import "MIConstants.h"
+
+@interface MIMappingManager ()
+
+@property (nonatomic, strong) NSMutableDictionary *mappings;
+
+@end
 
 @implementation MIMappingManager
 
@@ -36,7 +46,10 @@
     
     if (self)
     {
-        [self createMappings];
+        self.mappings = [NSMutableDictionary dictionary];
+        
+        [self createToObjectMappings];
+        [self createToManagedObjectMappings];
     }
     
     return self;
@@ -44,74 +57,179 @@
 
 #pragma mark - Others
 
-- (void)createMappings
+- (FEMMapping *)mappingForKey:(NSString *)key
 {
-    _userMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramUser class]];
-    _userMapping.primaryKey = @"identifier";
+    return _mappings[key];
+}
+
+- (void)createToObjectMappings
+{
+    //UserToObjectMapping
+    FEMMapping *userObjectMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramUser class]];
+    userObjectMapping.primaryKey = @"identifier";
     
-    [_userMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
+    [userObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
                                                      toKeyPath:@"id"]];
-    [_userMapping addAttribute:[FEMAttribute mappingOfProperty:@"username"
+    [userObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"username"
                                                      toKeyPath:@"username"]];
-    [_userMapping addAttribute:[FEMAttribute mappingOfProperty:@"fullname"
+    [userObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"fullname"
                                                      toKeyPath:@"full_name"]];
-    [_userMapping addAttribute:[FEMAttribute mappingOfProperty:@"userPhotoURL"
+    [userObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"userPhotoURL"
                                                      toKeyPath:@"profile_picture"]];
     
-    _commentMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramComment class]];
-    _commentMapping.primaryKey = @"identifier";
+    //CommentToObjectMapping
+    FEMMapping *commentObjectMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramComment class]];
+    commentObjectMapping.primaryKey = @"identifier";
     
-    [_commentMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
+    [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
                                                      toKeyPath:@"id"]];
-    [_commentMapping addAttribute:[FEMAttribute mappingOfProperty:@"date"
-                                                     toKeyPath:@"created_time"
-                                                           map:^id(__nonnull id value)
+    [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"date"
+                                                                toKeyPath:@"created_time"
+                                                                      map:^id(__nonnull id value)
     {
         return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
+    }
+                                                               reverseMap:^id(__nonnull id value)
+    {
+        return [NSString stringWithFormat:@"%f", [value timeIntervalSince1970]];
     }]];
-    [_commentMapping addAttribute:[FEMAttribute mappingOfProperty:@"text"
+    [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"text"
                                                      toKeyPath:@"text"]];
-    [_commentMapping addAttribute:[FEMAttribute mappingOfProperty:@"username"
+    [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"username"
                                                      toKeyPath:@"from.username"]];
-    [_commentMapping addAttribute:[FEMAttribute mappingOfProperty:@"fullname"
+    [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"fullname"
                                                      toKeyPath:@"from.full_name"]];
-    [_commentMapping addAttribute:[FEMAttribute mappingOfProperty:@"userPhotoURL"
+    [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"userPhotoURL"
                                                      toKeyPath:@"from.profile_picture"]];
     
-    _postMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramPost class]];
-    _postMapping.primaryKey = @"identifier";
+    //PostToObjectMapping
+    FEMMapping *postObjectMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramPost class]];
+    postObjectMapping.primaryKey = @"identifier";
     
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
                                                 toKeyPath:@"id"]];
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"date"
-                                                toKeyPath:@"created_time"
-                                                      map:^id(__nonnull id value)
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"date"
+                                                             toKeyPath:@"created_time"
+                                                                   map:^id(__nonnull id value)
     {
         return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
+    }
+                                                            reverseMap:^id(__nonnull id value)
+    {
+        return [NSString stringWithFormat:@"%f", [value timeIntervalSince1970]];
     }]];
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"likesCount"
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"likesCount"
                                                 toKeyPath:@"likes.count"]];
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"commentsCount"
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"commentsCount"
                                                 toKeyPath:@"comments.count"]];
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"likedByMe"
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"likedByMe"
                                                 toKeyPath:@"user_has_liked"]];
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"lowResolutionPhotoURL"
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"lowResolutionPhotoURL"
                                                 toKeyPath:@"images.low_resolution.url"]];
-    [_postMapping addAttribute:[FEMAttribute mappingOfProperty:@"standardResolutionPhotoURL"
+    [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"standardResolutionPhotoURL"
                                                 toKeyPath:@"images.standard_resolution.url"]];
     
     FEMRelationship *commentsRelationship = [[FEMRelationship alloc] initWithProperty:@"comments"
                                                                               keyPath:@"comments.data"
-                                                                              mapping:_commentMapping];
+                                                                              mapping:commentObjectMapping];
     commentsRelationship.toMany = YES;
     
-    [_postMapping addRelationship:commentsRelationship];
+    [postObjectMapping addRelationship:commentsRelationship];
     
     FEMRelationship *captionRelationship = [[FEMRelationship alloc] initWithProperty:@"caption"
                                                                              keyPath:@"caption"
-                                                                             mapping:_commentMapping];
+                                                                             mapping:commentObjectMapping];
     
-    [_postMapping addRelationship:captionRelationship];
+    [postObjectMapping addRelationship:captionRelationship];
+    
+    _mappings[kPostObjectMappingKey] = postObjectMapping;
+    _mappings[kCommentObjectMappingKey] = commentObjectMapping;
+    _mappings[kUserObjectMappingKey] = userObjectMapping;
+}
+
+- (void)createToManagedObjectMappings
+{
+    //UserToManagedObjectMapping
+    FEMMapping *userManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:NSStringFromClass([InstagramUser class])];
+    userManagedObjectMapping.primaryKey = @"identifier";
+    
+    [userManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
+                                                             toKeyPath:@"id"]];
+    [userManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"username"
+                                                             toKeyPath:@"username"]];
+    [userManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"fullname"
+                                                             toKeyPath:@"full_name"]];
+    [userManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"userPhotoURL"
+                                                             toKeyPath:@"profile_picture"]];
+    
+    //CommentToManagedObjectMapping
+    FEMMapping *commentManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:NSStringFromClass([InstagramComment class])];
+    commentManagedObjectMapping.primaryKey = @"identifier";
+    
+    [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
+                                                                toKeyPath:@"id"]];
+    [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"date"
+                                                                toKeyPath:@"created_time"
+                                                                      map:^id(__nonnull id value)
+                                           {
+                                               return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
+                                           }
+                                                                      reverseMap:^id(__nonnull id value)
+                                                  {
+                                                      return [NSString stringWithFormat:@"%f", [value timeIntervalSince1970]];
+                                                  }]];
+    [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"text"
+                                                                toKeyPath:@"text"]];
+    [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"username"
+                                                                toKeyPath:@"from.username"]];
+    [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"fullname"
+                                                                toKeyPath:@"from.full_name"]];
+    [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"userPhotoURL"
+                                                                toKeyPath:@"from.profile_picture"]];
+    
+    //PostToManagedObjectMapping
+    FEMMapping *postManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:NSStringFromClass([InstagramPost class])];
+    postManagedObjectMapping.primaryKey = @"identifier";
+    
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
+                                                             toKeyPath:@"id"]];
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"date"
+                                                             toKeyPath:@"created_time"
+                                                                   map:^id(__nonnull id value)
+                                        {
+                                            return [NSDate dateWithTimeIntervalSince1970:[value doubleValue]];
+                                        }
+                                                                   reverseMap:^id(__nonnull id value)
+                                               {
+                                                   return [NSString stringWithFormat:@"%f", [value timeIntervalSince1970]];
+                                               }]];
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"likesCount"
+                                                             toKeyPath:@"likes.count"]];
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"commentsCount"
+                                                             toKeyPath:@"comments.count"]];
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"likedByMe"
+                                                             toKeyPath:@"user_has_liked"]];
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"lowResolutionPhotoURL"
+                                                             toKeyPath:@"images.low_resolution.url"]];
+    [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"standardResolutionPhotoURL"
+                                                             toKeyPath:@"images.standard_resolution.url"]];
+    
+    FEMRelationship *commentsRelationship = [[FEMRelationship alloc] initWithProperty:@"comments"
+                                                                              keyPath:@"comments.data"
+                                                                              mapping:commentManagedObjectMapping];
+    commentsRelationship.toMany = YES;
+    
+    [postManagedObjectMapping addRelationship:commentsRelationship];
+    
+    FEMRelationship *captionRelationship = [[FEMRelationship alloc] initWithProperty:@"caption"
+                                                                             keyPath:@"caption"
+                                                                             mapping:commentManagedObjectMapping];
+    
+    [postManagedObjectMapping addRelationship:captionRelationship];
+    
+    _mappings[kPostManagedObjectMappingKey] = postManagedObjectMapping;
+    _mappings[kCommentManagedObjectMappingKey] = commentManagedObjectMapping;
+    _mappings[kUserManagedObjectMappingKey] = userManagedObjectMapping;
 }
 
 @end

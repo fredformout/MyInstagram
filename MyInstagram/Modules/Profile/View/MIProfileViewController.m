@@ -9,10 +9,11 @@
 #import "MIProfileViewController.h"
 #import "UIImageView+DownloadImage.h"
 #import "UIViewController+InitialState.h"
+#import "MIInstagramConstants.h"
+#import "MIFileUtility.h"
 
 @interface MIProfileViewController ()
 
-@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 @property (nonatomic, weak) IBOutlet UIImageView *photoImageView;
 @property (nonatomic, weak) IBOutlet UILabel *usernameLabel;
 @property (nonatomic, weak) IBOutlet UILabel *fullnameLabel;
@@ -29,6 +30,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [_presenter initView];
     
     viewDidAppearAtFirstTime = NO;
 }
@@ -49,9 +52,7 @@
     {
         viewDidAppearAtFirstTime = YES;
 
-        [_activityIndicatorView startAnimating];
-        
-        [_presenter getUser];
+        [self firstActions];
     }
 }
 
@@ -66,19 +67,33 @@
 
 - (void)showUser:(MIInstagramUser *)user
 {
-    [_activityIndicatorView stopAnimating];
+    [self setupPhoto];
     
     _usernameLabel.text = user.username;
     _fullnameLabel.text = user.fullname;
-    [_photoImageView loadImageFromURL:[NSURL URLWithString:user.userPhotoURL]
-                           cachingKey:user.identifier];
 }
 
 #pragma mark - UIViewController+InitialState
 
 - (void)returnToInitialState
 {
-    viewDidAppearAtFirstTime = NO;
+    //
+}
+
+- (void)firstActions
+{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+    {
+        [_presenter getUser];
+    });
+}
+
+#pragma mark - Others
+
+- (void)setupPhoto
+{
+    UIImage *image = [UIImage imageWithContentsOfFile:[MIFileUtility pathFromDocumentsForFilename:kUserPhotoPattern]];
+    _photoImageView.image = image;
 }
 
 @end

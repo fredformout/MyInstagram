@@ -17,12 +17,8 @@
 @property (nonatomic, assign) NSInteger commentsCount;
 @property (nonatomic, strong) NSDate *date;
 @property (nonatomic, assign) BOOL likedByMe;
-@property (nonatomic, strong) UIImage *lowResolutionPhoto;
 @property (nonatomic, copy) NSString *lowResolutionPhotoURL;
-@property (nonatomic, copy) NSString *lowResolutionPhotoPath;
-@property (nonatomic, strong) UIImage *standardResolutionPhoto;
 @property (nonatomic, copy) NSString *standardResolutionPhotoURL;
-@property (nonatomic, copy) NSString *standardResolutionPhotoPath;
 @property (nonatomic, strong) MIInstagramComment *caption;
 @property (nonatomic, copy) NSArray *comments;
 

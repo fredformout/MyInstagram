@@ -10,10 +10,9 @@
 
 @protocol MIPhotosInteractorInputInterface <NSObject>
 
+- (void)getLocalPosts;
 - (void)getNewPosts;
 - (void)getMorePosts;
-- (void)getPhotoByURLString:(NSString *)URLString
-                 identifier:(NSString *)identifier;
 
 @end
 

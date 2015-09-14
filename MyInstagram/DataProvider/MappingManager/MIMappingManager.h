@@ -11,10 +11,8 @@
 
 @interface MIMappingManager : NSObject
 
-@property (nonatomic, strong) FEMMapping *userMapping;
-@property (nonatomic, strong) FEMMapping *postMapping;
-@property (nonatomic, strong) FEMMapping *commentMapping;
-
 + (instancetype)sharedInstance;
+
+- (FEMMapping *)mappingForKey:(NSString *)key;
 
 @end

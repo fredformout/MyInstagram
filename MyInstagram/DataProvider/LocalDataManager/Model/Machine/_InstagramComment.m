@@ -8,7 +8,6 @@ const struct InstagramCommentAttributes InstagramCommentAttributes = {
 	.fullname = @"fullname",
 	.identifier = @"identifier",
 	.text = @"text",
-	.userPhotoPath = @"userPhotoPath",
 	.userPhotoURL = @"userPhotoURL",
 	.username = @"username",
 };
@@ -54,8 +53,6 @@ const struct InstagramCommentRelationships InstagramCommentRelationships = {
 @dynamic identifier;
 
 @dynamic text;
-
-@dynamic userPhotoPath;
 
 @dynamic userPhotoURL;
 

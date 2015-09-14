@@ -9,6 +9,7 @@
 #import "MIBasePresenter.h"
 #import "MIPhotoDetailsPresenterInterface.h"
 #import "MIPhotoDetailsViewControllerInterface.h"
+#import "MIPhotosPresenterInterface.h"
 #import "MICommentsPresenterInterface.h"
 #import "MIAddCommentInteractorIOInterface.h"
 #import "MIAddCommentPresenterInterface.h"
@@ -18,6 +19,8 @@
 
 @property (nonatomic, weak) id<MIPhotoDetailsViewControllerInterface> controller;
 @property (nonatomic, strong) id<MIAddCommentInteractorInputInterface, MIPhotoDetailsInteractorInputInterface> interactor;
+
+@property (nonatomic, weak) id<MIPhotosPresenterInterface> photosPresenter;
 @property (nonatomic, strong) id<MICommentsPresenterInterface> commentsPresenter;
 
 @end

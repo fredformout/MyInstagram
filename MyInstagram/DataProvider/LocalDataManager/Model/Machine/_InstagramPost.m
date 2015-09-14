@@ -9,10 +9,8 @@ const struct InstagramPostAttributes InstagramPostAttributes = {
 	.identifier = @"identifier",
 	.likedByMe = @"likedByMe",
 	.likesCount = @"likesCount",
-	.lowResolutionPhotoPath = @"lowResolutionPhotoPath",
 	.lowResolutionPhotoURL = @"lowResolutionPhotoURL",
-	.standardPhotoPath = @"standardPhotoPath",
-	.standardPhotoURL = @"standardPhotoURL",
+	.standardResolutionPhotoURL = @"standardResolutionPhotoURL",
 };
 
 const struct InstagramPostRelationships InstagramPostRelationships = {
@@ -130,13 +128,9 @@ const struct InstagramPostRelationships InstagramPostRelationships = {
 	[self setPrimitiveLikesCount:[NSNumber numberWithLongLong:value_]];
 }
 
-@dynamic lowResolutionPhotoPath;
-
 @dynamic lowResolutionPhotoURL;
 
-@dynamic standardPhotoPath;
-
-@dynamic standardPhotoURL;
+@dynamic standardResolutionPhotoURL;
 
 @dynamic caption;
 

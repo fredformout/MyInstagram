@@ -10,16 +10,30 @@
 
 @implementation MIProfilePresenter
 
+#pragma mark - MIBasePresenter
+
+- (void)returnViewControllerToInitialState
+{
+    [super returnViewControllerToInitialState];
+    
+    [_controller showUser:nil];
+}
+
 #pragma mark - MIProfilePresenterInterface
 
-- (void)logoutAction
+- (void)initView
 {
-    [_interactor logout];
+    [_interactor getLocalUser];
 }
 
 - (void)getUser
 {
     [_interactor getUser];
+}
+
+- (void)logoutAction
+{
+    [_interactor logout];
 }
 
 #pragma mark - MIProfileInteractorOutputInterface

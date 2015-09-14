@@ -8,7 +8,7 @@
 
 #import "MILoginViewController.h"
 
-#import "MIAPIBaseRequest.h"
+#import "MIAPIRequest.h"
 #import "MIAPIDataManager.h"
 #import "UICKeyChainStore+SharedInstance.h"
 #import "MIInstagramConstants.h"

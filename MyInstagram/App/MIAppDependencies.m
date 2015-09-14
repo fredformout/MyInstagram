@@ -173,6 +173,7 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
 {
     [_appPresenter returnAppInitialState];
     [_loginPresenter processResponseWithURL:url];
+    [_appPresenter performAppFirstActions];
 }
 
 - (void)installAppViewControllerToWindow:(UIWindow *)window

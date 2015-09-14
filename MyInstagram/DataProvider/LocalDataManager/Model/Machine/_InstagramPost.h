@@ -9,10 +9,8 @@ extern const struct InstagramPostAttributes {
 	__unsafe_unretained NSString *identifier;
 	__unsafe_unretained NSString *likedByMe;
 	__unsafe_unretained NSString *likesCount;
-	__unsafe_unretained NSString *lowResolutionPhotoPath;
 	__unsafe_unretained NSString *lowResolutionPhotoURL;
-	__unsafe_unretained NSString *standardPhotoPath;
-	__unsafe_unretained NSString *standardPhotoURL;
+	__unsafe_unretained NSString *standardResolutionPhotoURL;
 } InstagramPostAttributes;
 
 extern const struct InstagramPostRelationships {
@@ -66,21 +64,13 @@ extern const struct InstagramPostRelationships {
 
 //- (BOOL)validateLikesCount:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSString* lowResolutionPhotoPath;
-
-//- (BOOL)validateLowResolutionPhotoPath:(id*)value_ error:(NSError**)error_;
-
 @property (nonatomic, strong) NSString* lowResolutionPhotoURL;
 
 //- (BOOL)validateLowResolutionPhotoURL:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSString* standardPhotoPath;
+@property (nonatomic, strong) NSString* standardResolutionPhotoURL;
 
-//- (BOOL)validateStandardPhotoPath:(id*)value_ error:(NSError**)error_;
-
-@property (nonatomic, strong) NSString* standardPhotoURL;
-
-//- (BOOL)validateStandardPhotoURL:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateStandardResolutionPhotoURL:(id*)value_ error:(NSError**)error_;
 
 @property (nonatomic, strong) InstagramComment *caption;
 
@@ -130,17 +120,11 @@ extern const struct InstagramPostRelationships {
 - (int64_t)primitiveLikesCountValue;
 - (void)setPrimitiveLikesCountValue:(int64_t)value_;
 
-- (NSString*)primitiveLowResolutionPhotoPath;
-- (void)setPrimitiveLowResolutionPhotoPath:(NSString*)value;
-
 - (NSString*)primitiveLowResolutionPhotoURL;
 - (void)setPrimitiveLowResolutionPhotoURL:(NSString*)value;
 
-- (NSString*)primitiveStandardPhotoPath;
-- (void)setPrimitiveStandardPhotoPath:(NSString*)value;
-
-- (NSString*)primitiveStandardPhotoURL;
-- (void)setPrimitiveStandardPhotoURL:(NSString*)value;
+- (NSString*)primitiveStandardResolutionPhotoURL;
+- (void)setPrimitiveStandardResolutionPhotoURL:(NSString*)value;
 
 - (InstagramComment*)primitiveCaption;
 - (void)setPrimitiveCaption:(InstagramComment*)value;

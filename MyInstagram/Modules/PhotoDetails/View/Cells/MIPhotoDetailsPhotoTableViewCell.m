@@ -7,10 +7,25 @@
 //
 
 #import "MIPhotoDetailsPhotoTableViewCell.h"
-#import "UIImageView+DownloadImage.h"
-#import "MIImageUtility.h"
+#import "MIInstagramConstants.h"
+#import "MIFileUtility.h"
+
+@interface MIPhotoDetailsPhotoTableViewCell ()
+
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
+@property (nonatomic, strong) NSString *imageName;
+
+@end
 
 @implementation MIPhotoDetailsPhotoTableViewCell
+
+#pragma mark - NSObject
+
+- (void)dealloc
+{
+    [self unsubscribe];
+}
 
 #pragma mark - Others
 
@@ -18,8 +33,41 @@
 {
     self.post = post;
     
-    [_photoImageView loadImageFromURL:[NSURL URLWithString:post.standardResolutionPhotoURL]
-                           cachingKey:post.identifier];
+    [self setupPhoto];
+}
+
+- (void)setupPhoto
+{
+    [self unsubscribe];
+    
+    self.imageName = [NSString stringWithFormat:@"%@_%@", kStandardResolutionPhotoPattern, _post.identifier];
+    UIImage *image = [UIImage imageWithContentsOfFile:[MIFileUtility pathFromDocumentsForFilename:_imageName]];
+    
+    if (!image)
+    {
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(setupPhoto)
+                                                     name:_imageName
+                                                   object:nil];
+        
+        [_activityIndicatorView startAnimating];
+    }
+    else
+    {
+        [_activityIndicatorView stopAnimating];
+    }
+    
+    _photoImageView.image = image;
+}
+
+- (void)unsubscribe
+{
+    if (_imageName)
+    {
+        [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                        name:_imageName
+                                                      object:nil];
+    }
 }
 
 @end

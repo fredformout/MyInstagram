@@ -6,7 +6,6 @@
 const struct InstagramUserAttributes InstagramUserAttributes = {
 	.fullname = @"fullname",
 	.identifier = @"identifier",
-	.userPhotoPath = @"userPhotoPath",
 	.userPhotoURL = @"userPhotoURL",
 	.username = @"username",
 };
@@ -43,8 +42,6 @@ const struct InstagramUserAttributes InstagramUserAttributes = {
 @dynamic fullname;
 
 @dynamic identifier;
-
-@dynamic userPhotoPath;
 
 @dynamic userPhotoURL;
 

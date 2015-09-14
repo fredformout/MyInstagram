@@ -26,17 +26,24 @@ extern const struct InstagramListRelationships {
 
 //- (BOOL)validateName:(id*)value_ error:(NSError**)error_;
 
-@property (nonatomic, strong) NSSet *posts;
+@property (nonatomic, strong) NSOrderedSet *posts;
 
-- (NSMutableSet*)postsSet;
+- (NSMutableOrderedSet*)postsSet;
 
 @end
 
 @interface _InstagramList (PostsCoreDataGeneratedAccessors)
-- (void)addPosts:(NSSet*)value_;
-- (void)removePosts:(NSSet*)value_;
+- (void)addPosts:(NSOrderedSet*)value_;
+- (void)removePosts:(NSOrderedSet*)value_;
 - (void)addPostsObject:(InstagramPost*)value_;
 - (void)removePostsObject:(InstagramPost*)value_;
+
+- (void)insertObject:(InstagramPost*)value inPostsAtIndex:(NSUInteger)idx;
+- (void)removeObjectFromPostsAtIndex:(NSUInteger)idx;
+- (void)insertPosts:(NSArray *)value atIndexes:(NSIndexSet *)indexes;
+- (void)removePostsAtIndexes:(NSIndexSet *)indexes;
+- (void)replaceObjectInPostsAtIndex:(NSUInteger)idx withObject:(InstagramPost*)value;
+- (void)replacePostsAtIndexes:(NSIndexSet *)indexes withPosts:(NSArray *)values;
 
 @end
 
@@ -45,7 +52,7 @@ extern const struct InstagramListRelationships {
 - (NSString*)primitiveName;
 - (void)setPrimitiveName:(NSString*)value;
 
-- (NSMutableSet*)primitivePosts;
-- (void)setPrimitivePosts:(NSMutableSet*)value;
+- (NSMutableOrderedSet*)primitivePosts;
+- (void)setPrimitivePosts:(NSMutableOrderedSet*)value;
 
 @end

@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MIBaseInteractor.h"
 #import "MILoginInteractorIOInterface.h"
 
-@interface MILoginInteractor : NSObject <MILoginInteractorInputInterface>
+@interface MILoginInteractor : MIBaseInteractor <MILoginInteractorInputInterface>
 
 @property (nonatomic, weak) id<MILoginInteractorOutputInterface> presenter;
 

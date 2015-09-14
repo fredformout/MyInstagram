@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MIDownloadCommentsPhotosInteractor.h"
 #import "MIAddCommentInteractorIOInterface.h"
 #import "MIPhotoDetailsInteractorIOInterface.h"
 
-@interface MIPhotoDetailsInteractor : NSObject <MIAddCommentInteractorInputInterface, MIPhotoDetailsInteractorInputInterface>
+@interface MIPhotoDetailsInteractor : MIDownloadCommentsPhotosInteractor <MIAddCommentInteractorInputInterface, MIPhotoDetailsInteractorInputInterface>
 
 @property (nonatomic, weak) id<MIAddCommentInteractorOutputInterface, MIPhotoDetailsInteractorOutputInterface> presenter;
 

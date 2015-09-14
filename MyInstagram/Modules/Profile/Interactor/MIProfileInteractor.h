@@ -7,9 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MIBaseInteractor.h"
 #import "MIProfileInteractorIOInterface.h"
 
-@interface MIProfileInteractor : NSObject <MIProfileInteractorInputInterface>
+@interface MIProfileInteractor : MIBaseInteractor <MIProfileInteractorInputInterface>
 
 @property (nonatomic, weak) id<MIProfileInteractorOutputInterface> presenter;
 

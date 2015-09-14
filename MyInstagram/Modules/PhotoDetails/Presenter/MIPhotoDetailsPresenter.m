@@ -20,8 +20,10 @@
 #pragma mark - MIPhotoDetailsPresenterInterface
 
 - (void)openPost:(MIInstagramPost *)post
+       presenter:(id<MIPhotosPresenterInterface>)presenter
 {
     self.post = post;
+    self.photosPresenter = presenter;
 }
 
 - (void)updateView
@@ -118,9 +120,18 @@
 
 - (void)showPost:(MIInstagramPost *)post
 {
+    [_photosPresenter refreshPost:_post
+                          newPost:post];
+    
     self.post = post;
+    
     [_controller showPost:_post];
     [_controller reload];
+}
+
+- (void)failGetPost
+{
+    [_controller stopActivityIndicator];
 }
 
 - (void)finishLikePostWithSuccess:(BOOL)success

@@ -40,6 +40,26 @@
     }
 }
 
++ (void)deleteAllFiles
+{
+    NSError *error = nil;
+    
+    NSString *documentsDirectory = [self pathForDocumentsDirectory];
+    
+    for (NSString *file in [[NSFileManager defaultManager] contentsOfDirectoryAtPath:documentsDirectory
+                                                                               error:&error])
+    {
+        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:[NSString stringWithFormat:@"%@/%@", documentsDirectory, file]
+                                                                  error:&error];
+        
+        if (!success
+            || error)
+        {
+            NSLog(@"Error: %@", [error localizedDescription]);
+        }
+    }
+}
+
 + (BOOL)fileExistsAtAbsolutePath:(NSString*)filename
 {
     BOOL isDirectory;

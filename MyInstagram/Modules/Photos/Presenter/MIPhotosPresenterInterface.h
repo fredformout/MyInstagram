@@ -17,4 +17,7 @@
 - (void)updateView;
 - (void)reloadView;
 
+- (void)refreshPost:(MIInstagramPost *)oldPost
+            newPost:(MIInstagramPost *)newPost;
+
 @end

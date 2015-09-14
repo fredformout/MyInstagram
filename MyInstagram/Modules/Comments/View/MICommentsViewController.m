@@ -12,6 +12,8 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 
 @interface MICommentsViewController ()
 
+@property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
+
 @property (nonatomic, strong) MIInstagramPost *post;
 @property (nonatomic, strong) NSArray *comments;
 
@@ -24,6 +26,8 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [_activityIndicatorView startAnimating];
     
     [_presenter updateView];
 }
@@ -47,6 +51,8 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 - (void)showComments:(NSArray *)comments
                 post:(MIInstagramPost *)post
 {
+    [_activityIndicatorView stopAnimating];
+    
     self.post = post;
     self.comments = comments;
     _tableViewController.post = _post;

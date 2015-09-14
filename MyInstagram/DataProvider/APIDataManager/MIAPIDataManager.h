@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIAPIBaseRequest.h"
+#import "MIAPIRequest.h"
 
 typedef void (^RequestSuccessBlock)(id data);
 typedef void (^RequestFailureBlock)(id error);
@@ -16,8 +16,10 @@ typedef void (^RequestFailureBlock)(id error);
 
 + (instancetype)sharedInstance;
 
-- (void)startRequest:(MIAPIBaseRequest *)request;
-- (NSMutableURLRequest *)URLRequestWithRequest:(MIAPIBaseRequest *)request;
+- (void)startOperationWithRequest:(MIAPIRequest *)request;
+- (void)cancelAllOperations;
+
+- (NSMutableURLRequest *)URLRequestWithRequest:(MIAPIRequest *)request;
 - (BOOL)isReachable;
 
 @end

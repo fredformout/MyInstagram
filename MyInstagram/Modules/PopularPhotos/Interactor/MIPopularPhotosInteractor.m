@@ -7,7 +7,8 @@
 //
 
 #import "MIPopularPhotosInteractor.h"
-#import "MIMediaDataProvider.h"
+#import "MIDataProvider+Posts.h"
+#import "MIDataProvider+Images.h"
 #import "MIInstagramPost.h"
 #import "MIInstagramComment.h"
 
@@ -19,28 +20,49 @@
 
 #pragma mark - MIPhotosInteractorInputInterface
 
+- (void)getLocalPosts
+{
+    [_presenter addNewPosts:[self.dataProvider localPopularPosts]];
+}
+
 - (void)getNewPosts
 {
-    [MIMediaDataProvider getPopularPostsWithSuccessBlock:^(NSArray *posts)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getPopularPostsWithSuccessBlock:^(NSArray *posts)
     {
-        [_presenter addNewPosts:posts];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter addNewPosts:posts];
+        
+        [strongSelf downloadPhotosForPosts:posts];
     }
-                                            failureBlock:^(NSString *error)
+                                          failureBlock:^(NSString *error)
     {
-        [_presenter failAddNewPosts];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter failAddNewPosts];
     }];
 }
 
 - (void)getMorePosts
 {
-    [MIMediaDataProvider getPopularPostsWithSuccessBlock:^(NSArray *posts)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getPopularPostsWithSuccessBlock:^(NSArray *posts)
     {
-        [_presenter addPosts:posts
-                    lastPart:NO];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter addPosts:posts
+                              lastPart:NO];
+        
+        [strongSelf downloadPhotosForPosts:posts];
     }
-                                      failureBlock:^(NSString *error)
+                                          failureBlock:^(NSString *error)
     {
-        [_presenter failAddPosts];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter failAddPosts];
     }];
 }
 

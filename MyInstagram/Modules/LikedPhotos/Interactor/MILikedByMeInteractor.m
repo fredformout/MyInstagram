@@ -7,7 +7,8 @@
 //
 
 #import "MILikedByMeInteractor.h"
-#import "MIUsersDataProvider.h"
+#import "MIDataProvider+Posts.h"
+#import "MIDataProvider+Images.h"
 #import "MIInstagramPost.h"
 
 static NSInteger kPostsCount = 24;
@@ -22,45 +23,66 @@ static NSInteger kPostsCount = 24;
 
 #pragma mark - MIPhotosInteractorInputInterface
 
+- (void)getLocalPosts
+{
+    [_presenter addNewPosts:[self.dataProvider localLikedByMePosts]];
+}
+
 - (void)getNewPosts
 {
     self.maxLikeId = nil;
     
-    [MIUsersDataProvider getLikedByMePostsWithMaxLikeId:_maxLikeId
-                                                  count:kPostsCount
-                                           successBlock:^(NSArray *posts, NSString *maxLikeId)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getLikedByMePostsWithMaxLikeId:_maxLikeId
+                                                count:kPostsCount
+                                         successBlock:^(NSArray *posts, NSString *maxLikeId)
     {
+        __strong typeof(self) strongSelf = weakSelf;
+        
         if (maxLikeId)
         {
             self.maxLikeId = maxLikeId;
         }
         
-        [_presenter replaceAllPostsByPosts:posts
-                                  lastPart:!maxLikeId];
+        [strongSelf.presenter replaceAllPostsByPosts:posts
+                                            lastPart:!maxLikeId];
+        
+        [strongSelf downloadPhotosForPosts:posts];
     }
                                            failureBlock:^(NSString *error)
     {
-        [_presenter failReplaceAllPosts];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter failReplaceAllPosts];
     }];
 }
 
 - (void)getMorePosts
 {
-    [MIUsersDataProvider getLikedByMePostsWithMaxLikeId:_maxLikeId
-                                                  count:kPostsCount
-                                           successBlock:^(NSArray *posts, NSString *maxLikeId)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getLikedByMePostsWithMaxLikeId:_maxLikeId
+                                                count:kPostsCount
+                                         successBlock:^(NSArray *posts, NSString *maxLikeId)
      {
+         __strong typeof(self) strongSelf = weakSelf;
+         
          if (maxLikeId)
          {
              self.maxLikeId = maxLikeId;
          }
          
-         [_presenter addPosts:posts
-                     lastPart:!maxLikeId];
+         [strongSelf.presenter addPosts:posts
+                               lastPart:!maxLikeId];
+         
+         [strongSelf downloadPhotosForPosts:posts];
      }
-                                           failureBlock:^(NSString *error)
+                                         failureBlock:^(NSString *error)
      {
-         [_presenter failAddPosts];
+         __strong typeof(self) strongSelf = weakSelf;
+         
+         [strongSelf.presenter failAddPosts];
      }];
 }
 

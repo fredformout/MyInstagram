@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "MILoginInteractor.h"
-#import "MIAuthenticationDataProvider.h"
 #import "MILoginPresenter.h"
-#import "MIUsersDataProvider.h"
+#import "MIDataProvider+Authentication.h"
+#import "MIDataProvider+User.h"
+#import "MIDataProvider+Images.h"
+#import "MIInstagramUser.h"
 
 @interface MILoginInteractor ()
 
@@ -22,9 +24,9 @@
 
 - (void)checkAPIRequestsAvailability
 {
-    [MIAuthenticationDataProvider startNetworkMonitoring];
+    [self.dataProvider startNetworkMonitoring];
     
-    NSString *accessToken = [MIAuthenticationDataProvider accessToken];
+    NSString *accessToken = [self.dataProvider accessToken];
     
     if (!accessToken)
     {
@@ -34,18 +36,28 @@
 
 - (void)getLoginURLRequest
 {
-    [_presenter processLoginURLRequest:[MIAuthenticationDataProvider loginURLRequest]];
+    [_presenter processLoginURLRequest:[self.dataProvider loginURLRequest]];
 }
 
 - (void)processResponseWithURL:(NSURL *)url
 {
-    [MIAuthenticationDataProvider processResponseWithURL:url
-                                              completion:^(BOOL success)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider processResponseWithURL:url
+                                   completion:^(BOOL success)
     {
-        [_presenter finishLoginWithSuccess:success];
+        __strong typeof(self) strongSelf = weakSelf;
         
-        [MIUsersDataProvider getUserInfoWithSuccessBlock:nil
-                                            failureBlock:nil];
+        [strongSelf.presenter finishLoginWithSuccess:success];
+        
+        [strongSelf.dataProvider getUserInfoWithSuccessBlock:^(NSObject *data)
+        {
+            MIInstagramUser *user = (MIInstagramUser *)data;
+            
+            [strongSelf.dataProvider downloadPhotoByURLString:user.userPhotoURL
+                                                     filename:kUserPhotoPattern];
+        }
+                                                failureBlock:^(NSString *error){}];
     }];
 }
 

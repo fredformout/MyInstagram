@@ -1,21 +1,20 @@
 //
-//  MICommentsDataProvider.h
+//  MIDataProvider+Comments.h
 //  MyInstagram
 //
-//  Created by Vladimir Vasilev on 11.09.15.
+//  Created by Vladimir Vasilev on 13.09.15.
 //  Copyright (c) 2015 Vladimir Vasilev. All rights reserved.
 //
 
-#import "MIBaseDataProvider.h"
+#import "MIDataProvider.h"
 
-@interface MICommentsDataProvider : MIBaseDataProvider
+@interface MIDataProvider (Comments)
 
-+ (void)getCommentsByPostId:(NSString *)postId
-         lastViewedCommentId:(NSString *)lastViewedCommentId
+- (void)getCommentsByPostId:(NSString *)postId
+        lastViewedCommentId:(NSString *)lastViewedCommentId
                successBlock:(void (^)(NSArray *data))successBlock
                failureBlock:(void (^)(NSString *error))failureBlock;
-
-+ (void)addCommentByPostId:(NSString *)postId
+- (void)addCommentByPostId:(NSString *)postId
                       text:(NSString *)text
               successBlock:(void (^)(NSObject *data))successBlock
               failureBlock:(void (^)(NSString *error))failureBlock;

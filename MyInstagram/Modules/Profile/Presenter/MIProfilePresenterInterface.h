@@ -10,7 +10,8 @@
 
 @protocol MIProfilePresenterInterface <NSObject>
 
-- (void)logoutAction;
+- (void)initView;
 - (void)getUser;
+- (void)logoutAction;
 
 @end

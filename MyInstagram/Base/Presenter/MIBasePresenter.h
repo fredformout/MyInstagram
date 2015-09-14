@@ -17,5 +17,6 @@
 @property (nonatomic, weak) UIViewController *viewController;
 
 - (void)returnViewControllerToInitialState;
+- (void)performFirstActions;
 
 @end

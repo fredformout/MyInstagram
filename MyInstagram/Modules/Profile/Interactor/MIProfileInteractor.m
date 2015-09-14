@@ -7,8 +7,9 @@
 //
 
 #import "MIProfileInteractor.h"
-#import "MIUsersDataProvider.h"
-#import "MIAuthenticationDataProvider.h"
+#import "MIDataProvider+Authentication.h"
+#import "MIDataProvider+User.h"
+#import "MIDataProvider+Images.h"
 
 @interface MIProfileInteractor ()
 
@@ -18,22 +19,40 @@
 
 #pragma mark - MIProfileInteractorInputInterface
 
+- (void)getLocalUser
+{
+    [_presenter showUser:(MIInstagramUser *)[self.dataProvider localUser]];
+}
+
 - (void)getUser
 {
-    [MIUsersDataProvider getUserInfoWithSuccessBlock:^(NSObject *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getUserInfoWithSuccessBlock:^(NSObject *data)
     {
-        [_presenter showUser:(MIInstagramUser *)data];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        MIInstagramUser *user = (MIInstagramUser *)data;
+        
+        [strongSelf.presenter showUser:user];
+        
+        [strongSelf.dataProvider downloadPhotoByURLString:user.userPhotoURL
+                                                 filename:kUserPhotoPattern];
     }
-                                          failureBlock:^(NSString *error){}];
+                                      failureBlock:^(NSString *error){}];
 }
 
 - (void)logout
 {
-    [MIAuthenticationDataProvider logoutWithCompletion:^(BOOL success)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider logoutWithCompletion:^(BOOL success)
     {
+        __strong typeof(self) strongSelf = weakSelf;
+        
         if (success)
         {
-            [_presenter showLoginInterface];
+            [strongSelf.presenter showLoginInterface];
         }
     }];
 }

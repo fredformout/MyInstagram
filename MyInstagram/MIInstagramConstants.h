@@ -25,3 +25,7 @@ static NSString * const kMaxLikeIdKey = @"max_like_id";
 static NSString * const kNextMaxLikeIdKey = @"next_max_like_id";
 static NSString * const kTextKey = @"text";
 static NSString * const kPaginationKey = @"pagination";
+
+static NSString * const kLowResolutionPhotoPattern = @"low_resolution_photo";
+static NSString * const kStandardResolutionPhotoPattern = @"standard_resolution_photo";
+static NSString * const kUserPhotoPattern = @"user_photo";

@@ -58,12 +58,13 @@
 
 #pragma mark - MIAddCommentInteractorOutputInterface
 
-- (void)finishLoginWithSuccess:(BOOL)success
-                          post:(MIInstagramPost *)post
+- (void)finishAddComment:(MIInstagramComment *)comment
+                    post:(MIInstagramPost *)post
+                 success:(BOOL)success;
 {
     if (success)
     {
-        //delete comment from addedComments
+        //reload
     }
     else
     {

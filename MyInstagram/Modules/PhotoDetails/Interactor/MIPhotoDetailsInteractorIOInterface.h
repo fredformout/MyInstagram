@@ -20,6 +20,7 @@
 @protocol MIPhotoDetailsInteractorOutputInterface <NSObject>
 
 - (void)showPost:(MIInstagramPost *)post;
+- (void)failGetPost;
 - (void)finishLikePostWithSuccess:(BOOL)success
                              post:(MIInstagramPost *)post;
 - (void)finishUnlikePostWithSuccess:(BOOL)success

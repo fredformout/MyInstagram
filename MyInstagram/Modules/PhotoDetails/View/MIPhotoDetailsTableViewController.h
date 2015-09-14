@@ -17,5 +17,6 @@
 @property (nonatomic, weak) MIInstagramPost *post;
 
 - (void)reload;
+- (void)stopActivityIndicator;
 
 @end

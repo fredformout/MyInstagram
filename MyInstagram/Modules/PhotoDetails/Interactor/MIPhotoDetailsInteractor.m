@@ -7,9 +7,12 @@
 //
 
 #import "MIPhotoDetailsInteractor.h"
-#import "MICommentsDataProvider.h"
-#import "MIMediaDataProvider.h"
-#import "MILikesDataProvider.h"
+#import "MIDataProvider+Comments.h"
+#import "MIDataProvider+Posts.h"
+#import "MIDataProvider+Likes.h"
+#import "MIDataProvider+Images.h"
+#import "MIDataProvider+User.h"
+#import "MIInstagramUser.h"
 
 @implementation MIPhotoDetailsInteractor
 
@@ -22,6 +25,12 @@
     
     comment.text = text;
     
+    MIInstagramUser *user = (MIInstagramUser *)[self.dataProvider localUser];
+    
+    comment.username = user.username;
+    comment.fullname = user.fullname;
+    comment.userPhotoURL = user.userPhotoURL;
+    
     return comment;
 }
 
@@ -30,19 +39,25 @@
 {
     return;
     
-    [MICommentsDataProvider addCommentByPostId:post.identifier
-                                          text:comment.text
-                                  successBlock:^(NSObject *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider addCommentByPostId:post.identifier
+                                     text:comment.text
+                             successBlock:^(NSObject *data)
     {
-        [_presenter finishAddComment:comment
-                                post:post
-                             success:YES];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishAddComment:comment
+                                          post:post
+                                       success:YES];
     }
-                                  failureBlock:^(NSString *error)
+                             failureBlock:^(NSString *error)
     {
-        [_presenter finishAddComment:comment
-                                post:post
-                             success:NO];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishAddComment:comment
+                                          post:post
+                                       success:NO];
     }];
 }
 
@@ -50,28 +65,43 @@
 
 - (void)getPostByPost:(MIInstagramPost *)post
 {
-    [MIMediaDataProvider getPostById:post.identifier
-                        successBlock:^(NSObject *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider getPostById:post.identifier
+                      successBlock:^(NSObject *data)
     {
-        [_presenter showPost:(MIInstagramPost *)data];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter showPost:(MIInstagramPost *)data];
     }
-                        failureBlock:^(NSString *error){}];
+                      failureBlock:^(NSString *error)
+    {
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter failGetPost];
+    }];
 }
 
 - (void)likePost:(MIInstagramPost *)post
 {
     return;
     
-    [MILikesDataProvider likePostByPostId:post.identifier
-                             successBlock:^(NSObject *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider likePostByPostId:post.identifier
+                           successBlock:^(NSObject *data)
     {
-        [_presenter finishLikePostWithSuccess:YES
-                                         post:post];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishLikePostWithSuccess:YES
+                                                   post:post];
     }
-                             failureBlock:^(NSString *error)
+                           failureBlock:^(NSString *error)
     {
-        [_presenter finishLikePostWithSuccess:NO
-                                         post:post];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishLikePostWithSuccess:NO
+                                                   post:post];
     }];
 }
 
@@ -79,16 +109,22 @@
 {
     return;
     
-    [MILikesDataProvider unlikePostByPostId:post.identifier
-                               successBlock:^(NSObject *data)
+    __weak typeof(self) weakSelf = self;
+    
+    [self.dataProvider unlikePostByPostId:post.identifier
+                             successBlock:^(NSObject *data)
     {
-        [_presenter finishUnlikePostWithSuccess:YES
-                                           post:post];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishUnlikePostWithSuccess:YES
+                                                     post:post];
     }
-                               failureBlock:^(NSString *error)
+                             failureBlock:^(NSString *error)
     {
-        [_presenter finishUnlikePostWithSuccess:NO
-                                           post:post];
+        __strong typeof(self) strongSelf = weakSelf;
+        
+        [strongSelf.presenter finishUnlikePostWithSuccess:NO
+                                                     post:post];
     }];
 }
 
