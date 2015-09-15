@@ -186,4 +186,11 @@
     return [NSURL fileURLWithPath:filePath];
 }
 
++ (NSString *)processedFilename:(NSString *)filename
+{
+    return [[filename stringByReplacingOccurrencesOfString:@":"
+                                                withString:@""] stringByReplacingOccurrencesOfString:@"/"
+            withString:@""];
+}
+
 @end

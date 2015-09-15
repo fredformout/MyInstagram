@@ -8,13 +8,12 @@
 
 #import "MIPhotosCollectionViewCell.h"
 #import "MIInstagramConstants.h"
+#import "MIImageCacheUtility.h"
 #import "MIFileUtility.h"
 
 @interface MIPhotosCollectionViewCell ()
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-
-@property (nonatomic, strong) NSString *imageName;
 
 @end
 
@@ -22,9 +21,26 @@
 
 #pragma mark - NSObject
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+}
+
 - (void)dealloc
 {
-    [self unsubscribe];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - UITableViewCell
+
+- (void)prepareForReuse
+{
+    [super prepareForReuse];
+    
+    _photoImageView.hidden = NO;
 }
 
 #pragma mark - Others
@@ -38,36 +54,56 @@
 
 - (void)setupPhoto
 {
-    [self unsubscribe];
-    
-    self.imageName = [NSString stringWithFormat:@"%@_%@", kLowResolutionPhotoPattern, _post.identifier];
-    UIImage *image = [UIImage imageWithContentsOfFile:[MIFileUtility pathFromDocumentsForFilename:_imageName]];
-    
-    if (!image)
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupPhoto)
+                                                 name:_post.lowResolutionPhotoURL
+                                               object:nil];
+
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(setupPhoto)
-                                                     name:_imageName
-                                                   object:nil];
+        __block UIImage *image = [[MIImageCacheUtility sharedInstance] imageForURLString:_post.lowResolutionPhotoURL];
         
-        [_activityIndicatorView startAnimating];
-    }
-    else
-    {
-        [_activityIndicatorView stopAnimating];
-    }
-    
-    _photoImageView.image = image;
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (image)
+            {
+                [[NSNotificationCenter defaultCenter] removeObserver:self];
+                
+                [_activityIndicatorView stopAnimating];
+                _photoImageView.image = image;
+            }
+            else
+            {
+                _photoImageView.image = nil;
+                [_activityIndicatorView startAnimating];
+            
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                {
+                    [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:_post.lowResolutionPhotoURL
+                                                                                          priority:DownloadContentOperationPriorityHigh];
+                    [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:_post.standardResolutionPhotoURL
+                                                                                          priority:DownloadContentOperationPriorityHigh];
+                    [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:_post.caption.username
+                                                                                          priority:DownloadContentOperationPriorityLow];
+                    
+                    for (MIInstagramComment *comment in _post.comments)
+                    {
+                        [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:comment.username
+                                                                                              priority:DownloadContentOperationPriorityLow];
+                    }
+                });
+            }
+        });
+    });
 }
 
-- (void)unsubscribe
+- (void)assignImageWithNotification:(NSNotification *)notification
 {
-    if (_imageName)
-    {
-        [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:_imageName
-                                                      object:nil];
-    }
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [_activityIndicatorView stopAnimating];
+    _photoImageView.image = notification.object;
 }
 
 @end

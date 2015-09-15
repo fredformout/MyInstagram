@@ -8,15 +8,23 @@
 
 #import "MIProfilePresenter.h"
 
+@interface MIProfilePresenter ()
+
+@property (nonatomic, strong) MIInstagramUser *user;
+
+@end
+
 @implementation MIProfilePresenter
 
 #pragma mark - MIBasePresenter
 
 - (void)returnViewControllerToInitialState
 {
-    [super returnViewControllerToInitialState];
+    self.user = nil;
     
-    [_controller showUser:nil];
+    [_controller showUser:_user];
+    
+    [super returnViewControllerToInitialState];
 }
 
 #pragma mark - MIProfilePresenterInterface
@@ -40,6 +48,7 @@
 
 - (void)showUser:(MIInstagramUser *)user
 {
+    self.user = user;
     [_controller showUser:user];
 }
 

@@ -105,9 +105,9 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
     {
         [((MIPhotoDetailsInfoTableViewCell *)cell) configureWithPost:_post
                                                likeButtonActionBlock:^
-        {
-            [_viewController.presenter toggleLikedByMe];
-        }];
+         {
+             [_viewController.presenter toggleLikedByMe];
+         }];
     }
     else if ([cell isKindOfClass:[MICommentTableViewCell class]])
     {
@@ -146,14 +146,26 @@ estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath
 #pragma mark - UITableViewControllerDelegate
 
 - (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //
+}
+
+- (void)tableView:(UITableView *)tableView
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if ((indexPath.row == 2
-        && !_post.caption)
-        || (indexPath.row == 3
-            && _post.caption))
+    BOOL moreThanThreshold = (_post.commentsCount > kCommentsThreshold);
+    
+    if (moreThanThreshold)
     {
-        [_viewController.presenter openComments];
+        if ((indexPath.row == 2
+             && !_post.caption)
+            || (indexPath.row == 3
+                && _post.caption))
+        {
+            [_viewController.presenter openComments];
+        }
     }
 }
 

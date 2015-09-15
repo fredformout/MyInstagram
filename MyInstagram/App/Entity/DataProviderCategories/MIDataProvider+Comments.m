@@ -12,29 +12,36 @@
 @implementation MIDataProvider (Comments)
 
 - (void)getCommentsByPostId:(NSString *)postId
-        lastViewedCommentId:(NSString *)lastViewedCommentId
-               successBlock:(void (^)(NSArray *))successBlock
+                      maxId:(NSString *)maxId
+               successBlock:(void (^)(NSArray *, NSString *))successBlock
                failureBlock:(void (^)(NSString *))failureBlock
 {
     if ([self canMakeRequest])
     {
-        NSDictionary *parameters = @{
-                                     kAccessTokenKey : [UICKeyChainStore sharedInstance][kAccessTokenKey]
-                                     };
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           [UICKeyChainStore sharedInstance][kAccessTokenKey], kAccessTokenKey,
+                                           nil];
+        
+        if (maxId)
+        {
+            parameters[kMaxIdKey] = maxId;
+        }
         
         MIAPIRequest *request = [MIAPIRequest requestWithName:@"GetComments"
                                                           url:[NSString stringWithFormat:@"media/%@/comments", postId]
                                                 requestMethod:RequestMethodGET
                                                    paramaters:parameters
-                                                mappingEntity:@"Comment"
-                                                   mappingKey:kDataKey
-                                                  mappingType:MappingTypeCollection
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
-            if (successBlock)
-            {
-                successBlock(data);
-            }
+            [[MIMappingManager sharedInstance] backgroundCollectionFromData:data[kDataKey]
+                                                    mappingEntity:@"Comment"
+                                                       completion:^(id comments)
+             {
+                if (successBlock)
+                {
+                    successBlock(comments, data[kPaginationKey][kNextMaxIdKey]);
+                }
+             }];
         }
                                                  failureBlock:^(id error)
         {
@@ -73,7 +80,7 @@
                                                           url:[NSString stringWithFormat:@"media/%@/comments", postId]
                                                 requestMethod:RequestMethodPOST
                                                    paramaters:parameters
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
             if (successBlock)
             {

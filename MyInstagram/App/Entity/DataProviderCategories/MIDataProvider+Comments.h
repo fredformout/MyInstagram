@@ -11,8 +11,8 @@
 @interface MIDataProvider (Comments)
 
 - (void)getCommentsByPostId:(NSString *)postId
-        lastViewedCommentId:(NSString *)lastViewedCommentId
-               successBlock:(void (^)(NSArray *data))successBlock
+                      maxId:(NSString *)maxId
+               successBlock:(void (^)(NSArray *data, NSString *maxId))successBlock
                failureBlock:(void (^)(NSString *error))failureBlock;
 - (void)addCommentByPostId:(NSString *)postId
                       text:(NSString *)text

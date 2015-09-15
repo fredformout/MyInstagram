@@ -29,17 +29,20 @@
                                                           url:@"users/self"
                                                 requestMethod:RequestMethodGET
                                                    paramaters:parameters
-                                                mappingEntity:@"User"
-                                                   mappingKey:kDataKey
-                                                  mappingType:MappingTypeObject
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
-            if (successBlock)
+            [[MIMappingManager sharedInstance] backgroundObjectFromData:data[kDataKey]
+                                                mappingEntity:@"User"
+                                                   completion:^(id data)
             {
-                successBlock(data);
-            }
+                if (successBlock)
+                {
+                    successBlock(data);
+                }
+            }];
+            
 
-            [[MILocalDataManager sharedInstance] saveUserFromData:raw[kDataKey]
+            [[MILocalDataManager sharedInstance] saveUserFromData:data[kDataKey]
                                                        completion:nil];
         }
                                                  failureBlock:^(id error)

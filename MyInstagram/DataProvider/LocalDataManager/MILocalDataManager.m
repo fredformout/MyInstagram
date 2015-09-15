@@ -14,9 +14,6 @@
 #import "InstagramList.h"
 #import "InstagramPost.h"
 #import "InstagramComment.h"
-#import "MIMappingManager.h"
-
-#import "MIConstants.h"
 
 @implementation MILocalDataManager
 

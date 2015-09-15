@@ -40,20 +40,23 @@
 
 - (void)updateView
 {
-    [_interactor getCommentsForPost:_post
-                  lastViewedComment:nil];
+    [_comments removeAllObjects];
+    [_controller showComments:_comments
+                         post:_post];
+    [_interactor getCommentsForPost:_post];
 }
 
 #pragma mark - MICommentsInteractorOutputInterface
 
 - (void)showComments:(NSArray *)comments
                 post:(MIInstagramPost *)post
+            lastPart:(BOOL)lastPart
 {
-    _comments = [comments mutableCopy];
+    [_comments insertObjects:comments
+                   atIndexes:[NSIndexSet indexSetWithIndexesInRange:NSMakeRange(0, [comments count])]];
     
-    [_controller showComments:_comments
-                         post:post];
-    [_controller reload];
+    [_controller insertElementsToTopCount:[comments count]
+                           deleteMoreCell:lastPart];
 }
 
 #pragma mark - MIAddCommentInteractorOutputInterface
@@ -64,11 +67,17 @@
 {
     if (success)
     {
-        //reload
+        [_interactor getCommentsForPost:_post];
     }
     else
     {
-        //delete comment from view
+        if ([_post isEqual:post])
+        {
+            [_comments removeObject:comment];
+            
+            [_controller undoCommentWithText:comment.text];
+            [_controller reload];
+        }
     }
 }
 

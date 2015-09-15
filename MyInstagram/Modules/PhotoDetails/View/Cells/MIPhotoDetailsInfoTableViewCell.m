@@ -31,6 +31,9 @@
 {
     [super awakeFromNib];
     
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+    
     self.likeButtonImage = [UIImage imageNamed:@"like_button"];
     self.likeButtonPressedImage = [UIImage imageNamed:@"like_button_pressed"];
 }

@@ -10,4 +10,14 @@
 
 @implementation MIMoreCommentsTableViewCell
 
+#pragma mark - NSObject
+
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+}
+
 @end

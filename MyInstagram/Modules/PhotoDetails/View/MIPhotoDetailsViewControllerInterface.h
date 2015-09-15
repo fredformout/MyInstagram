@@ -14,6 +14,5 @@
 - (void)showPost:(MIInstagramPost *)post;
 - (void)reload;
 - (void)stopActivityIndicator;
-- (void)undoCommentWithText:(NSString *)text;
 
 @end

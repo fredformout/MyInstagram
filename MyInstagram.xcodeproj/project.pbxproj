@@ -22,7 +22,12 @@
 
 /* Begin PBXBuildFile section */
 		0149B1EEB0400E5E63B356BB /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 27F5D8D622DE6320A65186D5 /* libPods.a */; };
-		1E4904CA1BA61BA700D47317 /* MIDataProvider+Images.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904C91BA61BA700D47317 /* MIDataProvider+Images.m */; };
+		1E15F82A1BA72F8500FCACFF /* MIImageCacheUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F8291BA72F8500FCACFF /* MIImageCacheUtility.m */; };
+		1E15F8351BA836DC00FCACFF /* MIImagesDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F8341BA836DC00FCACFF /* MIImagesDictionary.m */; };
+		1E15F8381BA83A4100FCACFF /* MIUniqueOperationsArray.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F8371BA83A4100FCACFF /* MIUniqueOperationsArray.m */; };
+		1E15F83C1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F83B1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m */; };
+		1E15F83F1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F83E1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m */; };
+		1E15F8421BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F8411BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m */; };
 		1E4904CD1BA61C1F00D47317 /* MIDataProvider+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904CC1BA61C1F00D47317 /* MIDataProvider+User.m */; };
 		1E4904D01BA61CBA00D47317 /* MIDataProvider+Posts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904CF1BA61CBA00D47317 /* MIDataProvider+Posts.m */; };
 		1E4904D51BA66F8C00D47317 /* MILocalDataManager+Posts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904D41BA66F8C00D47317 /* MILocalDataManager+Posts.m */; };
@@ -104,10 +109,8 @@
 		1EF494B91BA36E2500762039 /* NSData+SaveData.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A31BA36E2500762039 /* NSData+SaveData.m */; };
 		1EF494BB1BA36E2500762039 /* UICKeyChainStore+SharedInstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A71BA36E2500762039 /* UICKeyChainStore+SharedInstance.m */; };
 		1EF494BC1BA36E2500762039 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494A91BA36E2500762039 /* UIImage+ImageEffects.m */; };
-		1EF494BD1BA36E2500762039 /* UIImageView+DownloadImage.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494AB1BA36E2500762039 /* UIImageView+DownloadImage.m */; };
 		1EF494BE1BA36E2500762039 /* UIViewController+EmptyBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494AD1BA36E2500762039 /* UIViewController+EmptyBackButton.m */; };
 		1EF494BF1BA36E2500762039 /* UIViewController+InitialState.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494AF1BA36E2500762039 /* UIViewController+InitialState.m */; };
-		1EF494C01BA36E2500762039 /* FTWCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B21BA36E2500762039 /* FTWCache.m */; };
 		1EF494C11BA36E2500762039 /* MIBorderedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B41BA36E2500762039 /* MIBorderedView.m */; };
 		1EF494C21BA36E2500762039 /* MIFileUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B61BA36E2500762039 /* MIFileUtility.m */; };
 		1EF494C31BA36E2500762039 /* MIImageUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF494B81BA36E2500762039 /* MIImageUtility.m */; };
@@ -122,8 +125,6 @@
 		1EF4950B1BA576E800762039 /* MIDataProvider+Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF4950A1BA576E800762039 /* MIDataProvider+Authentication.m */; };
 		1EF495141BA5794C00762039 /* MIDataProvider+Likes.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF495131BA5794C00762039 /* MIDataProvider+Likes.m */; };
 		1EF495171BA579A600762039 /* MIDataProvider+Comments.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF495161BA579A600762039 /* MIDataProvider+Comments.m */; };
-		1EF495211BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF495201BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.m */; };
-		1EF495241BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1EF495231BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,17 +146,28 @@
 
 /* Begin PBXFileReference section */
 		1B73BAB81AAEA478C11B37FD /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		1E4904C81BA61BA700D47317 /* MIDataProvider+Images.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MIDataProvider+Images.h"; sourceTree = "<group>"; };
-		1E4904C91BA61BA700D47317 /* MIDataProvider+Images.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MIDataProvider+Images.m"; sourceTree = "<group>"; };
+		1E15F8271BA6EE3700FCACFF /* MIAddCommentViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIAddCommentViewControllerInterface.h; sourceTree = "<group>"; };
+		1E15F8281BA72F8500FCACFF /* MIImageCacheUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIImageCacheUtility.h; sourceTree = "<group>"; };
+		1E15F8291BA72F8500FCACFF /* MIImageCacheUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIImageCacheUtility.m; sourceTree = "<group>"; };
+		1E15F8331BA836DC00FCACFF /* MIImagesDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIImagesDictionary.h; sourceTree = "<group>"; };
+		1E15F8341BA836DC00FCACFF /* MIImagesDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIImagesDictionary.m; sourceTree = "<group>"; };
+		1E15F8361BA83A4100FCACFF /* MIUniqueOperationsArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIUniqueOperationsArray.h; sourceTree = "<group>"; };
+		1E15F8371BA83A4100FCACFF /* MIUniqueOperationsArray.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIUniqueOperationsArray.m; sourceTree = "<group>"; };
+		1E15F83A1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDownloadCommentsContentInteractor.h; sourceTree = "<group>"; };
+		1E15F83B1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadCommentsContentInteractor.m; sourceTree = "<group>"; };
+		1E15F83D1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDownloadPostsContentInteractor.h; sourceTree = "<group>"; };
+		1E15F83E1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadPostsContentInteractor.m; sourceTree = "<group>"; };
+		1E15F8401BA8B18D00FCACFF /* MIDownloadUserContentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDownloadUserContentInteractor.h; sourceTree = "<group>"; };
+		1E15F8411BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadUserContentInteractor.m; sourceTree = "<group>"; };
 		1E4904CB1BA61C1F00D47317 /* MIDataProvider+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MIDataProvider+User.h"; sourceTree = "<group>"; };
 		1E4904CC1BA61C1F00D47317 /* MIDataProvider+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MIDataProvider+User.m"; sourceTree = "<group>"; };
 		1E4904CE1BA61CBA00D47317 /* MIDataProvider+Posts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MIDataProvider+Posts.h"; sourceTree = "<group>"; };
 		1E4904CF1BA61CBA00D47317 /* MIDataProvider+Posts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MIDataProvider+Posts.m"; sourceTree = "<group>"; };
-		1E4904D11BA63F7B00D47317 /* MIConstants.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIConstants.h; sourceTree = "<group>"; };
 		1E4904D31BA66F8C00D47317 /* MILocalDataManager+Posts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MILocalDataManager+Posts.h"; sourceTree = "<group>"; };
 		1E4904D41BA66F8C00D47317 /* MILocalDataManager+Posts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MILocalDataManager+Posts.m"; sourceTree = "<group>"; };
 		1E4904D61BA6709E00D47317 /* MILocalDataManager+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MILocalDataManager+User.h"; sourceTree = "<group>"; };
 		1E4904D71BA6709E00D47317 /* MILocalDataManager+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MILocalDataManager+User.m"; sourceTree = "<group>"; };
+		1E4904DB1BA6B25300D47317 /* MIProfileViewControllerInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIProfileViewControllerInterface.h; sourceTree = "<group>"; };
 		1E4ADC1B1B9DBD520052C757 /* MyInstagram.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyInstagram.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E4ADC1F1B9DBD520052C757 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E4ADC201B9DBD520052C757 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -263,7 +275,6 @@
 		1EC2ADB71BA2119E002DF65D /* MIProfileInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileInteractor.h; sourceTree = "<group>"; };
 		1EC2ADB81BA2119E002DF65D /* MIProfileInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIProfileInteractor.m; sourceTree = "<group>"; };
 		1EC2ADBA1BA213FE002DF65D /* MIProfilePresenterInterface.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MIProfilePresenterInterface.h; sourceTree = "<group>"; };
-		1EC2ADBB1BA21425002DF65D /* MIProfileViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MIProfileViewControllerInterface.h; path = ../../../../../MyInstagram2/MyInstagram/Modules/Profile/View/MIProfileViewControllerInterface.h; sourceTree = "<group>"; };
 		1EC2ADBD1BA215D7002DF65D /* MIProfileInteractorIOInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIProfileInteractorIOInterface.h; sourceTree = "<group>"; };
 		1EC2ADC41BA22C02002DF65D /* MIPopularPhotosInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPopularPhotosInteractor.h; sourceTree = "<group>"; };
 		1EC2ADC51BA22C02002DF65D /* MIPopularPhotosInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPopularPhotosInteractor.m; sourceTree = "<group>"; };
@@ -307,14 +318,10 @@
 		1EF494A71BA36E2500762039 /* UICKeyChainStore+SharedInstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICKeyChainStore+SharedInstance.m"; sourceTree = "<group>"; };
 		1EF494A81BA36E2500762039 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		1EF494A91BA36E2500762039 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
-		1EF494AA1BA36E2500762039 /* UIImageView+DownloadImage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+DownloadImage.h"; sourceTree = "<group>"; };
-		1EF494AB1BA36E2500762039 /* UIImageView+DownloadImage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+DownloadImage.m"; sourceTree = "<group>"; };
 		1EF494AC1BA36E2500762039 /* UIViewController+EmptyBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+EmptyBackButton.h"; sourceTree = "<group>"; };
 		1EF494AD1BA36E2500762039 /* UIViewController+EmptyBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+EmptyBackButton.m"; sourceTree = "<group>"; };
 		1EF494AE1BA36E2500762039 /* UIViewController+InitialState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+InitialState.h"; sourceTree = "<group>"; };
 		1EF494AF1BA36E2500762039 /* UIViewController+InitialState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+InitialState.m"; sourceTree = "<group>"; };
-		1EF494B11BA36E2500762039 /* FTWCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FTWCache.h; sourceTree = "<group>"; };
-		1EF494B21BA36E2500762039 /* FTWCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FTWCache.m; sourceTree = "<group>"; };
 		1EF494B31BA36E2500762039 /* MIBorderedView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIBorderedView.h; sourceTree = "<group>"; };
 		1EF494B41BA36E2500762039 /* MIBorderedView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIBorderedView.m; sourceTree = "<group>"; };
 		1EF494B51BA36E2500762039 /* MIFileUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIFileUtility.h; sourceTree = "<group>"; };
@@ -346,10 +353,6 @@
 		1EF495131BA5794C00762039 /* MIDataProvider+Likes.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MIDataProvider+Likes.m"; sourceTree = "<group>"; };
 		1EF495151BA579A600762039 /* MIDataProvider+Comments.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MIDataProvider+Comments.h"; sourceTree = "<group>"; };
 		1EF495161BA579A600762039 /* MIDataProvider+Comments.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MIDataProvider+Comments.m"; sourceTree = "<group>"; };
-		1EF4951F1BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDownloadCommentsPhotosInteractor.h; sourceTree = "<group>"; };
-		1EF495201BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadCommentsPhotosInteractor.m; sourceTree = "<group>"; };
-		1EF495221BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDownloadPostsPhotosInteractor.h; sourceTree = "<group>"; };
-		1EF495231BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadPostsPhotosInteractor.m; sourceTree = "<group>"; };
 		27F5D8D622DE6320A65186D5 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		9228CE065A23C3749EAC407E /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -380,6 +383,19 @@
 				1B73BAB81AAEA478C11B37FD /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		1E15F8391BA8AE5E00FCACFF /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				1E15F83A1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.h */,
+				1E15F83B1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m */,
+				1E15F83D1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.h */,
+				1E15F83E1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m */,
+				1E15F8401BA8B18D00FCACFF /* MIDownloadUserContentInteractor.h */,
+				1E15F8411BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m */,
+			);
+			path = Interactor;
 			sourceTree = "<group>";
 		};
 		1E4904D21BA66F6C00D47317 /* Categories */ = {
@@ -429,7 +445,6 @@
 				1E4ADC231B9DBD520052C757 /* MIAppDelegate.m */,
 				1EC2AC161B9F43F0002DF65D /* Macro.h */,
 				1EC2AD8A1BA17F22002DF65D /* MIInstagramConstants.h */,
-				1E4904D11BA63F7B00D47317 /* MIConstants.h */,
 			);
 			path = MyInstagram;
 			sourceTree = "<group>";
@@ -487,7 +502,7 @@
 		1E4ADC871B9DDA020052C757 /* App */ = {
 			isa = PBXGroup;
 			children = (
-				1EF4951E1BA5CC2500762039 /* Interactor */,
+				1E15F8391BA8AE5E00FCACFF /* Interactor */,
 				1EF494CE1BA433C900762039 /* Entity */,
 				1E4ADCAD1B9DFBCA0052C757 /* Presenter */,
 				1E4ADCAE1B9DFBCA0052C757 /* Router */,
@@ -616,6 +631,7 @@
 		1EC2ACF71BA165F2002DF65D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1E15F8271BA6EE3700FCACFF /* MIAddCommentViewControllerInterface.h */,
 				1EF494871BA2EA7200762039 /* MICommentsViewControllerInterface.h */,
 				1EC2ACF81BA165F2002DF65D /* MICommentsViewController.h */,
 				1EC2ACF91BA165F2002DF65D /* MICommentsViewController.m */,
@@ -883,7 +899,7 @@
 		1EC2AD511BA165F2002DF65D /* View */ = {
 			isa = PBXGroup;
 			children = (
-				1EC2ADBB1BA21425002DF65D /* MIProfileViewControllerInterface.h */,
+				1E4904DB1BA6B25300D47317 /* MIProfileViewControllerInterface.h */,
 				1EC2AD521BA165F2002DF65D /* MIProfileViewController.h */,
 				1EC2AD531BA165F2002DF65D /* MIProfileViewController.m */,
 			);
@@ -1017,8 +1033,6 @@
 				1EF494A71BA36E2500762039 /* UICKeyChainStore+SharedInstance.m */,
 				1EF494A81BA36E2500762039 /* UIImage+ImageEffects.h */,
 				1EF494A91BA36E2500762039 /* UIImage+ImageEffects.m */,
-				1EF494AA1BA36E2500762039 /* UIImageView+DownloadImage.h */,
-				1EF494AB1BA36E2500762039 /* UIImageView+DownloadImage.m */,
 				1EF494AC1BA36E2500762039 /* UIViewController+EmptyBackButton.h */,
 				1EF494AD1BA36E2500762039 /* UIViewController+EmptyBackButton.m */,
 				1EF494AE1BA36E2500762039 /* UIViewController+InitialState.h */,
@@ -1030,14 +1044,18 @@
 		1EF494B01BA36E2500762039 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				1EF494B11BA36E2500762039 /* FTWCache.h */,
-				1EF494B21BA36E2500762039 /* FTWCache.m */,
 				1EF494B31BA36E2500762039 /* MIBorderedView.h */,
 				1EF494B41BA36E2500762039 /* MIBorderedView.m */,
 				1EF494B51BA36E2500762039 /* MIFileUtility.h */,
 				1EF494B61BA36E2500762039 /* MIFileUtility.m */,
 				1EF494B71BA36E2500762039 /* MIImageUtility.h */,
 				1EF494B81BA36E2500762039 /* MIImageUtility.m */,
+				1E15F8281BA72F8500FCACFF /* MIImageCacheUtility.h */,
+				1E15F8291BA72F8500FCACFF /* MIImageCacheUtility.m */,
+				1E15F8331BA836DC00FCACFF /* MIImagesDictionary.h */,
+				1E15F8341BA836DC00FCACFF /* MIImagesDictionary.m */,
+				1E15F8361BA83A4100FCACFF /* MIUniqueOperationsArray.h */,
+				1E15F8371BA83A4100FCACFF /* MIUniqueOperationsArray.m */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1092,8 +1110,6 @@
 				1E4904CF1BA61CBA00D47317 /* MIDataProvider+Posts.m */,
 				1E4904CB1BA61C1F00D47317 /* MIDataProvider+User.h */,
 				1E4904CC1BA61C1F00D47317 /* MIDataProvider+User.m */,
-				1E4904C81BA61BA700D47317 /* MIDataProvider+Images.h */,
-				1E4904C91BA61BA700D47317 /* MIDataProvider+Images.m */,
 				1EF495091BA576E800762039 /* MIDataProvider+Authentication.h */,
 				1EF4950A1BA576E800762039 /* MIDataProvider+Authentication.m */,
 				1EF495121BA5794C00762039 /* MIDataProvider+Likes.h */,
@@ -1102,17 +1118,6 @@
 				1EF495161BA579A600762039 /* MIDataProvider+Comments.m */,
 			);
 			path = DataProviderCategories;
-			sourceTree = "<group>";
-		};
-		1EF4951E1BA5CC2500762039 /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				1EF4951F1BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.h */,
-				1EF495201BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.m */,
-				1EF495221BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.h */,
-				1EF495231BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.m */,
-			);
-			path = Interactor;
 			sourceTree = "<group>";
 		};
 		EBC5FCE118FDCC5D6F5F131B /* Frameworks */ = {
@@ -1301,7 +1306,6 @@
 				1EF494D61BA433C900762039 /* MIInstagramComment.m in Sources */,
 				1EC2AD821BA17DD0002DF65D /* MIAPIDataManager.m in Sources */,
 				1EF494C91BA3704600762039 /* MISlaveByTabBarControllerRouter.m in Sources */,
-				1E4904CA1BA61BA700D47317 /* MIDataProvider+Images.m in Sources */,
 				1EF494C21BA36E2500762039 /* MIFileUtility.m in Sources */,
 				1E4904D01BA61CBA00D47317 /* MIDataProvider+Posts.m in Sources */,
 				1EC2ADED1BA2C600002DF65D /* InstagramUser.m in Sources */,
@@ -1311,13 +1315,12 @@
 				1EC2AD5E1BA165F2002DF65D /* MIPhotoDetailsRouter.m in Sources */,
 				1EC2AD611BA165F2002DF65D /* MIPhotoDetailsInfoTableViewCell.m in Sources */,
 				1EC2AD5D1BA165F2002DF65D /* MIPhotoDetailsPresenter.m in Sources */,
-				1EF495241BA5CC6600762039 /* MIDownloadPostsPhotosInteractor.m in Sources */,
 				1EC2ADEF1BA2C600002DF65D /* _InstagramList.m in Sources */,
+				1E15F8381BA83A4100FCACFF /* MIUniqueOperationsArray.m in Sources */,
 				1EF495141BA5794C00762039 /* MIDataProvider+Likes.m in Sources */,
 				1EC2ADEB1BA2C600002DF65D /* InstagramList.m in Sources */,
 				1E4ADCB81B9DFD2F0052C757 /* MIAppPresenter.m in Sources */,
 				1EC2ADEE1BA2C600002DF65D /* _InstagramComment.m in Sources */,
-				1EF494C01BA36E2500762039 /* FTWCache.m in Sources */,
 				1EC2AD851BA17DD0002DF65D /* MIDataProvider.m in Sources */,
 				1EC2ADEA1BA2C600002DF65D /* InstagramComment.m in Sources */,
 				1E4ADC8C1B9DDA020052C757 /* MIAppDependencies.m in Sources */,
@@ -1325,13 +1328,14 @@
 				1EC2AD6D1BA165F2002DF65D /* MIProfilePresenter.m in Sources */,
 				1EC2AD561BA165F2002DF65D /* MICommentsViewController.m in Sources */,
 				1EF494BC1BA36E2500762039 /* UIImage+ImageEffects.m in Sources */,
+				1E15F83C1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m in Sources */,
 				1EC2AD811BA17DD0002DF65D /* MIAPIRequest.m in Sources */,
 				1EC2AD581BA165F2002DF65D /* MILoginInteractor.m in Sources */,
+				1E15F82A1BA72F8500FCACFF /* MIImageCacheUtility.m in Sources */,
 				1EF494D71BA433C900762039 /* MIInstagramPost.m in Sources */,
 				1EC2AD691BA165F2002DF65D /* MIPhotosPresenter.m in Sources */,
 				1EC2AC601BA033F1002DF65D /* MIAppDesigner.m in Sources */,
 				1E4904D81BA6709E00D47317 /* MILocalDataManager+User.m in Sources */,
-				1EF495211BA5CC4800762039 /* MIDownloadCommentsPhotosInteractor.m in Sources */,
 				1EC2AD621BA165F2002DF65D /* MIPhotoDetailsPhotoTableViewCell.m in Sources */,
 				1E4904D51BA66F8C00D47317 /* MILocalDataManager+Posts.m in Sources */,
 				1EF494D81BA433C900762039 /* MIInstagramUser.m in Sources */,
@@ -1347,6 +1351,7 @@
 				1EC2AD631BA165F2002DF65D /* MIPhotoDetailsTableViewController.m in Sources */,
 				1EC2AD6E1BA165F2002DF65D /* MIProfileRouter.m in Sources */,
 				1EC2AD5F1BA165F2002DF65D /* MICommentTableViewCell.m in Sources */,
+				1E15F83F1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m in Sources */,
 				1EC2AD5A1BA165F2002DF65D /* MILoginRouter.m in Sources */,
 				1EC2AD541BA165F2002DF65D /* MICommentsPresenter.m in Sources */,
 				1EC2AD831BA17DD0002DF65D /* MILocalDataManager.m in Sources */,
@@ -1355,10 +1360,11 @@
 				1EC2AD6C1BA165F2002DF65D /* MIPhotosCollectionViewController.m in Sources */,
 				1EC2ADC91BA22C02002DF65D /* MIPopularPhotosInteractor.m in Sources */,
 				1EC2ADEC1BA2C600002DF65D /* InstagramPost.m in Sources */,
+				1E15F8351BA836DC00FCACFF /* MIImagesDictionary.m in Sources */,
+				1E15F8421BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m in Sources */,
 				1EC2ADB91BA2119E002DF65D /* MIProfileInteractor.m in Sources */,
 				1EF494C31BA36E2500762039 /* MIImageUtility.m in Sources */,
 				1EF494B91BA36E2500762039 /* NSData+SaveData.m in Sources */,
-				1EF494BD1BA36E2500762039 /* UIImageView+DownloadImage.m in Sources */,
 				1EF494BF1BA36E2500762039 /* UIViewController+InitialState.m in Sources */,
 				1EC2ACDA1BA16215002DF65D /* MIBaseRouter.m in Sources */,
 				1EF494801BA2D5A000762039 /* MICommentsTableViewController.m in Sources */,
@@ -1491,7 +1497,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "777aadc6-687b-4931-a528-e82817402c27";
+				PROVISIONING_PROFILE = "6a35d9c5-0851-431c-a52b-715ea5685416";
 			};
 			name = Debug;
 		};
@@ -1505,7 +1511,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "777aadc6-687b-4931-a528-e82817402c27";
+				PROVISIONING_PROFILE = "6a35d9c5-0851-431c-a52b-715ea5685416";
 			};
 			name = Release;
 		};

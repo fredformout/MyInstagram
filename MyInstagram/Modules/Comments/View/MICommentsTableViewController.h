@@ -17,6 +17,9 @@
 @property (nonatomic, weak) MIInstagramPost *post;
 @property (nonatomic, weak) NSArray *comments;
 
+- (void)scrollToBottom;
 - (void)reload;
+- (void)insertElementsToTopCount:(NSInteger)count
+                  deleteMoreCell:(BOOL)deleteMoreCell;
 
 @end

@@ -8,7 +8,6 @@
 
 #import "MILikedByMeInteractor.h"
 #import "MIDataProvider+Posts.h"
-#import "MIDataProvider+Images.h"
 #import "MIInstagramPost.h"
 
 static NSInteger kPostsCount = 24;
@@ -25,7 +24,16 @@ static NSInteger kPostsCount = 24;
 
 - (void)getLocalPosts
 {
-    [_presenter addNewPosts:[self.dataProvider localLikedByMePosts]];
+    NSArray *posts = [self.dataProvider localLikedByMePosts];
+    
+    if ([posts count] > 0)
+    {
+        MIInstagramPost *post = [posts lastObject];
+        self.maxLikeId = post.identifier;
+    }
+    
+    [_presenter replaceAllPostsByPosts:posts
+                              lastPart:NO];
 }
 
 - (void)getNewPosts
@@ -47,8 +55,6 @@ static NSInteger kPostsCount = 24;
         
         [strongSelf.presenter replaceAllPostsByPosts:posts
                                             lastPart:!maxLikeId];
-        
-        [strongSelf downloadPhotosForPosts:posts];
     }
                                            failureBlock:^(NSString *error)
     {
@@ -75,8 +81,6 @@ static NSInteger kPostsCount = 24;
          
          [strongSelf.presenter addPosts:posts
                                lastPart:!maxLikeId];
-         
-         [strongSelf downloadPhotosForPosts:posts];
      }
                                          failureBlock:^(NSString *error)
      {

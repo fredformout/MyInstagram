@@ -11,8 +11,8 @@
 #import "MILoginPresenter.h"
 #import "MIDataProvider+Authentication.h"
 #import "MIDataProvider+User.h"
-#import "MIDataProvider+Images.h"
 #import "MIInstagramUser.h"
+#import "MIImageCacheUtility.h"
 
 @interface MILoginInteractor ()
 
@@ -54,8 +54,7 @@
         {
             MIInstagramUser *user = (MIInstagramUser *)data;
             
-            [strongSelf.dataProvider downloadPhotoByURLString:user.userPhotoURL
-                                                     filename:kUserPhotoPattern];
+            [self downloadContentForUser:user];
         }
                                                 failureBlock:^(NSString *error){}];
     }];

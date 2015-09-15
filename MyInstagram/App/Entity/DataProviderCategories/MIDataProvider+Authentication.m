@@ -8,6 +8,7 @@
 
 #import "MIDataProvider+Authentication.h"
 #import "MIFileUtility.h"
+#import "MIImageCacheUtility.h"
 
 @implementation MIDataProvider (Authentication)
 
@@ -55,11 +56,15 @@
     
     [[MIAPIDataManager sharedInstance] cancelAllOperations];
     
+    [[MIImageCacheUtility sharedInstance] cancelDownloadContentOperations];
+    
     [[MILocalDataManager sharedInstance] clearData];
     
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5.0 * NSEC_PER_SEC)), dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
         [MIFileUtility deleteAllFiles];
+
+        [[MIImageCacheUtility sharedInstance] clearCache];
     });
 
     if (completion)

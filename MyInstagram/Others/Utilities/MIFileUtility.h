@@ -44,4 +44,6 @@
 + (NSURL *)urlFromBundleForFilename:(NSString *)filename
                           extension:(NSString *)extension;
 
++ (NSString *)processedFilename:(NSString *)filename;
+
 @end

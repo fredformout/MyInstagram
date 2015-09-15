@@ -100,7 +100,7 @@
 {
     if (success)
     {
-        //request from internet
+        [_interactor getPostByPost:_post];
     }
     else
     {
@@ -137,11 +137,7 @@
 - (void)finishLikePostWithSuccess:(BOOL)success
                              post:(MIInstagramPost *)post
 {
-    if (success)
-    {
-        //
-    }
-    else
+    if (!success)
     {
         if ([_post isEqual:post])
         {
@@ -156,11 +152,7 @@
 - (void)finishUnlikePostWithSuccess:(BOOL)success
                                post:(MIInstagramPost *)post
 {
-    if (success)
-    {
-        //
-    }
-    else
+    if (!success)
     {
         if ([_post isEqual:post])
         {

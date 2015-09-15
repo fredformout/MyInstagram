@@ -24,7 +24,7 @@
                                                           url:[NSString stringWithFormat:@"media/%@/likes", postId]
                                                 requestMethod:RequestMethodPOST
                                                    paramaters:parameters
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
             if (successBlock)
             {
@@ -66,7 +66,7 @@
                                                           url:[NSString stringWithFormat:@"media/%@/likes", postId]
                                                 requestMethod:RequestMethodDELETE
                                                    paramaters:parameters
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
             if (successBlock)
             {

@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIBaseInteractor.h"
+#import "MIDownloadUserContentInteractor.h"
 #import "MILoginInteractorIOInterface.h"
 
-@interface MILoginInteractor : MIBaseInteractor <MILoginInteractorInputInterface>
+@interface MILoginInteractor : MIDownloadUserContentInteractor <MILoginInteractorInputInterface>
 
 @property (nonatomic, weak) id<MILoginInteractorOutputInterface> presenter;
 

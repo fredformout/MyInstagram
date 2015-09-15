@@ -26,21 +26,4 @@
     && [[MIAPIDataManager sharedInstance] isReachable];
 }
 
-- (NSString *)mapperClass
-{
-    return nil;
-}
-
-- (void)APIActionWithRequest:(MIAPIRequest *)request
-                  completion:(void (^)(NSDictionary *data))completion
-{
-    //
-}
-
-- (void)localCacheActionWithData:(NSDictionary *)data
-                      completion:(void (^)(NSArray *data))completion
-{
-    //
-}
-
 @end

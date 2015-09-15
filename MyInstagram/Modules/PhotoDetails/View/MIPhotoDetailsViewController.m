@@ -7,12 +7,13 @@
 //
 
 #import "MIPhotoDetailsViewController.h"
+#import "MIImageCacheUtility.h"
 
 static NSString *kSegueToPhotoDetailsTableViewControllerIdentifier = @"SegueToPhotoDetailsTableViewController";
 
 @interface MIPhotoDetailsViewController ()
 
-@property (nonatomic, strong) MIInstagramPost *post;
+@property (nonatomic, weak) MIInstagramPost *post;
 
 @end
 
@@ -73,6 +74,8 @@ static NSString *kSegueToPhotoDetailsTableViewControllerIdentifier = @"SegueToPh
     [self.tableViewController stopActivityIndicator];
 }
 
+#pragma mark - MIAddCommentViewControllerInterface
+
 - (void)undoCommentWithText:(NSString *)text
 {
     self.commentTextField.text = text;
@@ -82,8 +85,10 @@ static NSString *kSegueToPhotoDetailsTableViewControllerIdentifier = @"SegueToPh
 
 - (MIPhotoDetailsPhotoTableViewCell *)tableViewCell
 {
-    return (MIPhotoDetailsPhotoTableViewCell *)[self.tableViewController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
-                                                                                                                            inSection:0]];
+    MIPhotoDetailsPhotoTableViewCell *cell = (MIPhotoDetailsPhotoTableViewCell *)[self.tableViewController.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0
+                                                                                                                                                              inSection:0]];
+    
+    return cell;
 }
 
 #pragma mark - MIWithAddCommentPanelViewController

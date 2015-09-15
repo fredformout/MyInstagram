@@ -17,6 +17,5 @@
 @interface MIDataProvider : NSObject
 
 - (BOOL)canMakeRequest;
-- (NSString *)mapperClass;
 
 @end

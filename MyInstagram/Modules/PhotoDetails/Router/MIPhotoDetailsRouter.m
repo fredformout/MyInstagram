@@ -49,11 +49,13 @@
 {
     if ([fromVC isEqual:self.viewController])
     {
-        return [[MITransitionFromPhotoDetailsToPhotos alloc] init];
+        UITableViewCell *cell = [((MIPhotoDetailsViewController *)self.viewController) tableViewCell];
+
+        return cell ? [MITransitionFromPhotoDetailsToPhotos new] : nil;
     }
     else
     {
-        return [[MITransitionFromPhotosToPhotoDetails alloc] init];
+        return [MITransitionFromPhotosToPhotoDetails new];
     }
 }
 

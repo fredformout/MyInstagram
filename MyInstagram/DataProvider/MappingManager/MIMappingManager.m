@@ -7,13 +7,18 @@
 //
 
 #import "MIMappingManager.h"
-#import "MIInstagramUser.h"
-#import "MIInstagramPost.h"
-#import "MIInstagramComment.h"
-#import "InstagramUser.h"
-#import "InstagramPost.h"
-#import "InstagramComment.h"
-#import "MIConstants.h"
+#import "FEMDeserializer.h"
+#import "FEMSerializer.h"
+
+static NSString * const kObjectMappingPattern = @"Object";
+static NSString * const kPostObjectMappingKey = @"PostObject";
+static NSString * const kCommentObjectMappingKey = @"CommentObject";
+static NSString * const kUserObjectMappingKey = @"UserObject";
+
+static NSString * const kManagedObjectMappingPattern = @"ManagedObject";
+static NSString * const kPostManagedObjectMappingKey = @"PostManagedObject";
+static NSString * const kCommentManagedObjectMappingKey = @"CommentManagedObject";
+static NSString * const kUserManagedObjectMappingKey = @"UserManagedObject";
 
 @interface MIMappingManager ()
 
@@ -55,17 +60,12 @@
     return self;
 }
 
-#pragma mark - Others
-
-- (FEMMapping *)mappingForKey:(NSString *)key
-{
-    return _mappings[key];
-}
+#pragma mark - Initialization
 
 - (void)createToObjectMappings
 {
     //UserToObjectMapping
-    FEMMapping *userObjectMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramUser class]];
+    FEMMapping *userObjectMapping = [[FEMMapping alloc] initWithObjectClass:NSClassFromString(@"MIInstagramUser")];
     userObjectMapping.primaryKey = @"identifier";
     
     [userObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
@@ -78,7 +78,7 @@
                                                      toKeyPath:@"profile_picture"]];
     
     //CommentToObjectMapping
-    FEMMapping *commentObjectMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramComment class]];
+    FEMMapping *commentObjectMapping = [[FEMMapping alloc] initWithObjectClass:NSClassFromString(@"MIInstagramComment")];
     commentObjectMapping.primaryKey = @"identifier";
     
     [commentObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
@@ -103,7 +103,7 @@
                                                      toKeyPath:@"from.profile_picture"]];
     
     //PostToObjectMapping
-    FEMMapping *postObjectMapping = [[FEMMapping alloc] initWithObjectClass:[MIInstagramPost class]];
+    FEMMapping *postObjectMapping = [[FEMMapping alloc] initWithObjectClass:NSClassFromString(@"MIInstagramPost")];
     postObjectMapping.primaryKey = @"identifier";
     
     [postObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
@@ -150,7 +150,7 @@
 - (void)createToManagedObjectMappings
 {
     //UserToManagedObjectMapping
-    FEMMapping *userManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:NSStringFromClass([InstagramUser class])];
+    FEMMapping *userManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:@"InstagramUser"];
     userManagedObjectMapping.primaryKey = @"identifier";
     
     [userManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
@@ -163,7 +163,7 @@
                                                              toKeyPath:@"profile_picture"]];
     
     //CommentToManagedObjectMapping
-    FEMMapping *commentManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:NSStringFromClass([InstagramComment class])];
+    FEMMapping *commentManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:@"InstagramComment"];
     commentManagedObjectMapping.primaryKey = @"identifier";
     
     [commentManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
@@ -188,7 +188,7 @@
                                                                 toKeyPath:@"from.profile_picture"]];
     
     //PostToManagedObjectMapping
-    FEMMapping *postManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:NSStringFromClass([InstagramPost class])];
+    FEMMapping *postManagedObjectMapping = [[FEMMapping alloc] initWithEntityName:@"InstagramPost"];
     postManagedObjectMapping.primaryKey = @"identifier";
     
     [postManagedObjectMapping addAttribute:[FEMAttribute mappingOfProperty:@"identifier"
@@ -230,6 +230,135 @@
     _mappings[kPostManagedObjectMappingKey] = postManagedObjectMapping;
     _mappings[kCommentManagedObjectMappingKey] = commentManagedObjectMapping;
     _mappings[kUserManagedObjectMappingKey] = userManagedObjectMapping;
+}
+
+#pragma mark - ... from Data
+
+- (id)objectFromData:(id)data
+       mappingEntity:(NSString *)mappingEntity
+{
+    FEMMapping *mapping = [self objectMappingFromMappingEntity:mappingEntity];
+    FEMDeserializer *deserializer = [FEMDeserializer new];
+
+    return [deserializer objectFromRepresentation:data
+                                          mapping:mapping];
+}
+
+- (id)collectionFromData:(id)data
+           mappingEntity:(NSString *)mappingEntity
+{
+    FEMMapping *mapping = [self objectMappingFromMappingEntity:mappingEntity];
+    FEMDeserializer *deserializer = [FEMDeserializer new];
+
+    return [deserializer collectionFromRepresentation:data
+                                              mapping:mapping];
+}
+
+- (void)backgroundObjectFromData:(id)data
+         mappingEntity:(NSString *)mappingEntity
+            completion:(MappingCompletionBlock)completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+        id processedData = [self objectFromData:data
+                                  mappingEntity:mappingEntity];
+        
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (completion)
+            {
+                completion(processedData);
+            }
+        });
+    });
+}
+
+- (void)backgroundCollectionFromData:(id)data
+             mappingEntity:(NSString *)mappingEntity
+                completion:(MappingCompletionBlock)completion
+{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+    {
+        id processedData = [self collectionFromData:data
+                                      mappingEntity:mappingEntity];
+        
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (completion)
+            {
+                completion(processedData);
+            }
+        });
+    });
+}
+
+- (id)managedObjectFromData:(id)data
+              mappingEntity:(NSString *)mappingEntity
+                    context:(id)context
+{
+    FEMMapping *mapping = [self managedObjectMappingFromMappingEntity:mappingEntity];
+    FEMDeserializer *deserializer = [[FEMDeserializer alloc] initWithContext:context];
+    
+    return [deserializer objectFromRepresentation:data
+                                          mapping:mapping];
+}
+
+- (id)managedObjectsCollectionFromData:(id)data
+                         mappingEntity:(NSString *)mappingEntity
+                               context:(id)context
+{
+    FEMMapping *mapping = [self managedObjectMappingFromMappingEntity:mappingEntity];
+    FEMDeserializer *deserializer = [[FEMDeserializer alloc] initWithContext:context];
+    
+    return [deserializer collectionFromRepresentation:data
+                                              mapping:mapping];
+}
+
+#pragma mark - Data from ...
+
+- (id)dataFromObject:(id)object
+       mappingEntity:(NSString *)mappingEntity
+{
+    return [FEMSerializer serializeObject:object
+                             usingMapping:[self objectMappingFromMappingEntity:mappingEntity]];
+}
+
+- (id)dataFromCollection:(id)collection
+           mappingEntity:(NSString *)mappingEntity
+{
+    return [FEMSerializer serializeCollection:collection
+                                 usingMapping:[self objectMappingFromMappingEntity:mappingEntity]];
+}
+
+- (id)dataFromManagedObject:(id)object
+              mappingEntity:(NSString *)mappingEntity
+{
+    return [FEMSerializer serializeObject:object
+                             usingMapping:[self managedObjectMappingFromMappingEntity:mappingEntity]];
+}
+
+- (id)dataFromManagedObjectsCollection:(id)collection
+                         mappingEntity:(NSString *)mappingEntity
+{
+    return [FEMSerializer serializeCollection:collection
+                                 usingMapping:[self managedObjectMappingFromMappingEntity:mappingEntity]];
+}
+
+#pragma mark - Others
+
+- (FEMMapping *)mappingForKey:(NSString *)key
+{
+    return _mappings[key];
+}
+
+- (FEMMapping *)objectMappingFromMappingEntity:(NSString *)mappingEntity
+{
+    return [[MIMappingManager sharedInstance] mappingForKey:[NSString stringWithFormat:@"%@%@", mappingEntity, kObjectMappingPattern]];;
+}
+
+- (FEMMapping *)managedObjectMappingFromMappingEntity:(NSString *)mappingEntity
+{
+    return [[MIMappingManager sharedInstance] mappingForKey:[NSString stringWithFormat:@"%@%@", mappingEntity, kManagedObjectMappingPattern]];;
 }
 
 @end

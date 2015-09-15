@@ -16,7 +16,7 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
 
 @interface MIPhotosCollectionViewController ()
 
-@property (nonatomic, strong) NSArray *posts;
+@property (nonatomic, weak) NSArray *posts;
 
 @property (nonatomic, strong) UIRefreshControl *refreshControl;
 
@@ -65,7 +65,12 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     {
         viewDidAppearAtFirstTime = YES;
         
-        [self firstActions];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+       {
+           [_refreshControl beginRefreshing];
+           
+           [_presenter reloadView];
+       });
     }
 }
 
@@ -89,12 +94,19 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     
     MIInstagramPost *post = _posts[indexPath.row];
     
-    [cell configureCellWithPost:post];
+    [(MIPhotosCollectionViewCell *)cell configureCellWithPost:post];
     
     return cell;
 }
 
 #pragma mark - UICollectionViewDelegate
+
+- (void)collectionView:(UICollectionView *)collectionView
+       willDisplayCell:(UICollectionViewCell *)cell
+    forItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    //
+}
 
 - (void)collectionView:(UICollectionView *)collectionView
 didSelectItemAtIndexPath:(NSIndexPath *)indexPath
@@ -128,11 +140,27 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     self.posts = posts;
 }
 
+- (void)insertElementsToBottomCount:(NSInteger)count
+{
+    NSMutableArray *indexPathes = [NSMutableArray array];
+    NSInteger index = [_posts count] - count;
+    
+    for (NSInteger i = 0; i < count; i++)
+    {
+        [indexPathes addObject:[NSIndexPath indexPathForItem:(index + i)
+                                                   inSection:0]];
+    }
+    
+    [self.collectionView insertItemsAtIndexPaths:indexPathes];
+    
+    infiniteScroll = YES;
+}
+
 - (void)reload
 {
-    infiniteScroll = YES;
-    
     [self.collectionView reloadData];
+    
+    infiniteScroll = YES;
 }
 
 - (void)stopActivityIndicator
@@ -154,15 +182,17 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (MIPhotosCollectionViewCell *)collectionViewCellForPost:(MIInstagramPost *)post
 {
-    NSUInteger postIndex = [_posts indexOfObject:post];
+    MIPhotosCollectionViewCell *cell = nil;
     
-    if (postIndex == NSNotFound)
+    NSInteger index = [_posts indexOfObject:post];
+            
+    if (index != NSNotFound)
     {
-        return nil;
+        cell = (MIPhotosCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:index
+                                                                                                            inSection:0]];
     }
     
-    return (MIPhotosCollectionViewCell *)[self.collectionView cellForItemAtIndexPath:[NSIndexPath indexPathForRow:postIndex
-                                                                                                    inSection:0]];
+    return cell;
 }
 
 #pragma mark - UIViewController+InitialState
@@ -172,17 +202,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     [self.navigationController popToRootViewControllerAnimated:NO];
     
     [_refreshControl endRefreshing];
+    
     infiniteScroll = NO;
 }
 
 - (void)firstActions
 {
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-    {
-        [_refreshControl beginRefreshing];
-        
-        [_presenter reloadView];
-    });
+    viewDidAppearAtFirstTime = NO;
 }
 
 #pragma mark - Others

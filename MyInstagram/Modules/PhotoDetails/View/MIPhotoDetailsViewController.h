@@ -13,9 +13,10 @@
 #import "MITransitionPhotoDetailsViewControllerInterface.h"
 #import "MIPhotoDetailsTableViewController.h"
 #import "MIAddCommentPresenterInterface.h"
+#import "MIAddCommentViewControllerInterface.h"
 #import "MIInstagramPost.h"
 
-@interface MIPhotoDetailsViewController : MIWithAddCommentPanelViewController <MIPhotoDetailsViewControllerInterface, MITransitionPhotoDetailsViewControllerInterface>
+@interface MIPhotoDetailsViewController : MIWithAddCommentPanelViewController <MIPhotoDetailsViewControllerInterface, MITransitionPhotoDetailsViewControllerInterface, MIAddCommentViewControllerInterface>
 
 @property (nonatomic, strong) MIPhotoDetailsTableViewController *tableViewController;
 

@@ -105,7 +105,7 @@ NSString * const kNetworkUnavailableNotificationName = @"NetworkUnavailableNotif
          {
              if (request.successBlock)
              {
-                 request.successBlock(responseObject, nil);
+                 request.successBlock(responseObject);
              }
          }
      }

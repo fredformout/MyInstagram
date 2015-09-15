@@ -90,6 +90,16 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
     MIPhotosPresenter *popularPhotosPresenter = [MIPhotosPresenter new];
     MIPopularPhotosInteractor *popularPhotosInteractor = [MIPopularPhotosInteractor new];
     
+    //Popular Photo Details
+    MIPhotoDetailsRouter *popularPhotosDetailsRouter = [MIPhotoDetailsRouter new];
+    MIPhotoDetailsPresenter *popularPhotosDetailsPresenter = [MIPhotoDetailsPresenter new];
+    MIPhotoDetailsInteractor *popularPhotosDetailsInteractor = [MIPhotoDetailsInteractor new];
+    
+    //Popular Comments
+    MICommentsRouter *popularCommentsRouter = [[MICommentsRouter alloc] initWithViewControllerIdentifier:kCommentsViewControllerIdentifier];
+    MICommentsPresenter *popularCommentsPresenter = [MICommentsPresenter new];
+    MICommentsInteractor *popularCommentsiInteractor = [MICommentsInteractor new];
+    
     //Liked by Me
     MITabBarItemInfo *likedTbiInfo = [[MITabBarItemInfo alloc] initWithTitle:kLikedByMeTabBarItemTitle
                                                                    imageName:kLikedByMeTabBarItemImageName];
@@ -99,6 +109,16 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
     MIPhotosPresenter *likedByMePresenter = [MIPhotosPresenter new];
     MILikedByMeInteractor *likedByMeInteractor = [MILikedByMeInteractor new];
     
+    //LikedByMe Photo Details
+    MIPhotoDetailsRouter *likedByMePhotosDetailsRouter = [MIPhotoDetailsRouter new];
+    MIPhotoDetailsPresenter *likedByMePhotosDetailsPresenter = [MIPhotoDetailsPresenter new];
+    MIPhotoDetailsInteractor *likedByMePhotosDetailsInteractor = [MIPhotoDetailsInteractor new];
+    
+    //LikedByMe Comments
+    MICommentsRouter *likedByMeCommentsRouter = [[MICommentsRouter alloc] initWithViewControllerIdentifier:kCommentsViewControllerIdentifier];
+    MICommentsPresenter *likedByMeCommentsPresenter = [MICommentsPresenter new];
+    MICommentsInteractor *likedByMeCommentsiInteractor = [MICommentsInteractor new];
+    
     //Profile
     MITabBarItemInfo *profileTbiInfo = [[MITabBarItemInfo alloc] initWithTitle:kProfileTabBarItemTitle
                                                                    imageName:kProfileTabBarItemImageName];
@@ -107,16 +127,6 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
                                                               tabBarItemInfo:profileTbiInfo];
     MIProfilePresenter *profilePresenter = [MIProfilePresenter new];
     MIProfileInteractor *profileInteractor = [MIProfileInteractor new];
-    
-    //Photo Details
-    MIPhotoDetailsRouter *photoDetailsRouter = [MIPhotoDetailsRouter new];
-    MIPhotoDetailsPresenter *photoDetailsPresenter = [MIPhotoDetailsPresenter new];
-    MIPhotoDetailsInteractor *photoDetailsInteractor = [MIPhotoDetailsInteractor new];
-    
-    //Comments
-    MICommentsRouter *commentsRouter = [[MICommentsRouter alloc] initWithViewControllerIdentifier:kCommentsViewControllerIdentifier];
-    MICommentsPresenter *commentsPresenter = [MICommentsPresenter new];
-    MICommentsInteractor *commentsiInteractor = [MICommentsInteractor new];
     
     //Login
     MILoginRouter *loginRouter = [MILoginRouter new];
@@ -131,36 +141,48 @@ static NSString *kProfileTabBarItemImageName = @"profile_icon";
     _appPresenter.innerPresenters = @[popularPhotosPresenter, likedByMePresenter, profilePresenter];
     
     popularPhotosRouter.presenter = popularPhotosPresenter;
-    popularPhotosRouter.photoDetailsRouter = photoDetailsRouter;
+    popularPhotosRouter.photoDetailsRouter = popularPhotosDetailsRouter;
     popularPhotosPresenter.router = popularPhotosRouter;
-    popularPhotosPresenter.photoDetailsPresenter = photoDetailsPresenter;
+    popularPhotosPresenter.photoDetailsPresenter = popularPhotosDetailsPresenter;
     popularPhotosPresenter.interactor = popularPhotosInteractor;
     popularPhotosInteractor.presenter = popularPhotosPresenter;
     
+    popularPhotosDetailsRouter.presenter = popularPhotosDetailsPresenter;
+    popularPhotosDetailsRouter.commentsRouter = popularCommentsRouter;
+    popularPhotosDetailsPresenter.router = popularPhotosDetailsRouter;
+    popularPhotosDetailsPresenter.commentsPresenter = popularCommentsPresenter;
+    popularPhotosDetailsPresenter.interactor = popularPhotosDetailsInteractor;
+    popularPhotosDetailsInteractor.presenter = popularPhotosDetailsPresenter;
+    
+    popularCommentsRouter.presenter = popularCommentsPresenter;
+    popularCommentsPresenter.router = popularCommentsRouter;
+    popularCommentsPresenter.interactor = popularCommentsiInteractor;
+    popularCommentsiInteractor.presenter = popularCommentsPresenter;
+    
     likedByMeRouter.presenter = likedByMePresenter;
-    likedByMeRouter.photoDetailsRouter = photoDetailsRouter;
+    likedByMeRouter.photoDetailsRouter = likedByMePhotosDetailsRouter;
     likedByMePresenter.router = likedByMeRouter;
-    likedByMePresenter.photoDetailsPresenter = photoDetailsPresenter;
+    likedByMePresenter.photoDetailsPresenter = likedByMePhotosDetailsPresenter;
     likedByMePresenter.interactor = likedByMeInteractor;
     likedByMeInteractor.presenter = likedByMePresenter;
+    
+    likedByMePhotosDetailsRouter.presenter = likedByMePhotosDetailsPresenter;
+    likedByMePhotosDetailsRouter.commentsRouter = likedByMeCommentsRouter;
+    likedByMePhotosDetailsPresenter.router = likedByMePhotosDetailsRouter;
+    likedByMePhotosDetailsPresenter.commentsPresenter = likedByMeCommentsPresenter;
+    likedByMePhotosDetailsPresenter.interactor = likedByMePhotosDetailsInteractor;
+    likedByMePhotosDetailsInteractor.presenter = likedByMePhotosDetailsPresenter;
+    
+    likedByMeCommentsRouter.presenter = likedByMeCommentsPresenter;
+    likedByMeCommentsPresenter.router = likedByMeCommentsRouter;
+    likedByMeCommentsPresenter.interactor = likedByMeCommentsiInteractor;
+    likedByMeCommentsiInteractor.presenter = likedByMeCommentsPresenter;
     
     profileRouter.presenter = profilePresenter;
     profilePresenter.router = profileRouter;
     profilePresenter.appRouter = appRouter;
     profilePresenter.interactor = profileInteractor;
     profileInteractor.presenter = profilePresenter;
-    
-    photoDetailsRouter.presenter = photoDetailsPresenter;
-    photoDetailsRouter.commentsRouter = commentsRouter;
-    photoDetailsPresenter.router = photoDetailsRouter;
-    photoDetailsPresenter.commentsPresenter = commentsPresenter;
-    photoDetailsPresenter.interactor = photoDetailsInteractor;
-    photoDetailsInteractor.presenter = photoDetailsPresenter;
-    
-    commentsRouter.presenter = commentsPresenter;
-    commentsPresenter.router = commentsRouter;
-    commentsPresenter.interactor = commentsiInteractor;
-    commentsiInteractor.presenter = commentsPresenter;
     
     loginRouter.presenter = _loginPresenter;
     _loginPresenter.router = loginRouter;

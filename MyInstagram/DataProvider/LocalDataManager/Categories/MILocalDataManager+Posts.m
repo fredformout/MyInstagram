@@ -7,12 +7,9 @@
 //
 
 #import "MILocalDataManager+Posts.h"
-#import "FEMSerializer.h"
-#import "FEMDeserializer.h"
 #import "InstagramList.h"
 #import "MagicalRecord.h"
 #import "MIMappingManager.h"
-#import "MIConstants.h"
 
 @implementation MILocalDataManager (Posts)
 
@@ -28,11 +25,10 @@
         InstagramList *list = [lists firstObject];
         NSArray *posts = [list.posts array];
         
-        NSArray *data = [FEMSerializer serializeCollection:posts
-                                              usingMapping:[[MIMappingManager sharedInstance] mappingForKey:kPostManagedObjectMappingKey]];
-        FEMDeserializer *deserializer = [[FEMDeserializer alloc] init];
-        returnValue = [deserializer collectionFromRepresentation:data
-                                                         mapping:[[MIMappingManager sharedInstance] mappingForKey:kPostObjectMappingKey]];
+        NSArray *data = [[MIMappingManager sharedInstance] dataFromManagedObjectsCollection:posts
+                                                                              mappingEntity:@"Post"];
+        returnValue = [[MIMappingManager sharedInstance] collectionFromData:data
+                                                              mappingEntity:@"Post"];
     }
     
     return returnValue;
@@ -62,9 +58,9 @@
              list.name = listName;
          }
          
-         FEMDeserializer *deserializer = [[FEMDeserializer alloc] initWithContext:localContext];
-         NSArray *posts = [deserializer collectionFromRepresentation:data
-                                                             mapping:[[MIMappingManager sharedInstance] mappingForKey:kPostManagedObjectMappingKey]];
+         NSArray *posts = [[MIMappingManager sharedInstance] managedObjectsCollectionFromData:data
+                                                                                mappingEntity:@"Post"
+                                                                                      context:localContext];
          
          NSOrderedSet *orderedSet;
          

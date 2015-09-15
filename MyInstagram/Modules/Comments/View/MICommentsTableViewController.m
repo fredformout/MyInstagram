@@ -22,14 +22,8 @@ static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTable
 @end
 
 @implementation MICommentsTableViewController
-
-#pragma mark - NSObject
-
-- (void)awakeFromNib
 {
-    [super awakeFromNib];
-    
-    self.offscreenCells = [NSMutableDictionary dictionary];
+    BOOL moreCellVisible;
 }
 
 #pragma mark - UIViewController
@@ -47,34 +41,53 @@ static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTable
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [_comments count] + (_post.caption ? 1 : 0);
+    return (_post.caption ? 1 : 0) + (moreCellVisible ? 1 : 0) + [_comments count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSString *reuseIdentifier = nil;
-    MIInstagramComment *comment;
+    NSString *reuseIdentifier = kCommentTableViewCellReuseIdentifier;
     
-    if (indexPath.row == 0
-        && _post.caption)
+    if (indexPath.row == 0)
     {
-        reuseIdentifier = kCaptionTableViewCellReuseIdentifier;
-        comment = _post.caption;
+        if (_post.caption)
+        {
+            reuseIdentifier = kCaptionTableViewCellReuseIdentifier;
+        }
+        else if (moreCellVisible)
+        {
+            reuseIdentifier = kMoreCommentsTableViewCellReuseIdentifier;
+        };
     }
-    else
+    else if (indexPath.row == 1
+             && _post.caption
+             && moreCellVisible)
     {
-        reuseIdentifier = kCommentTableViewCellReuseIdentifier;
-        
-        NSInteger index = indexPath.row - (_post.caption ? 1 : 0);
-        
-        comment = _comments[index];
+        reuseIdentifier = kMoreCommentsTableViewCellReuseIdentifier;
     }
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:reuseIdentifier
                                                             forIndexPath:indexPath];
     
-    [((MICommentTableViewCell *)cell) configureWithComment:comment];
+    if ([cell isKindOfClass:[MICommentTableViewCell class]])
+    {
+        MIInstagramComment *comment;
+        
+        if (indexPath.row == 0
+            && _post.caption)
+        {
+            comment = _post.caption;
+        }
+        else
+        {
+            NSInteger index = indexPath.row - (moreCellVisible ? 1 : 0) - (_post.caption ? 1 : 0);
+            
+            comment = _comments[index];
+        }
+        
+        [((MICommentTableViewCell *)cell) configureWithComment:comment];
+    }
     
     [cell setNeedsUpdateConstraints];
     [cell updateConstraintsIfNeeded];
@@ -82,12 +95,66 @@ static NSString *kMoreCommentsTableViewCellReuseIdentifier = @"MoreCommentsTable
     return cell;
 }
 
+#pragma mark - UITableViewControllerDelegate
+
+- (void)tableView:(UITableView *)tableView
+  willDisplayCell:(UITableViewCell *)cell
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    //
+}
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (moreCellVisible)
+    {
+        if ((indexPath.row == 0
+             && !_post.caption)
+            || (indexPath.row == 1
+                && _post.caption))
+        {
+            [_viewController.presenter updateView];
+        }
+    }
+}
+
 #pragma mark - Others
 
 - (void)reload
 {
     [self.tableView reloadData];
-    [self scrollToBottom];
+}
+
+- (void)insertElementsToTopCount:(NSInteger)count
+                  deleteMoreCell:(BOOL)deleteMoreCell
+{
+    NSMutableArray *indexPathes = [NSMutableArray array];
+    NSInteger index = (_post.caption ? 1 : 0) + (moreCellVisible ? 1 : 0);
+    
+    for (NSInteger i = 0; i < count; i++)
+    {
+        [indexPathes addObject:[NSIndexPath indexPathForRow:(index + i)
+                                                  inSection:0]];
+    }
+    
+    if (deleteMoreCell)
+    {
+        if (moreCellVisible)
+        {
+            NSInteger index = _post.caption ? 1 : 0;
+            
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForItem:index
+                                                                         inSection:0]]
+                                  withRowAnimation:UITableViewRowAnimationNone];
+            
+        }
+    }
+    
+    moreCellVisible = !deleteMoreCell;
+    
+    [self.tableView insertRowsAtIndexPaths:indexPathes
+                          withRowAnimation:UITableViewRowAnimationNone];
 }
 
 - (void)scrollToBottom

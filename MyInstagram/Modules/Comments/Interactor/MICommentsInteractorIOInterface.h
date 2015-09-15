@@ -11,14 +11,14 @@
 
 @protocol MICommentsInteractorInputInterface <NSObject>
 
-- (void)getCommentsForPost:(MIInstagramPost *)post
-         lastViewedComment:(MIInstagramComment *)lastViewedComment;
+- (void)getCommentsForPost:(MIInstagramPost *)post;
 
 @end
 
 @protocol MICommentsInteractorOutputInterface <NSObject>
 
 - (void)showComments:(NSArray *)comments
-                post:(MIInstagramPost *)post;
+                post:(MIInstagramPost *)post
+            lastPart:(BOOL)lastPart;
 
 @end

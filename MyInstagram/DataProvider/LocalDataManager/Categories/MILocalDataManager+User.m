@@ -7,12 +7,9 @@
 //
 
 #import "MILocalDataManager+User.h"
-#import "FEMSerializer.h"
-#import "FEMDeserializer.h"
 #import "InstagramUser.h"
 #import "MagicalRecord.h"
 #import "MIMappingManager.h"
-#import "MIConstants.h"
 
 @implementation MILocalDataManager (User)
 
@@ -27,11 +24,10 @@
     {
         InstagramUser *user = [users firstObject];
         
-        NSDictionary *data = [FEMSerializer serializeObject:user
-                                               usingMapping:[[MIMappingManager sharedInstance] mappingForKey:kUserManagedObjectMappingKey]];
-        FEMDeserializer *deserializer = [[FEMDeserializer alloc] init];
-        returnValue = [deserializer objectFromRepresentation:data
-                                                     mapping:[[MIMappingManager sharedInstance] mappingForKey:kUserObjectMappingKey]];
+        NSDictionary *data = [[MIMappingManager sharedInstance] dataFromManagedObject:user
+                                                                        mappingEntity:@"User"];
+        returnValue = [[MIMappingManager sharedInstance] objectFromData:data
+                                                          mappingEntity:@"User"];
     }
     
     return returnValue;
@@ -42,9 +38,9 @@
 {
     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext)
      {
-         FEMDeserializer *deserializer = [[FEMDeserializer alloc] initWithContext:localContext];
-         [deserializer objectFromRepresentation:data
-                                        mapping:[[MIMappingManager sharedInstance] mappingForKey:kUserManagedObjectMappingKey]];
+         [[MIMappingManager sharedInstance] managedObjectFromData:data
+                                                    mappingEntity:@"User"
+                                                          context:localContext];
      }
                       completion:^(BOOL contextDidSave, NSError *error)
      {

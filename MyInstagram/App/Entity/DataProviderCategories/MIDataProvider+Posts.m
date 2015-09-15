@@ -31,20 +31,22 @@
                                                           url:@"media/popular"
                                                 requestMethod:RequestMethodGET
                                                    paramaters:parameters
-                                                mappingEntity:@"Post"
-                                                   mappingKey:kDataKey
-                                                  mappingType:MappingTypeCollection
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
-            if (successBlock)
+            [[MIMappingManager sharedInstance] backgroundCollectionFromData:data[kDataKey]
+                                                    mappingEntity:@"Post"
+                                                       completion:^(id data)
             {
-                successBlock(data);
-            }
-
+                if (successBlock)
+                {
+                    successBlock(data);
+                }
+            }];
+            
             [[MILocalDataManager sharedInstance] deleteAllPostsFromListWithName:@"Popular"
                                                                      completion:^
             {
-                [[MILocalDataManager sharedInstance] savePostsFromData:raw[kDataKey]
+                [[MILocalDataManager sharedInstance] savePostsFromData:data[kDataKey]
                                                               listName:@"Popular"
                                                                  atTop:YES
                                                             completion:nil];
@@ -78,15 +80,15 @@
 
 - (void)getLikedByMePostsWithMaxLikeId:(NSString *)maxLikeId
                                  count:(NSInteger)count
-                          successBlock:(void (^)(NSArray *, NSString *maxLikeId))successBlock
-                          failureBlock:(void (^)(NSString *))failureBlock
+                          successBlock:(void (^)(NSArray *data, NSString *maxLikeId))successBlock
+                          failureBlock:(void (^)(NSString *error))failureBlock
 {
     if ([self canMakeRequest])
     {
-        NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithDictionary:@{
-                                                                                          kAccessTokenKey : [UICKeyChainStore sharedInstance][kAccessTokenKey],
-                                                                                          kCountKey : @(count)
-                                                                                          }];
+        NSMutableDictionary *parameters = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           [UICKeyChainStore sharedInstance][kAccessTokenKey], kAccessTokenKey,
+                                           @(count), kCountKey,
+                                           nil];
         
         if (maxLikeId)
         {
@@ -97,17 +99,19 @@
                                                           url:@"users/self/media/liked"
                                                 requestMethod:RequestMethodGET
                                                    paramaters:parameters
-                                                mappingEntity:@"Post"
-                                                   mappingKey:kDataKey
-                                                  mappingType:MappingTypeCollection
-                                                 successBlock:^(id data, id raw)
-         {
-            if (successBlock)
+                                                 successBlock:^(id data)
+        {
+            [[MIMappingManager sharedInstance] backgroundCollectionFromData:data[kDataKey]
+                                                    mappingEntity:@"Post"
+                                                       completion:^(id posts)
             {
-                successBlock(data, raw[kPaginationKey][kNextMaxLikeIdKey]);
-            }
+                if (successBlock)
+                {
+                    successBlock(posts, data[kPaginationKey][kNextMaxLikeIdKey]);
+                }
+            }];
 
-            [[MILocalDataManager sharedInstance] savePostsFromData:raw[kDataKey]
+            [[MILocalDataManager sharedInstance] savePostsFromData:data[kDataKey]
                                                           listName:@"LikedByMe"
                                                              atTop:!maxLikeId
                                                         completion:^{}];
@@ -147,15 +151,17 @@
                                                           url:[NSString stringWithFormat:@"media/%@", postId]
                                                 requestMethod:RequestMethodGET
                                                    paramaters:parameters
-                                                mappingEntity:@"Post"
-                                                   mappingKey:kDataKey
-                                                  mappingType:MappingTypeObject
-                                                 successBlock:^(id data, id raw)
+                                                 successBlock:^(id data)
         {
-            if (successBlock)
+            [[MIMappingManager sharedInstance] backgroundObjectFromData:data[kDataKey]
+                                                mappingEntity:@"Post"
+                                                   completion:^(id data)
             {
-                successBlock(data);
-            }
+                if (successBlock)
+                {
+                    successBlock(data);
+                }
+            }];
         }
                                                  failureBlock:^(id error)
         {

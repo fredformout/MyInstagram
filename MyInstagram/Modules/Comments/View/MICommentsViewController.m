@@ -14,8 +14,8 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
 
-@property (nonatomic, strong) MIInstagramPost *post;
-@property (nonatomic, strong) NSArray *comments;
+@property (nonatomic, weak) MIInstagramPost *post;
+@property (nonatomic, weak) NSArray *comments;
 
 @end
 
@@ -27,6 +27,7 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 {
     [super viewDidLoad];
     
+    self.tableViewController.tableView.hidden = YES;
     [_activityIndicatorView startAnimating];
     
     [_presenter updateView];
@@ -48,11 +49,21 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 
 #pragma nark - MICommentsViewControllerInterface
 
+- (void)insertElementsToTopCount:(NSInteger)count
+                  deleteMoreCell:(BOOL)deleteMoreCell
+{
+    [self.tableViewController insertElementsToTopCount:count
+                                        deleteMoreCell:deleteMoreCell];
+    
+    [self.tableViewController scrollToBottom];
+    
+    [_activityIndicatorView stopAnimating];
+    self.tableViewController.tableView.hidden = NO;
+}
+
 - (void)showComments:(NSArray *)comments
                 post:(MIInstagramPost *)post
 {
-    [_activityIndicatorView stopAnimating];
-    
     self.post = post;
     self.comments = comments;
     _tableViewController.post = _post;
@@ -69,6 +80,13 @@ static NSString *kSegueToCommentsTableViewControllerIdentifier = @"SegueToCommen
 - (void)sendCommentWithText:(NSString *)text
 {
     [_presenter sendCommentWithText:text];
+}
+
+#pragma mark - MIAddCommentViewControllerInterface
+
+- (void)undoCommentWithText:(NSString *)text
+{
+    self.commentTextField.text = text;
 }
 
 @end

@@ -21,8 +21,6 @@
 - (void)addPosts:(NSArray *)posts
         lastPart:(BOOL)lastPart;
 - (void)failAddPosts;
-- (void)addNewPosts:(NSArray *)posts;
-- (void)failAddNewPosts;
 - (void)replaceAllPostsByPosts:(NSArray *)posts
                       lastPart:(BOOL)lastPart;
 - (void)failReplaceAllPosts;

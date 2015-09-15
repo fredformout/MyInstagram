@@ -9,7 +9,7 @@
 #import "MIProfileInteractor.h"
 #import "MIDataProvider+Authentication.h"
 #import "MIDataProvider+User.h"
-#import "MIDataProvider+Images.h"
+#import "MIImageCacheUtility.h"
 
 @interface MIProfileInteractor ()
 
@@ -21,7 +21,11 @@
 
 - (void)getLocalUser
 {
-    [_presenter showUser:(MIInstagramUser *)[self.dataProvider localUser]];
+    MIInstagramUser *user = (MIInstagramUser *)[self.dataProvider localUser];
+    
+    [_presenter showUser:user];
+    
+    [self downloadContentForUser:user];
 }
 
 - (void)getUser
@@ -36,8 +40,7 @@
         
         [strongSelf.presenter showUser:user];
         
-        [strongSelf.dataProvider downloadPhotoByURLString:user.userPhotoURL
-                                                 filename:kUserPhotoPattern];
+        [self downloadContentForUser:user];
     }
                                       failureBlock:^(NSString *error){}];
 }

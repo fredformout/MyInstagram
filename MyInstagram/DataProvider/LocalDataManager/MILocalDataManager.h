@@ -16,8 +16,4 @@
 - (void)setup;
 - (void)clearData;
 
-
-
-
-
 @end

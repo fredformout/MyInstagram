@@ -14,10 +14,11 @@
 #import "MIAddCommentInteractorIOInterface.h"
 #import "MIAddCommentPresenterInterface.h"
 #import "MIPhotoDetailsInteractorIOInterface.h"
+#import "MIAddCommentViewControllerInterface.h"
 
 @interface MIPhotoDetailsPresenter : MIBasePresenter <MIPhotoDetailsPresenterInterface, MIAddCommentInteractorOutputInterface, MIAddCommentPresenterInterface, MIPhotoDetailsInteractorOutputInterface>
 
-@property (nonatomic, weak) id<MIPhotoDetailsViewControllerInterface> controller;
+@property (nonatomic, weak) id<MIPhotoDetailsViewControllerInterface, MIAddCommentViewControllerInterface> controller;
 @property (nonatomic, strong) id<MIAddCommentInteractorInputInterface, MIPhotoDetailsInteractorInputInterface> interactor;
 
 @property (nonatomic, weak) id<MIPhotosPresenterInterface> photosPresenter;

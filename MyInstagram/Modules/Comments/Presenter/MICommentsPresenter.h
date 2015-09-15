@@ -12,10 +12,11 @@
 #import "MICommentsInteractorIOInterface.h"
 #import "MIAddCommentInteractorIOInterface.h"
 #import "MIAddCommentPresenterInterface.h"
+#import "MIAddCommentViewControllerInterface.h"
 
 @interface MICommentsPresenter : MIBasePresenter <MICommentsPresenterInterface, MICommentsInteractorOutputInterface, MIAddCommentInteractorOutputInterface, MIAddCommentPresenterInterface>
 
-@property (nonatomic, weak) id<MICommentsViewControllerInterface> controller;
+@property (nonatomic, weak) id<MICommentsViewControllerInterface, MIAddCommentViewControllerInterface> controller;
 @property (nonatomic, strong) id<MICommentsInteractorInputInterface, MIAddCommentInteractorInputInterface> interactor;
 
 @end

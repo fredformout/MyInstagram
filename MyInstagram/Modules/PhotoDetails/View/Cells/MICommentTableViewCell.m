@@ -11,6 +11,7 @@
 #import "NSDate+TimeAgo.h"
 #import "MIInstagramConstants.h"
 #import "MIFileUtility.h"
+#import "MIImageCacheUtility.h"
 
 static CGFloat kPhotoCornerRadius = 3.0;
 
@@ -36,13 +37,16 @@ static CGFloat kPhotoCornerRadius = 3.0;
 {
     [super awakeFromNib];
     
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+    
     _photoImageView.layer.masksToBounds = YES;
     _photoImageView.layer.cornerRadius = kPhotoCornerRadius;
 }
 
 - (void)dealloc
 {
-    [self unsubscribe];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Others
@@ -62,30 +66,36 @@ static CGFloat kPhotoCornerRadius = 3.0;
 
 - (void)setupPhoto
 {
-    [self unsubscribe];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupPhoto)
+                                                 name:_comment.userPhotoURL
+                                               object:nil];
     
-    self.imageName = _comment.identifier ? [NSString stringWithFormat:@"%@_%@", kUserPhotoPattern, _comment.identifier] : kUserPhotoPattern;
-    UIImage *image = [UIImage imageWithContentsOfFile:[MIFileUtility pathFromDocumentsForFilename:_imageName]];
-    
-    if (!image)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(setupPhoto)
-                                                     name:_imageName
-                                                   object:nil];
-    }
-    
-    _photoImageView.image = image;
-}
-
-- (void)unsubscribe
-{
-    if (_imageName)
-    {
-        [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:_imageName
-                                                      object:nil];
-    }
+        __block UIImage *image = [[MIImageCacheUtility sharedInstance] imageForURLString:_comment.userPhotoURL];
+        
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (image)
+            {
+                [[NSNotificationCenter defaultCenter] removeObserver:self];
+                
+                _photoImageView.image = image;
+            }
+            else
+            {
+                _photoImageView.image = nil;
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                {
+                    [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:_comment.userPhotoURL
+                                                                                      priority:DownloadContentOperationPriorityLow];
+                });
+            }
+        });
+    });
 }
 
 @end

@@ -22,14 +22,7 @@ typedef NS_ENUM(NSInteger, ResponseSerializer)
     ResponseSerializerJSON
 };
 
-typedef NS_ENUM(NSInteger, MappingType)
-{
-    MappingTypeNone,
-    MappingTypeObject,
-    MappingTypeCollection
-};
-
-typedef void (^APIRequestSuccessBlock)(id data, id raw);
+typedef void (^APIRequestSuccessBlock)(id data);
 typedef void (^APIRequestFailureBlock)(id error);
 
 @interface MIAPIRequest : NSObject
@@ -41,9 +34,6 @@ typedef void (^APIRequestFailureBlock)(id error);
 @property (nonatomic, assign) RequestMethod requestMethod;
 @property (nonatomic, assign) ResponseSerializer responseSerializer;
 @property (nonatomic, strong) NSDictionary *parameters;
-@property (nonatomic, strong) NSString *mappingEntity;
-@property (nonatomic, strong) NSString *mappingKey;
-@property (nonatomic, assign) MappingType mappingType;
 @property (nonatomic, copy) APIRequestSuccessBlock successBlock;
 @property (nonatomic, copy) APIRequestFailureBlock failureBlock;
 
@@ -54,9 +44,6 @@ typedef void (^APIRequestFailureBlock)(id error);
                     requestMethod:(RequestMethod)requestMethod
                responseSerializer:(ResponseSerializer)responseSerializer
                        paramaters:(NSDictionary *)paramaters
-                    mappingEntity:(NSString *)mappingEntity
-                       mappingKey:(NSString *)mappingKey
-                      mappingType:(MappingType)mappingType
                      successBlock:(APIRequestSuccessBlock)successBlock
                      failureBlock:(APIRequestFailureBlock)failureBlock;
 + (MIAPIRequest *)requestWithName:(NSString *)name
@@ -64,15 +51,6 @@ typedef void (^APIRequestFailureBlock)(id error);
                     isAbsoluteUrl:(BOOL)isAbsoluteUrl
                     requestMethod:(RequestMethod)requestMethod
                responseSerializer:(ResponseSerializer)responseSerializer
-                     successBlock:(APIRequestSuccessBlock)successBlock
-                     failureBlock:(APIRequestFailureBlock)failureBlock;
-+ (MIAPIRequest *)requestWithName:(NSString *)name
-                              url:(NSString *)url
-                    requestMethod:(RequestMethod)requestMethod
-                       paramaters:(NSDictionary *)paramaters
-                    mappingEntity:(NSString *)mappingEntity
-                       mappingKey:(NSString *)mappingKey
-                      mappingType:(MappingType)mappingType
                      successBlock:(APIRequestSuccessBlock)successBlock
                      failureBlock:(APIRequestFailureBlock)failureBlock;
 + (MIAPIRequest *)requestWithName:(NSString *)name

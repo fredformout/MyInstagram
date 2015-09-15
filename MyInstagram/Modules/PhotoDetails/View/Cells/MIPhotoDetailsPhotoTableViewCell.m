@@ -7,14 +7,12 @@
 //
 
 #import "MIPhotoDetailsPhotoTableViewCell.h"
-#import "MIInstagramConstants.h"
+#import "MIImageCacheUtility.h"
 #import "MIFileUtility.h"
 
 @interface MIPhotoDetailsPhotoTableViewCell ()
 
 @property (nonatomic, weak) IBOutlet UIActivityIndicatorView *activityIndicatorView;
-
-@property (nonatomic, strong) NSString *imageName;
 
 @end
 
@@ -22,9 +20,17 @@
 
 #pragma mark - NSObject
 
+- (void)awakeFromNib
+{
+    [super awakeFromNib];
+    
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+}
+
 - (void)dealloc
 {
-    [self unsubscribe];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Others
@@ -38,36 +44,38 @@
 
 - (void)setupPhoto
 {
-    [self unsubscribe];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(setupPhoto)
+                                                 name:_post.standardResolutionPhotoURL
+                                               object:nil];
     
-    self.imageName = [NSString stringWithFormat:@"%@_%@", kStandardResolutionPhotoPattern, _post.identifier];
-    UIImage *image = [UIImage imageWithContentsOfFile:[MIFileUtility pathFromDocumentsForFilename:_imageName]];
-    
-    if (!image)
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
     {
-        [[NSNotificationCenter defaultCenter] addObserver:self
-                                                 selector:@selector(setupPhoto)
-                                                     name:_imageName
-                                                   object:nil];
+        __block UIImage *image = [[MIImageCacheUtility sharedInstance] imageForURLString:_post.standardResolutionPhotoURL];
         
-        [_activityIndicatorView startAnimating];
-    }
-    else
-    {
-        [_activityIndicatorView stopAnimating];
-    }
-    
-    _photoImageView.image = image;
-}
-
-- (void)unsubscribe
-{
-    if (_imageName)
-    {
-        [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                        name:_imageName
-                                                      object:nil];
-    }
+        dispatch_async(dispatch_get_main_queue(), ^
+        {
+            if (image)
+            {
+                [[NSNotificationCenter defaultCenter] removeObserver:self];
+                
+                [_activityIndicatorView stopAnimating];
+                _photoImageView.image = image;
+            }
+            else
+            {
+                _photoImageView.image = nil;
+                [_activityIndicatorView startAnimating];
+                
+                dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^
+                {
+                    [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:_post.standardResolutionPhotoURL
+                                                                                      priority:DownloadContentOperationPriorityHigh];
+                });
+            }
+        });
+    });
 }
 
 @end

@@ -8,29 +8,37 @@
 
 #import "MICommentsInteractor.h"
 #import "MIDataProvider+Comments.h"
-#import "MIDataProvider+Images.h"
 #import "MIDataProvider+User.h"
 #import "MIInstagramUser.h"
+
+@interface MICommentsInteractor ()
+
+@property (nonatomic, copy) NSString *maxId;
+
+@end
 
 @implementation MICommentsInteractor
 
 #pragma mark - MICommentsInteractorInputInterface
 
 - (void)getCommentsForPost:(MIInstagramPost *)post
-         lastViewedComment:(MIInstagramComment *)lastViewedComment
 {
     __weak typeof(self) weakSelf = self;
     
     [self.dataProvider getCommentsByPostId:post.identifier
-                       lastViewedCommentId:lastViewedComment.identifier
-                              successBlock:^(NSArray *data)
+                                     maxId:_maxId
+                              successBlock:^(NSArray *comments, NSString *maxId)
     {
         __strong typeof(self) strongSelf = weakSelf;
         
-        [strongSelf.presenter showComments:data
-                                      post:post];
+        if (maxId)
+        {
+            strongSelf.maxId = maxId;
+        }
         
-        [strongSelf downloadPhotosForComments:data];
+        [strongSelf.presenter showComments:comments
+                                      post:post
+                                  lastPart:!maxId];
     }
                               failureBlock:^(NSString *error){}];
 }
@@ -56,8 +64,6 @@
 - (void)addComment:(MIInstagramComment *)comment
               post:(MIInstagramPost *)post
 {
-    return;
-    
     __weak typeof(self) weakSelf = self;
     
     [self.dataProvider addCommentByPostId:post.identifier

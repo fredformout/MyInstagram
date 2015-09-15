@@ -11,6 +11,8 @@
 
 @protocol MICommentsViewControllerInterface <NSObject>
 
+- (void)insertElementsToTopCount:(NSInteger)count
+                  deleteMoreCell:(BOOL)deleteMoreCell;
 - (void)showComments:(NSArray *)comments
                 post:(MIInstagramPost *)post;
 - (void)reload;

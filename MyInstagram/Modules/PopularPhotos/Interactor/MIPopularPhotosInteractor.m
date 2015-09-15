@@ -8,9 +8,9 @@
 
 #import "MIPopularPhotosInteractor.h"
 #import "MIDataProvider+Posts.h"
-#import "MIDataProvider+Images.h"
 #import "MIInstagramPost.h"
 #import "MIInstagramComment.h"
+#import "MIImageCacheUtility.h"
 
 @interface MIPopularPhotosInteractor ()
 
@@ -22,7 +22,10 @@
 
 - (void)getLocalPosts
 {
-    [_presenter addNewPosts:[self.dataProvider localPopularPosts]];
+    NSArray *posts = [self.dataProvider localPopularPosts];
+    
+    [_presenter replaceAllPostsByPosts:posts
+                              lastPart:NO];
 }
 
 - (void)getNewPosts
@@ -33,15 +36,14 @@
     {
         __strong typeof(self) strongSelf = weakSelf;
         
-        [strongSelf.presenter addNewPosts:posts];
-        
-        [strongSelf downloadPhotosForPosts:posts];
+        [strongSelf.presenter replaceAllPostsByPosts:posts
+                                            lastPart:NO];
     }
                                           failureBlock:^(NSString *error)
     {
         __strong typeof(self) strongSelf = weakSelf;
         
-        [strongSelf.presenter failAddNewPosts];
+        [strongSelf.presenter failReplaceAllPosts];
     }];
 }
 
@@ -55,8 +57,6 @@
         
         [strongSelf.presenter addPosts:posts
                               lastPart:NO];
-        
-        [strongSelf downloadPhotosForPosts:posts];
     }
                                           failureBlock:^(NSString *error)
     {

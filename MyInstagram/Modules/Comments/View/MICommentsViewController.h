@@ -12,9 +12,10 @@
 #import "MICommentsTableViewController.h"
 #import "MICommentsPresenterInterface.h"
 #import "MIAddCommentPresenterInterface.h"
+#import "MIAddCommentViewControllerInterface.h"
 #import "MIInstagramPost.h"
 
-@interface MICommentsViewController : MIWithAddCommentPanelViewController <MICommentsViewControllerInterface>
+@interface MICommentsViewController : MIWithAddCommentPanelViewController <MICommentsViewControllerInterface, MIAddCommentViewControllerInterface>
 
 @property (nonatomic, strong) MICommentsTableViewController *tableViewController;
 

@@ -10,7 +10,6 @@
 #import "MIDataProvider+Comments.h"
 #import "MIDataProvider+Posts.h"
 #import "MIDataProvider+Likes.h"
-#import "MIDataProvider+Images.h"
 #import "MIDataProvider+User.h"
 #import "MIInstagramUser.h"
 
@@ -37,8 +36,6 @@
 - (void)addComment:(MIInstagramComment *)comment
               post:(MIInstagramPost *)post
 {
-    return;
-    
     __weak typeof(self) weakSelf = self;
     
     [self.dataProvider addCommentByPostId:post.identifier
@@ -84,8 +81,6 @@
 
 - (void)likePost:(MIInstagramPost *)post
 {
-    return;
-    
     __weak typeof(self) weakSelf = self;
     
     [self.dataProvider likePostByPostId:post.identifier
@@ -107,8 +102,6 @@
 
 - (void)unlikePost:(MIInstagramPost *)post
 {
-    return;
-    
     __weak typeof(self) weakSelf = self;
     
     [self.dataProvider unlikePostByPostId:post.identifier

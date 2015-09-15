@@ -21,6 +21,8 @@ static NSString * const kAccessTokenKey = @"access_token";
 
 static NSString * const kDataKey = @"data";
 static NSString * const kCountKey = @"count";
+static NSString * const kMaxIdKey = @"max_id";
+static NSString * const kNextMaxIdKey = @"next_max_id";
 static NSString * const kMaxLikeIdKey = @"max_like_id";
 static NSString * const kNextMaxLikeIdKey = @"next_max_like_id";
 static NSString * const kTextKey = @"text";

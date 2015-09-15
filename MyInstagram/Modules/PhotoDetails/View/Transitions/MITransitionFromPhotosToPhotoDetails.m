@@ -54,7 +54,7 @@
                      completion:^(BOOL finished)
     {
         toCell.photoImageView.hidden = NO;
-        fromCell.hidden = NO;
+        fromCell.photoImageView.hidden = NO;
         [cellImageSnapshot removeFromSuperview];
         
         [transitionContext completeTransition:!transitionContext.transitionWasCancelled];

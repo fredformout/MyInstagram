@@ -36,11 +36,11 @@
 
 - (void)returnViewControllerToInitialState
 {
-    [super returnViewControllerToInitialState];
-    
     [_posts removeAllObjects];
     
     [_controller reload];
+    
+    [super returnViewControllerToInitialState];
 }
 
 #pragma mark - MIPhotosPresenterInterface
@@ -91,8 +91,8 @@
         lastPart:(BOOL)lastPart
 {
     [_posts addObjectsFromArray:posts];
-    
-    [_controller reload];
+
+    [_controller insertElementsToBottomCount:[posts count]];
     [_controller stopActivityIndicator];
     
     if (lastPart)
@@ -102,22 +102,6 @@
 }
 
 - (void)failAddPosts
-{
-    [_controller stopActivityIndicator];
-}
-
-- (void)addNewPosts:(NSArray *)posts
-{
-    NSArray *array = [NSArray arrayWithArray:_posts];
-    [_posts removeAllObjects];
-    [_posts addObjectsFromArray:posts];
-    [_posts addObjectsFromArray:array];
-    
-    [_controller reload];
-    [_controller stopActivityIndicator];
-}
-
-- (void)failAddNewPosts
 {
     [_controller stopActivityIndicator];
 }
