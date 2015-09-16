@@ -26,6 +26,8 @@
     
     [_presenter replaceAllPostsByPosts:posts
                               lastPart:NO];
+    
+    [self downloadContentForPosts:posts];
 }
 
 - (void)getNewPosts
@@ -38,6 +40,8 @@
         
         [strongSelf.presenter replaceAllPostsByPosts:posts
                                             lastPart:NO];
+        
+        [self downloadContentForPosts:posts];
     }
                                           failureBlock:^(NSString *error)
     {
@@ -57,6 +61,8 @@
         
         [strongSelf.presenter addPosts:posts
                               lastPart:NO];
+        
+        [self downloadContentForPosts:posts];
     }
                                           failureBlock:^(NSString *error)
     {

@@ -67,6 +67,11 @@
 
 - (void)reloadView
 {
+    if ([_interactor canMakeNetworkActivity])
+    {
+        [_controller startActivityIndicator];
+    }
+    
     [_interactor getNewPosts];
 }
 

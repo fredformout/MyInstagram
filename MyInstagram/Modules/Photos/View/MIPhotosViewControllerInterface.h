@@ -20,6 +20,7 @@ typedef NS_ENUM(NSInteger, ActivityIndicatorType)
 - (void)showPosts:(NSArray *)posts;
 - (void)insertElementsToBottomCount:(NSInteger)count;
 - (void)reload;
+- (void)startActivityIndicator;
 - (void)stopActivityIndicator;
 
 - (void)blockBottomRefresh;

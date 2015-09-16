@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "MIDownloadPostsContentInteractor.h"
+#import "MIPhotosInteractor.h"
 #import "MIPhotosInteractorIOInterface.h"
 
-@interface MIPopularPhotosInteractor : MIDownloadPostsContentInteractor <MIPhotosInteractorInputInterface>
+@interface MIPopularPhotosInteractor : MIPhotosInteractor <MIPhotosInteractorInputInterface>
 
 @property (nonatomic, weak) id<MIPhotosInteractorOutputInterface> presenter;
 

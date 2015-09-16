@@ -16,7 +16,7 @@
 
 @implementation MIImagesDictionary
 
-#pragma mark - NSMutableDictionary
+#pragma mark - NSObject
 
 - (instancetype)init
 {
@@ -29,6 +29,8 @@
     
     return self;
 }
+
+#pragma mark - Others
 
 - (id)objectForKey:(id)aKey
 {

@@ -34,6 +34,8 @@ static NSInteger kPostsCount = 24;
     
     [_presenter replaceAllPostsByPosts:posts
                               lastPart:NO];
+    
+    [self downloadContentForPosts:posts];
 }
 
 - (void)getNewPosts
@@ -55,6 +57,8 @@ static NSInteger kPostsCount = 24;
         
         [strongSelf.presenter replaceAllPostsByPosts:posts
                                             lastPart:!maxLikeId];
+        
+        [self downloadContentForPosts:posts];
     }
                                            failureBlock:^(NSString *error)
     {
@@ -81,6 +85,8 @@ static NSInteger kPostsCount = 24;
          
          [strongSelf.presenter addPosts:posts
                                lastPart:!maxLikeId];
+         
+         [self downloadContentForPosts:posts];
      }
                                          failureBlock:^(NSString *error)
      {

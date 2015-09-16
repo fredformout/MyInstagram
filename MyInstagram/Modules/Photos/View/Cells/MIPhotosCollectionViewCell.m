@@ -34,12 +34,13 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-#pragma mark - UITableViewCell
+#pragma mark - UICollectionViewCell
 
 - (void)prepareForReuse
 {
     [super prepareForReuse];
     
+    _photoImageView.image = nil;
     _photoImageView.hidden = NO;
 }
 

@@ -12,6 +12,8 @@
 #import "MIPhotosCollectionViewCell.h"
 #import "UIViewController+InitialState.h"
 
+static CGFloat kDurationOfAnimation = 0.25;
+
 static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionViewCell";
 
 @interface MIPhotosCollectionViewController ()
@@ -64,13 +66,8 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     if (!viewDidAppearAtFirstTime)
     {
         viewDidAppearAtFirstTime = YES;
-        
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
-       {
-           [_refreshControl beginRefreshing];
-           
-           [_presenter reloadView];
-       });
+       
+        [_presenter reloadView];
     }
 }
 
@@ -163,6 +160,13 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
     infiniteScroll = YES;
 }
 
+- (void)startActivityIndicator
+{
+    [_refreshControl beginRefreshing];
+    
+    [self showRefreshing];
+}
+
 - (void)stopActivityIndicator
 {
     [_refreshControl endRefreshing];
@@ -220,6 +224,21 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
                         action:@selector(reloadView)
               forControlEvents:UIControlEventValueChanged];
     [self.collectionView addSubview:_refreshControl];
+}
+
+- (void)showRefreshing
+{
+    if (self.collectionView.contentOffset.y == 0.0)
+    {
+        [UIView animateWithDuration:kDurationOfAnimation
+                              delay:0.0
+                            options:UIViewAnimationOptionBeginFromCurrentState
+                         animations:^
+        {
+            self.collectionView.contentOffset = CGPointMake(0.0, -_refreshControl.frame.size.height);
+        }
+                         completion:^(BOOL finished){}];
+    }
 }
 
 - (void)reloadView

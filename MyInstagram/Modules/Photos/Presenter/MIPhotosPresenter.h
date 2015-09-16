@@ -12,11 +12,12 @@
 #import "MIPhotosViewControllerInterface.h"
 #import "MIPhotosInteractorIOInterface.h"
 #import "MIPhotoDetailsPresenterInterface.h"
+#import "MINetworkActivityInteractorInputInterface.h"
 
 @interface MIPhotosPresenter : MIBasePresenter <MIPhotosPresenterInterface, MIPhotosInteractorOutputInterface>
 
 @property (nonatomic, weak) id<MIPhotosViewControllerInterface> controller;
-@property (nonatomic, strong) id<MIPhotosInteractorInputInterface> interactor;
+@property (nonatomic, strong) id<MIPhotosInteractorInputInterface, MINetworkActivityInteractorInputInterface> interactor;
 
 @property (nonatomic, strong) id<MIPhotoDetailsPresenterInterface> photoDetailsPresenter;
 

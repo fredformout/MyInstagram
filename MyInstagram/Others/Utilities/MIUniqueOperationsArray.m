@@ -30,6 +30,8 @@
     return self;
 }
 
+#pragma mark - Others
+
 - (void)addObject:(id)anObject
 {
     @synchronized(self)

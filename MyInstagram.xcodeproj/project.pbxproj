@@ -28,6 +28,7 @@
 		1E15F83C1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F83B1BA8AE9600FCACFF /* MIDownloadCommentsContentInteractor.m */; };
 		1E15F83F1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F83E1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m */; };
 		1E15F8421BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F8411BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m */; };
+		1E15F8451BA8E62C00FCACFF /* MIPhotosInteractor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E15F8441BA8E62C00FCACFF /* MIPhotosInteractor.m */; };
 		1E4904CD1BA61C1F00D47317 /* MIDataProvider+User.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904CC1BA61C1F00D47317 /* MIDataProvider+User.m */; };
 		1E4904D01BA61CBA00D47317 /* MIDataProvider+Posts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904CF1BA61CBA00D47317 /* MIDataProvider+Posts.m */; };
 		1E4904D51BA66F8C00D47317 /* MILocalDataManager+Posts.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E4904D41BA66F8C00D47317 /* MILocalDataManager+Posts.m */; };
@@ -159,6 +160,9 @@
 		1E15F83E1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadPostsContentInteractor.m; sourceTree = "<group>"; };
 		1E15F8401BA8B18D00FCACFF /* MIDownloadUserContentInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIDownloadUserContentInteractor.h; sourceTree = "<group>"; };
 		1E15F8411BA8B18D00FCACFF /* MIDownloadUserContentInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIDownloadUserContentInteractor.m; sourceTree = "<group>"; };
+		1E15F8431BA8E62C00FCACFF /* MIPhotosInteractor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MIPhotosInteractor.h; sourceTree = "<group>"; };
+		1E15F8441BA8E62C00FCACFF /* MIPhotosInteractor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MIPhotosInteractor.m; sourceTree = "<group>"; };
+		1E15F8461BA8E6C700FCACFF /* MINetworkActivityInteractorInputInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MINetworkActivityInteractorInputInterface.h; sourceTree = "<group>"; };
 		1E4904CB1BA61C1F00D47317 /* MIDataProvider+User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MIDataProvider+User.h"; sourceTree = "<group>"; };
 		1E4904CC1BA61C1F00D47317 /* MIDataProvider+User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MIDataProvider+User.m"; sourceTree = "<group>"; };
 		1E4904CE1BA61CBA00D47317 /* MIDataProvider+Posts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MIDataProvider+Posts.h"; sourceTree = "<group>"; };
@@ -1010,7 +1014,10 @@
 		1EF494961BA30D8900762039 /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
+				1E15F8461BA8E6C700FCACFF /* MINetworkActivityInteractorInputInterface.h */,
 				1EF494971BA30D8900762039 /* MIPhotosInteractorIOInterface.h */,
+				1E15F8431BA8E62C00FCACFF /* MIPhotosInteractor.h */,
+				1E15F8441BA8E62C00FCACFF /* MIPhotosInteractor.m */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1350,6 +1357,7 @@
 				1EC2AD6A1BA165F2002DF65D /* MIPhotosRouter.m in Sources */,
 				1EC2AD631BA165F2002DF65D /* MIPhotoDetailsTableViewController.m in Sources */,
 				1EC2AD6E1BA165F2002DF65D /* MIProfileRouter.m in Sources */,
+				1E15F8451BA8E62C00FCACFF /* MIPhotosInteractor.m in Sources */,
 				1EC2AD5F1BA165F2002DF65D /* MICommentTableViewCell.m in Sources */,
 				1E15F83F1BA8AEAF00FCACFF /* MIDownloadPostsContentInteractor.m in Sources */,
 				1EC2AD5A1BA165F2002DF65D /* MILoginRouter.m in Sources */,
@@ -1497,7 +1505,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a35d9c5-0851-431c-a52b-715ea5685416";
+				PROVISIONING_PROFILE = "777aadc6-687b-4931-a528-e82817402c27";
 			};
 			name = Debug;
 		};
@@ -1511,7 +1519,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "6a35d9c5-0851-431c-a52b-715ea5685416";
+				PROVISIONING_PROFILE = "777aadc6-687b-4931-a528-e82817402c27";
 			};
 			name = Release;
 		};
