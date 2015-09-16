@@ -10,6 +10,8 @@
 
 @implementation MIPhotosInteractor
 
+#pragma mark - MINetworkActivityInteractorInputInterface
+
 - (BOOL)canMakeNetworkActivity
 {
     return [self.dataProvider canMakeRequest];

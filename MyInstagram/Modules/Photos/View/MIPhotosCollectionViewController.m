@@ -44,6 +44,7 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     arbitraryNumber = [UIScreen mainScreen].bounds.size.height;
     
     [self setupRefreshControl];
+    
     infiniteScroll = NO;
 }
 
@@ -67,7 +68,7 @@ static NSString *kPhotosCollectionViewCellReuseIdentifier = @"PhotosCollectionVi
     {
         viewDidAppearAtFirstTime = YES;
        
-        [_presenter reloadView];
+        [self firstActions];
     }
 }
 
@@ -162,6 +163,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)startActivityIndicator
 {
+    infiniteScroll = NO;
+    
     [_refreshControl beginRefreshing];
     
     [self showRefreshing];
@@ -170,6 +173,8 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 - (void)stopActivityIndicator
 {
     [_refreshControl endRefreshing];
+    
+    infiniteScroll = (_posts > 0);
 }
 
 - (void)blockBottomRefresh
@@ -212,7 +217,18 @@ didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 
 - (void)firstActions
 {
-    viewDidAppearAtFirstTime = NO;
+    if (self.isViewLoaded
+        && self.view.window)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        {
+            [_presenter reloadView];
+        });
+    }
+    else
+    {
+        viewDidAppearAtFirstTime = NO;
+    }
 }
 
 #pragma mark - Others

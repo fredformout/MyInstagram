@@ -23,7 +23,7 @@
             [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:post.standardResolutionPhotoURL
                                                                                   priority:DownloadContentOperationPriorityHigh];
            [[MIImageCacheUtility sharedInstance] addDownloadContentOperationWithURLString:post.caption.userPhotoURL
-                                                                                 priority:DownloadContentOperationPriorityLow];
+                                                                                 priority:DownloadContentOperationPriorityHigh];
            
             [self downloadContentForComments:post.comments];
         }

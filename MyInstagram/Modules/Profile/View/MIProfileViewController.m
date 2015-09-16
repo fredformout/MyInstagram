@@ -76,9 +76,7 @@
 #pragma mark - MIProfileViewControllerInterface
 
 - (void)showUser:(MIInstagramUser *)user
-{
-    [_activityIndicatorView stopAnimating];
-    
+{    
     self.user = user;
     
     if (_user)
@@ -105,9 +103,18 @@
 
 - (void)firstActions
 {
-    [_activityIndicatorView startAnimating];
-    
-    [_presenter getUser];
+    if (self.isViewLoaded
+        && self.view.window)
+    {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^
+        {
+            [_presenter getUser];
+        });
+    }
+    else
+    {
+        viewDidAppearAtFirstTime = NO;
+    }
 }
 
 #pragma mark - Others
